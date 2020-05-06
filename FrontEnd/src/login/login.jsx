@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import './login.css'
-import Col from "react-bootstrap/Col";
 
+function Login({listeUtilisateur}) {
+    const [actuelUser, setActuelUser] = useState({actuelEmail:"", actuelMdp:""});
 
-function Login({email, mdp, onClick}) {
+    const handleChangeEmail = event => {
+        actuelUser.actuelEmail = event.currentTarget.value;
+    }
+
+    const handleChangeMdp = event => {
+        actuelUser.actuelMdp = event.currentTarget.value;
+    }
+    const onValider = () => {
+//        console.log(actuelUser.actuelEmail);
+//        console.log(actuelUser.actuelMdp);
+        if(listeUtilisateur[0].userEmail === actuelUser.actuelEmail && listeUtilisateur[0].userMdp === actuelUser.actuelMdp){
+            console.log("OK");
+//            alert("OK");
+        }
+        else {
+            console.log(("KO"))
+//            alert(("KO"));
+        }
+    }
+
     return (
         <div className="container ">
             <div className="login ">
@@ -13,18 +33,17 @@ function Login({email, mdp, onClick}) {
                 <hr/>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-
+                        <Form.Label>Adresse email</Form.Label>
+                        <Form.Control type="email" onChange={handleChangeEmail} placeholder="Entrer votre email" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Label>Mot de passe</Form.Label>
+                        <Form.Control type="password" onChange={handleChangeMdp} placeholder="Entrer votre mot de passe" />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Submit
+                    <Button variant="success" onClick={onValider} type="submit">
+                        Valider
                     </Button>
                 </Form>
             </div>
