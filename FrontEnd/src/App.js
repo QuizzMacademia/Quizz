@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
-import Login from "./login/login";
+import Login from "./components/login/Login";
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import Accueil from "./components/accueil/Accueil";
+import Training from "./components/accueil/Training";
 
 function App() {
     const [users, setUsers] = useState([
@@ -9,9 +12,13 @@ function App() {
 
 
   return (
+      <Switch>
     <div className="App">
-      <Login listeUtilisateur={users}/>
+        <Route exact path='/' render={() => <Login listeUtilisateur={users} />}/>
+        <Route exact path='/Accueil' component={Accueil} />
+
     </div>
+      </Switch>
   );
 }
 
