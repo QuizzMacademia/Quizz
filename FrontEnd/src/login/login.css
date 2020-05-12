@@ -1,0 +1,12 @@
+.login{
+  margin: auto;
+ width: 30%;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+ background-color: lightgrey;
+ padding: 30px;
+ border-radius: 5px ;
+}
