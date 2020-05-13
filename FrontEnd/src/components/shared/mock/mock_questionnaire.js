@@ -9,7 +9,7 @@ const MOCK_QUESTIONNAIRE = {
         typeQuestion: 'trainning',
         categorie: 'JavaScript',
         nivieauDiff: 1,
-        typeChoix: 'simple',
+        typeChoix: 'checkbox',
         choixQuestion: [
             'JScript',
             'LiveScript',
@@ -26,7 +26,7 @@ const MOCK_QUESTIONNAIRE = {
         typeQuestion: 'trainning',
         categorie: 'JavaScript',
         nivieauDiff: 1,
-        typeChoix: 'simple',
+        typeChoix: 'radio',
         choixQuestion: [
             'client-side',
             'server-side',
@@ -34,6 +34,38 @@ const MOCK_QUESTIONNAIRE = {
         ],
         bonneReponse: [0],
         explication: 'Le JavaScript est un langage conçu pour dynamiser les pages Web après leur téléchargement par les navigateurs, il est donc client-side vu qu\'il s\'exécute par le biais du navigateur. Cependant, il est possible de l\'utiliser dans des applications server-side mais nous n\'aborderons pas ce concept dans ce cours.'
+    }, {
+        id: 3,
+        questionName: 'Le JavaScript peut s\'utiliser conjointement avec :',
+        typeQuestion: 'trainning',
+        categorie: 'JavaScript',
+        nivieauDiff: 1,
+        typeChoix: 'checkbox',
+        choixQuestion: [
+            'du HTML',
+            'du xHTML',
+            'du PHP',
+            'du C',
+            'de nombreux langages'
+        ],
+        bonneReponse: [4],
+        explication: 'Le JavaScript est un langage dont l\'utilisation majoritaire se fait conjointement avec du HTML, mais il peut s\'utiliser avec beaucoup d\'autre langages. Par exemple, Firefox s\'en sert pour son interface en XUL, et Adobe AIR exploite aussi ce langage pour sa plateforme portable (concurrente de Java).'
+    }, {
+        id: 4,
+        questionName: 'Le JavaScript est un langage...',
+        typeQuestion: 'trainning',
+        categorie: 'JavaScript',
+        nivieauDiff: 1,
+        typeChoix: 'radio',
+        choixQuestion: [
+            'compilé',
+            'précompilé',
+            'interprété'
+        ],
+        bonneReponse: [2],
+        explication: 'Le JavaScript est un langage interprété. Il est nécessaire de posséder un interpréteur, inclus dans les navigateurs, pour exécuter un code JavaScript.\n' +
+            '\n' +
+            'Cela dit, côté technique, les interprétateurs agissent de plus en plus en compilant le code, de manière à l’exécuter plus rapidement : on appelle ça la compilation JIT : Just In Time, ou « en temps réel ».'
     }]
 };
 

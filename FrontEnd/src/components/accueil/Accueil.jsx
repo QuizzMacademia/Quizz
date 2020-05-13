@@ -1,22 +1,28 @@
 import React from "react";
-import Nav from "react-bootstrap/Nav";
 import './accueil.css'
-import {BrowserRouter as Switch, Route} from "react-router-dom";
-import Login from "../login/Login";
+import {Route} from "react-router-dom";
 import Training from "./Training";
 import Menu from "./menu";
+import {Switch} from "react-router";
 
-const  Accueil = () => {
+const Accueil = () => {
     return (
-        <Switch>
-            <div >
-                <Menu/>
-                <Route exact path='/Accueil/QCM' component={Training} />
-                <Route exact path='/Accueil/Entainement' component={Training} />
-                <Route exact path='/Accueil/Certificat' component={Training} />
-            </div>
-        </Switch>
-
+        <div>
+            {/*<Router>
+                    <Menu/>
+                    <Route exact  path='/Accueil' render={() =><h1>hello</h1>}/>
+                    <Route exact path='/Accueil/Entainement' component={Training}/>
+                    <Route exact path='/Accueil/QCM'  render={() =><h1> Q C M</h1>}/>
+                    <Route exact path='/Accueil/Certificat' render={() =><h1> CERTIFICAT</h1>}/>
+                </Router>*/}
+            <Menu/>
+            <Switch>
+                <Route exact path='/Accueil' render={() => <h1>hello</h1>}/>
+                <Route exact path='/Accueil/Entainement' component={Training}/>
+                <Route exact path='/Accueil/QCM' render={() => <h1> Q C M</h1>}/>
+                <Route exact path='/Accueil/Certificat' render={() => <h1> CERTIFICAT</h1>}/>
+            </Switch>
+        </div>
     );
 };
 

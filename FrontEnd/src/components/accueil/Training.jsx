@@ -1,38 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
 import mock_questionnaire from '../shared/mock/mock_questionnaire';
 import Form from "react-bootstrap/Form";
-
 function Training() {
+    const exam = mock_questionnaire.questions[0];
+    const [verif, setVerif] = useState(false)
+    const handleResponse = () => {
 
-    return (
-        <div>
-            <Form>
-                {mock_questionnaire.questions[0].questionName}
-                <br />
-                <Form.Check type='radio' id={0} name='test' label={mock_questionnaire.questions[0].choixQuestion[0]} />
-                <Form.Check type='radio' id={1} name='test' label={mock_questionnaire.questions[0].choixQuestion[1]} />
-                <Form.Check type='radio' id={2} name='test' label={mock_questionnaire.questions[0].choixQuestion[2]} />
-                <Form.Check type='radio' id={3} name='test' label={mock_questionnaire.questions[0].choixQuestion[3]} />
-                <Form.Check type='radio' id={4} name='test' label={mock_questionnaire.questions[0].choixQuestion[4]} />
-                {['checkbox', 'radio'].map((type) => (
-                    <div key={`default-${type}`} className="mb-3">
-                        <Form.Check
-                            type={type}
-                            id={`default-${type}`}
-                            label={`default ${type}`}
-                        />
+    }
+    const verifReponse = evt => {
+        evt.preventDefault();
+        console.log('ok')
+        setVerif(true)
+    }
 
-                        <Form.Check
-                            disabled
-                            type={type}
-                            label={`disabled ${type}`}
-                            id={`disabled-default-${type}`}
-                        />
-                    </div>
-                ))}
-            </Form>
-        </div>
-    );
+    return <div>
+
+        <Form>
+            <h2> Q.C.M</h2>
+            {mock_questionnaire.questions.map((question, rang) =>
+                (<>
+                    <h3>{rang + 1}: {question.questionName}</h3>
+                    {question.choixQuestion.map((choix, index) => (
+                        <Form.Check type={question.typeChoix} id={Date.now().toString()} key={"choix" + index}
+                                    name='test'
+                                    label={choix} onchange={handleResponse}/>
+                    ))}
+                    <button onClick={verifReponse}> Valider</button>
+                    <br/>
+                    {verif && question.explication}
+                </>)
+            )}
+        </Form>
+
+
+    </div>;
 }
 
 export default Training;
