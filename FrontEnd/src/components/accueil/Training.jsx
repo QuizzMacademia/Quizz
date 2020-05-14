@@ -1,39 +1,33 @@
-import React, {useState} from "react";
-import mock_questionnaire from '../shared/mock/mock_questionnaire';
-import Form from "react-bootstrap/Form";
+import React, {useState} from 'react';
+import MOCK_QUESTIONNAIRE from "../shared/mock/mock_questionnaire";
+import {Form} from "react-bootstrap";
+import Question from "./question";
+
 function Training() {
-    const exam = mock_questionnaire.questions[0];
-    const [verif, setVerif] = useState(false)
-    const handleResponse = () => {
 
-    }
-    const verifReponse = evt => {
+    const [index, setIndex] = useState(0);
+    const[showAnswer, setShowAnswer] = useState(false);
+
+    const validationUtilisateur = (evt) => {
         evt.preventDefault();
-        console.log('ok')
-        setVerif(true)
+        setShowAnswer(true) ;
+        console.log(evt);
+    };
+
+    const handleNextQuestion = (event) => {
+        event.preventDefault();
+        setIndex(index + 1);
+        setShowAnswer(false) ;
+        console.log(index);
     }
 
-    return <div>
-
-        <Form>
-            <h2> Q.C.M</h2>
-            {mock_questionnaire.questions.map((question, rang) =>
-                (<>
-                    <h3>{rang + 1}: {question.questionName}</h3>
-                    {question.choixQuestion.map((choix, index) => (
-                        <Form.Check type={question.typeChoix} id={Date.now().toString()} key={"choix" + index}
-                                    name='test'
-                                    label={choix} onchange={handleResponse}/>
-                    ))}
-                    <button onClick={verifReponse}> Valider</button>
-                    <br/>
-                    {verif && question.explication}
-                </>)
-            )}
-        </Form>
-
-
-    </div>;
+    return (
+        <div>
+            <Form>
+                <Question question={MOCK_QUESTIONNAIRE.questions[index]} show={showAnswer}  onHandleValidation={validationUtilisateur} onHandleNextQuestion={handleNextQuestion}/>
+            </Form>
+        </div>
+    );
 }
 
 export default Training;

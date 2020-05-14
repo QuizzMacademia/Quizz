@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const MOCK_QUESTIONNAIRE = {
     id: 1,

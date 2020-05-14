@@ -1,5 +1,16 @@
 .menu{
-    background-color: #f0f3f6;
+    background-color: #27303a;
     font-size: 1.5em;
+    color:white;
+}
 
+.nav-pills .nav-link{
+    color: gainsboro;
+}
+.nav-link{
+    color: gainsboro;
+}
+.nav-link:hover{
+    background-color: dimgrey;
+    color: #3f3647;
 }
