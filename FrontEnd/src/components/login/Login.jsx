@@ -1,23 +1,33 @@
 import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
-import './login.css'
+import './Login.css'
+import {fromJS} from "immutable";
+import {useHistory} from "react-router";
 
 function Login({listeUtilisateur}) {
     const [actuelUser, setActuelUser] = useState({actuelEmail:"", actuelMdp:""});
+    let history = useHistory();
+
 
     const handleChangeEmail = event => {
-        actuelUser.actuelEmail = event.currentTarget.value;
+        let newActuelUser = fromJS(actuelUser);
+        newActuelUser = newActuelUser.setIn(['actuelEmail'], event.currentTarget.value);
+        setActuelUser(newActuelUser.toJS());
     }
 
     const handleChangeMdp = event => {
-        actuelUser.actuelMdp = event.currentTarget.value;
+        let newActuelUser = fromJS(actuelUser);
+        newActuelUser = newActuelUser.setIn(['actuelMdp'], event.currentTarget.value);
+        setActuelUser(newActuelUser.toJS());
     }
     const onValider = () => {
 //        console.log(actuelUser.actuelEmail);
 //        console.log(actuelUser.actuelMdp);
         if(listeUtilisateur[0].userEmail === actuelUser.actuelEmail && listeUtilisateur[0].userMdp === actuelUser.actuelMdp){
             console.log("OK");
+            history.push('/Accueil');
+
 //            alert("OK");
         }
         else {
