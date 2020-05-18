@@ -8,7 +8,7 @@ import {Switch} from "react-router";
 
 function App() {
     const [users, setUsers] = useState([
-        {id:1, userEmail: "admin@gmail.com", userMdp: "admin"}
+        {id:1, Login: "admin@gmail.com", password: "admin"}
         ]);
 
 

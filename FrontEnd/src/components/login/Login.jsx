@@ -2,63 +2,70 @@ import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import './Login.css'
-import {fromJS} from "immutable";
 import {useHistory} from "react-router";
+import {object, string} from "yup";
+import {Field, Formik} from "formik";
+import FormGroup from "react-bootstrap/FormGroup";
+import Row from "react-bootstrap/Row";
+import FormLabel from "react-bootstrap/FormLabel";
+import FormControl from "react-bootstrap/FormControl";
 
-function Login({listeUtilisateur}) {
-    const [actuelUser, setActuelUser] = useState({actuelEmail:"", actuelMdp:""});
+const Login = ({listeUtilisateur}) => {
+    const [actuelUser, setActuelUser] = useState({Login: "", password: ""});
     let history = useHistory();
 
-
-    const handleChangeEmail = event => {
-        let newActuelUser = fromJS(actuelUser);
-        newActuelUser = newActuelUser.setIn(['actuelEmail'], event.currentTarget.value);
-        setActuelUser(newActuelUser.toJS());
-    }
-
-    const handleChangeMdp = event => {
-        let newActuelUser = fromJS(actuelUser);
-        newActuelUser = newActuelUser.setIn(['actuelMdp'], event.currentTarget.value);
-        setActuelUser(newActuelUser.toJS());
-    }
-    const onValider = () => {
-//        console.log(actuelUser.actuelEmail);
-//        console.log(actuelUser.actuelMdp);
-        if(listeUtilisateur[0].userEmail === actuelUser.actuelEmail && listeUtilisateur[0].userMdp === actuelUser.actuelMdp){
-            console.log("OK");
-            history.push('/Accueil');
-
-//            alert("OK");
-        }
-        else {
-            console.log(("KO"))
-//            alert(("KO"));
-        }
-    }
-
     return (
-        <div className="container ">
-            <div className="login ">
+        <div className={'container'}>
+            <div className="login">
                 <h2>Se Connecter</h2>
                 <hr/>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Adresse email</Form.Label>
-                        <Form.Control type="email" onChange={handleChangeEmail} placeholder="Entrer votre email" />
-                    </Form.Group>
+                <Formik validationSchema={object({
+                    Login: string().email().max(100).required(),
+                    password: string().required().min(4).max(100),
+                })}
+                        initialValues={actuelUser}
+                        onSubmit={(values, formikHelpers) => {
+                            console.log(values);
+                            console.log(formikHelpers);
+                            if (listeUtilisateur[0].Login === values.Login && listeUtilisateur[0].password === values.password) {
+                                console.log("OK");
+                                history.push('/Accueil');
+                            } else {
+                                console.log(("KO"))
+                            }
+                        }}
+                >
+                    {({handleSubmit}) => (
+                        <div>
+                            <Form onSubmit={handleSubmit}>
+                                <Field name="Login">
+                                    {({field, formProps}) => (<FormGroup as={Row} controlId="Login">
+                                            <FormLabel>Adresse email : </FormLabel>
+                                            <FormControl type={"email"} value={field.value} onChange={field.onChange}
+                                                         placeholder="Entrer votre email"/>
+                                        </FormGroup>
+                                    )}
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Mot de passe</Form.Label>
-                        <Form.Control type="password" onChange={handleChangeMdp} placeholder="Entrer votre mot de passe" />
-                    </Form.Group>
+                                </Field>
+                                <Field name="password">
+                                    {({field}) => (<FormGroup as={Row} controlId="password">
+                                            <FormLabel>Mot de passe : </FormLabel>
+                                            <FormControl type={"password"} value={field.value} onChange={field.onChange}
+                                                         placeholder="Entrer votre mot de passe"/>
+                                        </FormGroup>
+                                    )}
+                                </Field>
 
-                    <Button variant="success" onClick={onValider} type="submit">
-                        Valider
-                    </Button>
-                </Form>
+                                <Button variant="success" type={"submit"}>
+                                    Valider
+                                </Button>
+                            </Form>
+                        </div>
+                    )}
+                </Formik>
             </div>
         </div>
-    );
-}
 
+    )
+};
 export default Login;
