@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import './Login.css'
 import {useHistory} from "react-router";
 import {object, string} from "yup";
-import {Field, Formik} from "formik";
+import {ErrorMessage, Field, Formik} from "formik";
 import FormGroup from "react-bootstrap/FormGroup";
 import Row from "react-bootstrap/Row";
 import FormLabel from "react-bootstrap/FormLabel";
@@ -20,8 +20,9 @@ const Login = ({listeUtilisateur}) => {
                 <h2>Se Connecter</h2>
                 <hr/>
                 <Formik validationSchema={object({
-                    Login: string().email().max(100).required(),
-                    password: string().required().min(4).max(100),
+                    Login: string().email().required(),
+                    password: string().required().min(4).max(18),
+                    email: string().email('Invalid email').required('Required')
                 })}
                         initialValues={actuelUser}
                         onSubmit={(values, formikHelpers) => {
@@ -35,32 +36,44 @@ const Login = ({listeUtilisateur}) => {
                             }
                         }}
                 >
-                    {({handleSubmit}) => (
-                        <div>
-                            <Form onSubmit={handleSubmit}>
+                    {({errors, touched, handleSubmit}) => (
+                        <Form  onSubmit={handleSubmit}>
+                            <div className={"section"}>
                                 <Field name="Login">
-                                    {({field, formProps}) => (<FormGroup as={Row} controlId="Login">
+                                    {({field}) => (<FormGroup as={Row} controlId="Login">
                                             <FormLabel>Adresse email : </FormLabel>
-                                            <FormControl type={"email"} value={field.value} onChange={field.onChange}
-                                                         placeholder="Entrer votre email"/>
+                                            <FormControl value={field.value} onChange={field.onChange}
+                                                         placeholder="Entrer votre email"
+                                                         className={`form-control ${
+                                                             touched.Login && errors.Login ? "is-invalid" : ""
+                                                         }`}
+                                            />
                                         </FormGroup>
                                     )}
-
                                 </Field>
+                                <ErrorMessage name="Login">{msg => <div className={'error-message'}>{msg}</div>}</ErrorMessage>
+                            </div>
+                            <div className={"section"}>
                                 <Field name="password">
                                     {({field}) => (<FormGroup as={Row} controlId="password">
                                             <FormLabel>Mot de passe : </FormLabel>
                                             <FormControl type={"password"} value={field.value} onChange={field.onChange}
-                                                         placeholder="Entrer votre mot de passe"/>
+                                                         placeholder="Entrer votre mot de passe"
+                                                         className={`form-control ${
+                                                             touched.password && errors.password ? "is-invalid" : ""
+                                                         }`}
+                                            />
                                         </FormGroup>
                                     )}
                                 </Field>
+                                <ErrorMessage name="password">{msg => <div
+                                    className={'error-message'}>{msg}</div>}</ErrorMessage>
+                            </div>
 
-                                <Button variant="success" type={"submit"}>
-                                    Valider
-                                </Button>
-                            </Form>
-                        </div>
+                            <Button variant="success" type={"submit"}>
+                                Valider
+                            </Button>
+                        </Form>
                     )}
                 </Formik>
             </div>
