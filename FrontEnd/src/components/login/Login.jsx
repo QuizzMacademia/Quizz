@@ -21,8 +21,7 @@ const Login = ({listeUtilisateur}) => {
                 <hr/>
                 <Formik validationSchema={object({
                     Login: string().email().required(),
-                    password: string().required().min(4).max(18),
-                    email: string().email('Invalid email').required('Required')
+                    password: string().required().min(4).max(18)
                 })}
                         initialValues={actuelUser}
                         onSubmit={(values, formikHelpers) => {
