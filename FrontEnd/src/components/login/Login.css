@@ -10,3 +10,20 @@
  padding: 30px;
  border-radius: 5px ;
 }
+
+.section{
+ margin-bottom: 30px;
+}
+.error-message {
+ color: #c3002f;
+ margin-bottom: 1em;
+ height: 1.5em;
+ font-size: .8em;
+ text-align: left;
+}
+FormGroup{
+ margin-bottom: 0px;
+}
+.form-group.row {
+ margin-bottom: 0rem;
+}
