@@ -1,56 +1,71 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import './Login.css'
 import {useHistory} from "react-router";
-import {object, string} from "yup";
 import {ErrorMessage, Field, Formik} from "formik";
 import FormGroup from "react-bootstrap/FormGroup";
 import Row from "react-bootstrap/Row";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
+import axios from "axios";
+import * as Yup from 'yup';
 
-const Login = ({listeUtilisateur}) => {
-    const [actuelUser, setActuelUser] = useState({Login: "", password: ""});
+const Login = () => {
+    const [actuelUser] = useState({email: "", password: ""});
+    const [loginError, setLoginError] = useState(false);
+
     let history = useHistory();
+
+    const onSubmit = (values) => {
+        axios.post('http://localhost:8080/login', values)
+            .then(res => {
+                if (res.status === 200) {
+                    history.push('/Accueil');
+                }
+            }, (error) => {
+                console.error(error);
+                setLoginError(true);
+                setTimeout(() => {
+                    values.email = "";
+                    values.password = "";
+                    setLoginError(false);
+                }, 2000);
+            })
+    }
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string().email().required(),
+        password:Yup.string().required().min(4).max(18)
+    })
 
     return (
         <div className={'container'}>
             <div className="login">
                 <h2>Se Connecter</h2>
                 <hr/>
-                <Formik validationSchema={object({
-                    Login: string().email().required(),
-                    password: string().required().min(4).max(18)
-                })}
+                <Formik validationSchema={validationSchema}
                         initialValues={actuelUser}
-                        onSubmit={(values, formikHelpers) => {
-                            console.log(values);
-                            console.log(formikHelpers);
-                            if (listeUtilisateur[0].Login === values.Login && listeUtilisateur[0].password === values.password) {
-                                console.log("OK");
-                                history.push('/Accueil');
-                            } else {
-                                console.log(("KO"))
-                            }
-                        }}
+                        onSubmit={onSubmit}
                 >
                     {({errors, touched, handleSubmit}) => (
-                        <Form  onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
+                            {loginError && <span style={{color: "#c3002f"}}>Email ou Mot de passe incorrecte</span>}
                             <div className={"section"}>
-                                <Field name="Login">
-                                    {({field}) => (<FormGroup as={Row} controlId="Login">
+                                <Field name="email">
+                                    {({field}) => (<FormGroup as={Row} controlId="email">
                                             <FormLabel>Adresse email : </FormLabel>
                                             <FormControl value={field.value} onChange={field.onChange}
                                                          placeholder="Entrer votre email"
                                                          className={`form-control ${
-                                                             touched.Login && errors.Login ? "is-invalid" : ""
+                                                             touched.email && errors.email ? "is-invalid" : ""
                                                          }`}
                                             />
                                         </FormGroup>
                                     )}
                                 </Field>
-                                <ErrorMessage name="Login">{msg => <div className={'error-message'}>{msg}</div>}</ErrorMessage>
+                                <ErrorMessage name="email">{msg => <div
+                                    className={'error-message'}>{msg}</div>}</ErrorMessage>
                             </div>
                             <div className={"section"}>
                                 <Field name="password">
@@ -77,7 +92,7 @@ const Login = ({listeUtilisateur}) => {
                 </Formik>
             </div>
         </div>
-
     )
 };
+
 export default Login;
