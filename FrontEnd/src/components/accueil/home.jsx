@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import './accueil.css'
 import {Card} from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
@@ -21,7 +21,6 @@ const Home = () => (
                <div className="question" style={{margin: '20px auto', width:"80%", padding:"20px "}}>
                    <Card.Body>
                        <Card.Title>S'EXERCER</Card.Title>
-
                        <Card.Text style={{color:'dimgrey', paddingTop:'20px', paddingRight:"20px"}} >
                            S'exercer vous permettront d'accroître vos connaissances et d'évaluer votre niveau. Les QCM sont classés par catégories thématiques et par difficulté:
                             <ul>
@@ -46,6 +45,7 @@ const Home = () => (
                                <li>Le cours</li>
                                <li>Quiz</li>
                            </ul>
+
                        </Card.Text>
                        <Card.Link href="/Accueil/Certificat"><Button style={{height:"60px", width:"200px", marginTop:"20px"}} variant="success">Obtenir une certification</Button></Card.Link>
 

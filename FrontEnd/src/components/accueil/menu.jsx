@@ -1,25 +1,31 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import './accueil.css'
+import Navbar from "react-bootstrap/Navbar";
+import FormControl from "react-bootstrap/FormControl";
 
 const  Menu = () => {
     return (
-        <div className=" justify-content-center menu">
-            <Nav justify >
-                <Nav.Item>
+
+        <>
+            <Navbar bg="dark" variant="dark">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Brand> <img
+                    src="/img/macademia-icon.jpeg"
+                    className="d-inline-block align-top"
+                    alt={"logo-macademia"}/>
+                </Navbar.Brand>
+                <Nav  className="mr-auto">
                     <Nav.Link href="/Accueil">ACCUEIL</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
                     <Nav.Link href="/Accueil/QCM">Q.C.M</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
                     <Nav.Link href="/Accueil/Entainement">S'EXERCER</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
                     <Nav.Link href="/Accueil/Certificat">CERTIFICAT</Nav.Link>
-                </Nav.Item>
-            </Nav>
-        </div>
+                </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
+
     );
 };
 

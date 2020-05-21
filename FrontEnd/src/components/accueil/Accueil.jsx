@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import './accueil.css'
 import {Route} from "react-router-dom";
 import Training from "./Training";
