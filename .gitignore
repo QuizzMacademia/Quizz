@@ -79,6 +79,8 @@ BackEnd/.cache-main
 BackEnd/.scala_dependencies
 BackEnd/.worksheet
 
+BackEnd/quizz.server/target/**
+
 # End of https://www.gitignore.io/api/eclipse
 
 
