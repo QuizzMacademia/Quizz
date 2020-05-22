@@ -43,3 +43,7 @@ img{
     width: 50px;
     border-radius: 5px;
 }
+
+#corps {
+    height: calc(100% - 160px);
+}
