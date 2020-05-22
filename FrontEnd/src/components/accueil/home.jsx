@@ -3,11 +3,9 @@ import './accueil.css'
 import {Card} from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 
-
-
 const Home = () => (
            <div className={"container"}>
-               <div className="question" style={{ margin: '20px auto', width:"80%" , padding:"20px "}}>
+               <div className="question" style={{ margin: '40px auto 20px', width:"80%" , padding:"20px "}}>
                    <Card.Body>
                        <Card.Title> Q.C.M </Card.Title>
 
