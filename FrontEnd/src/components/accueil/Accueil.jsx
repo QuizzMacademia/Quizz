@@ -6,17 +6,21 @@ import Menu from "./menu";
 import {Switch} from "react-router";
 import Certificat from "./certificat";
 import Home from "./home";
+import Footer from "./footer";
 
 const Accueil = () => {
     return (
         <div>
             <Menu/>
-            <Switch>
-                <Route exact path='/Accueil' component ={Home}/>
-                <Route exact path='/Accueil/Entainement' component={Training}/>
-                <Route exact path='/Accueil/QCM' render={() => <h1> Q C M</h1>}/>
-                <Route exact path='/Accueil/Certificat' component={Certificat}/>
-            </Switch>
+            <div id={"main"}>
+                <Switch>
+                    <Route exact path='/Accueil' component={Home}/>
+                    <Route exact path='/Accueil/Entainement' component={Training}/>
+                    <Route exact path='/Accueil/QCM' render={() => <h1 style={{height:"600px"}}> Q C M</h1>}/>
+                    <Route exact path='/Accueil/Certificat' component={Certificat}/>
+                </Switch>
+            </div>
+            <Footer/>
         </div>
     );
 };
