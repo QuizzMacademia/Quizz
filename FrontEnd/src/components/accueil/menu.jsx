@@ -2,7 +2,6 @@ import React from "react";
 import Nav from "react-bootstrap/Nav";
 import './accueil.css'
 import Navbar from "react-bootstrap/Navbar";
-import FormControl from "react-bootstrap/FormControl";
 
 const  Menu = () => {
     return (

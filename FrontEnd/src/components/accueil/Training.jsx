@@ -10,10 +10,12 @@ function Training() {
     const questionData = MOCK_QUESTIONNAIRE.questions[index];
     const [lastQuestion, setLastQuestion]=useState(false);
     const [listQuestion, setListQuestion]=useState(true);
+    const[showButton, setShowButton] = useState(false);
     const validationUtilisateur = (evt) => {
         evt.preventDefault();
         setShowAnswer(true) ;
         console.log(evt);
+        setShowButton(true)
     };
 
     const handleNextQuestion = (event) => {
@@ -21,6 +23,7 @@ function Training() {
         if(index < MOCK_QUESTIONNAIRE.questions.length -1){
         setIndex(index + 1);
         setShowAnswer(false) ;
+            setShowButton(false);
         console.log(index);
         }else{
             setListQuestion(false);
@@ -32,7 +35,7 @@ function Training() {
     return (
         <div>
             <Form>
-                {listQuestion && <Question question={questionData} show={showAnswer}  onHandleValidation={validationUtilisateur} onHandleNextQuestion={handleNextQuestion}/>}
+                {listQuestion && <Question question={questionData} show={showAnswer} showButton={showButton}  onHandleValidation={validationUtilisateur} onHandleNextQuestion={handleNextQuestion}/>}
                 {lastQuestion &&  <Fragment>
                                         <div className="question">
                                             <h4>Exercice termier</h4>

@@ -47,17 +47,14 @@
     font-size: 1.5rem;
     border-radius: 5px;
     color: #f7feff;
+    background-color: #03b381;
 
 }
-.button-container button:first-child{
+.button-container button:hover{
     background-color: #03b381;
-    transition: 0.2s linear all;
-    box-shadow: dimgrey;
-    min-width: 120px;
 }
-.button-container button:last-child{
-    background-color: #ff4b82;
-    margin-left: 30px;
+.button-container button:active{
+    background-color: #03b381;
 }
 p {
  color: #368bd6;
