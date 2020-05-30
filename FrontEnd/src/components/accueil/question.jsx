@@ -34,7 +34,7 @@ const Question = ({question, show, onHandleValidation, showButton, errors, answe
                     </div>
                     <MyCheckbox className="option" item={item.choice} name={`userChoice`}
                                 value={item.id} type={question.choiceType} idx={item.id} hdlChange={handleChange}
-                                hdlBlur={handleBlur}/>
+                                hdlBlur={handleBlur} hdlDisable={answerChoice}/>
 
 
                 </div>
