@@ -60,3 +60,11 @@ p {
  color: #368bd6;
     text-align: justify;
 }
+.choice-style{
+    display: flex;
+    flex-direction: row;
+}
+.choice-icon{
+    margin-right: 5px;
+    width: 30px;
+}

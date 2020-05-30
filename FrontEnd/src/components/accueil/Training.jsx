@@ -13,24 +13,26 @@ function Training() {
     const [lastQuestion, setLastQuestion] = useState(false);
     const [listQuestion, setListQuestion] = useState(true);
     const [showButton, setShowButton] = useState(false);
+    const [answerChoice, setAnswerChoice] = useState(false);
 
     const handleValidation = (evt) => {
         evt.preventDefault();
         setShowAnswer(true);
         console.log(evt);
-        setShowButton(true)
+        setShowButton(true);
+        setAnswerChoice(true);
     };
 
     const validationSchemaCheckbox = Yup.object().shape({
-        correctChoice: Yup.array().required("At least one checkbox is required")
+        userChoice: Yup.array().required("At least one checkbox is required")
     });
 
     const validationSchemaRadio = Yup.object().shape({
-        correctChoice: Yup.string().required("At least one radio is required")
+        userChoice: Yup.string().required("At least one radio is required")
     });
 
     const initialValues = {
-        correctChoice: []
+        userChoice: []
     };
 
     const handleNextQuestion = (values, {resetForm}) => {
@@ -39,6 +41,7 @@ function Training() {
             setIndex(index + 1);
             setShowAnswer(false);
             setShowButton(false);
+            setAnswerChoice(false);
             console.log(index);
         } else {
             setListQuestion(false);
@@ -63,7 +66,8 @@ function Training() {
                                 <>
                                     {listQuestion &&
                                     <Question question={questionData} show={showAnswer} showButton={showButton}
-                                              onHandleValidation={handleValidation} errors={errors} values={values}
+                                              onHandleValidation={handleValidation} answerChoice={answerChoice}
+                                              errors={errors} values={values}
                                               isValid={isValid} handleSubmit={handleSubmit} handleBlur={handleBlur}
                                               handleChange={handleChange}/>}
                                 </>
