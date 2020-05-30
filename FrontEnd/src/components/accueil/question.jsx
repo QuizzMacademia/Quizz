@@ -1,23 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
 import {Check, X} from "react-bootstrap-icons";
 import {MyCheckbox} from "./MyCheckbox";
-import {useField} from "formik";
-import FormGroup from "react-bootstrap/FormGroup";
-import FormCheck from "react-bootstrap/FormCheck";
-
+import classNames from "classnames";
 
 const Question = ({question, show, onHandleValidation, showButton, errors, answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
     console.log(question);
     console.log(values);
-
     return (
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
 
             {question.choices.map((item, idx) => (
-                <div className={"choice-style"} key={idx}>
+                <div className={classNames("choice-style", {
+                    "incorrect": answerChoice && values.userChoice.includes(item.id + '') && !question.correctAnswer.includes(item.id),
+                    "correct": answerChoice && question.correctAnswer.includes(item.id)
+                })} key={idx}>
 
                     <div className={"choice-icon"}>
 
@@ -29,11 +28,15 @@ const Question = ({question, show, onHandleValidation, showButton, errors, answe
                                 ? <Check color="green" size={20}/>
                                 : <X color="red" size={20}/>
                         }
-                        </span>}
+                        </span>
+                        }
+
                     </div>
                     <MyCheckbox className="option" item={item.choice} name={`userChoice`}
                                 value={item.id} type={question.choiceType} idx={item.id} hdlChange={handleChange}
                                 hdlBlur={handleBlur}/>
+
+
                 </div>
 
             ))}

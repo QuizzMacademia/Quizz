@@ -14,13 +14,14 @@ function Training() {
     const [listQuestion, setListQuestion] = useState(true);
     const [showButton, setShowButton] = useState(false);
     const [answerChoice, setAnswerChoice] = useState(false);
-
+    const [answerChoiceCss, setAnswerChoiceCss] = useState(false);
     const handleValidation = (evt) => {
         evt.preventDefault();
         setShowAnswer(true);
         console.log(evt);
         setShowButton(true);
         setAnswerChoice(true);
+        setAnswerChoiceCss(true);
     };
 
     const validationSchemaCheckbox = Yup.object().shape({
@@ -42,6 +43,7 @@ function Training() {
             setShowAnswer(false);
             setShowButton(false);
             setAnswerChoice(false);
+            setAnswerChoiceCss(false);
             console.log(index);
         } else {
             setListQuestion(false);
@@ -67,6 +69,7 @@ function Training() {
                                     {listQuestion &&
                                     <Question question={questionData} show={showAnswer} showButton={showButton}
                                               onHandleValidation={handleValidation} answerChoice={answerChoice}
+                                              answerChoiceCss={answerChoiceCss}
                                               errors={errors} values={values}
                                               isValid={isValid} handleSubmit={handleSubmit} handleBlur={handleBlur}
                                               handleChange={handleChange}/>}

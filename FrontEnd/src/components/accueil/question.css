@@ -68,3 +68,10 @@ p {
     margin-right: 5px;
     width: 30px;
 }
+.correct{
+    color:green;
+
+}
+.incorrect{
+    color:red;
+}
