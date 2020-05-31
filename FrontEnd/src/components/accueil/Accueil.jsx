@@ -7,6 +7,7 @@ import {Switch} from "react-router";
 import Certificat from "./certificat";
 import Home from "./home";
 import Footer from "./footer";
+import UserChoiceExercising from "./UserChoiceExercising";
 
 const Accueil = () => {
     return (
@@ -16,7 +17,7 @@ const Accueil = () => {
                 <Switch>
                     <Route exact path='/Accueil' component={Home}/>
                     <Route exact path='/Accueil/Entainement' component={Training}/>
-                    <Route exact path='/Accueil/QCM' render={() => <h1 style={{height:"600px"}}> Q C M</h1>}/>
+                    <Route exact path='/Accueil/QCM' component={UserChoiceExercising}/>
                     <Route exact path='/Accueil/Certificat' component={Certificat}/>
                 </Switch>
             </div>
