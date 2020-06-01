@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
 import {Check, X} from "react-bootstrap-icons";
 import {MyCheckbox} from "./MyCheckbox";
 import classNames from "classnames";
+import Button from "react-bootstrap/Button";
 
 const Question = ({question, show, onHandleValidation, showButton, errors, answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
     console.log(question);
@@ -44,10 +45,10 @@ const Question = ({question, show, onHandleValidation, showButton, errors, answe
 
             <div className="button-container">
                 {!showButton &&
-                <button onClick={onHandleValidation}
-                        disabled={(!isValid || values['userChoice'].length === 0)}>Valider</button>}
+                <Button variant={"success"} onClick={onHandleValidation}
+                        disabled={(!isValid || values['userChoice'].length === 0)}>Valider</Button>}
                 {showButton &&
-                <button type={'submit'}>Question suivante</button>}
+                <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>Question suivante</Button>}
 
             </div>
             {/*<pre>{JSON.stringify(errors, null, 4)}</pre>
