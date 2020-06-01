@@ -17,7 +17,7 @@ function Certificat() {
 
         <Form>
             <h2> Q.C.M</h2>
-            {mock_questionnaire.questions.map((question, rang) =>
+            {/*mock_questionnaire.questions.map((question, rang) =>
                 (<>
                     <h3>{rang + 1}: {question.questionText}</h3>
                     {question.choices.map((choix, index) => (
@@ -30,7 +30,7 @@ function Certificat() {
                     {verif && question.explication}
 
                 </>)
-            )}
+            )*/}
         </Form>
 
 
