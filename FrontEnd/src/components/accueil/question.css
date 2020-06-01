@@ -70,3 +70,22 @@ p {
 .custom-control-input:disabled~.custom-control-label, .custom-control-input[disabled]~.custom-control-label{
     color : inherit !important;
 }
+.result{
+    padding: 10px;
+    justify-content: center;
+}
+.result h2{
+    color: #5b5a5e;
+    padding: 20px 0;
+
+}
+.result h3{
+    color: #69686d;
+    padding: 5px 0;
+    text-align: center;
+}
+.result h5{
+    padding: 5px 50px;
+    text-align: justify;
+    text-indent:30px;
+}

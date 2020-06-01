@@ -15,13 +15,19 @@ function Training() {
     const [showButton, setShowButton] = useState(false);
     const [answerChoice, setAnswerChoice] = useState(false);
     const [answerChoiceCss, setAnswerChoiceCss] = useState(false);
-    const handleValidation = (evt) => {
-        evt.preventDefault();
+    const [userResult,setUseResult] = useState(0);
+    const handleValidation = (values) => {
         setShowAnswer(true);
-        console.log(evt);
         setShowButton(true);
         setAnswerChoice(true);
         setAnswerChoiceCss(true);
+        console.log(typeof values.userChoice);
+        if((typeof values.userChoice === "object" && values.userChoice.join() === questionData.correctAnswer.join()) ||
+            (typeof values.userChoice === "string"&& values.userChoice in  questionData.correctAnswer)){
+            setUseResult(userResult+1);
+        }
+
+        console.log(userResult);
     };
 
     const validationSchemaCheckbox = Yup.object().shape({
@@ -44,7 +50,6 @@ function Training() {
             setShowButton(false);
             setAnswerChoice(false);
             setAnswerChoiceCss(false);
-            console.log(index);
         } else {
             setListQuestion(false);
             setLastQuestion(true);
@@ -54,8 +59,8 @@ function Training() {
     };
 
     return (
-        <div>
-            {!lastQuestion && <div className="question">
+        <div className="question">
+            {!lastQuestion && <div >
                 <h4> {questionData.questionText} </h4>
                 <div className="options-container">
                     <div className="options">
@@ -68,7 +73,7 @@ function Training() {
                                 <>
                                     {listQuestion &&
                                     <Question question={questionData} show={showAnswer} showButton={showButton}
-                                              onHandleValidation={handleValidation} answerChoice={answerChoice}
+                                              onHandleValidation={()=>handleValidation(values)} answerChoice={answerChoice}
                                               answerChoiceCss={answerChoiceCss}
                                               errors={errors} values={values}
                                               isValid={isValid} handleSubmit={handleSubmit} handleBlur={handleBlur}
@@ -82,8 +87,14 @@ function Training() {
             </div>}
 
             {lastQuestion && <Fragment>
-                <div className="question">
-                    <h4>Exercice termier</h4>
+                <div className=" result">
+                    <h2>Exercice termier</h2>
+                    <h3> *** Resultat : {userResult} /{MOCK_QUESTIONNAIRE.questions.length} ***</h3>
+                    <h5 className={userResult > 7 ? "correct" : "incorrect"}>
+                     {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"
+                        : "Vous n'avez pas validé ce quiz.Vous n'avez pas atteint le seuil de validation de cet exercice," +
+                        " c'est-à-dire 70%. Ce n'est pas très grave car vous pourrez repasser le quiz dans 24h."}</h5>
+
                 </div>
             </Fragment>}
         </div>
