@@ -1,10 +1,12 @@
 package quizz.demo;
 
+import quizz.demo.model.entities.Question;
 import quizz.demo.model.entities.User;
+import quizz.demo.repositories.QuestionRepository;
 import quizz.demo.repositories.UserRepository;
 import quizz.demo.tools.json.JSONLoader;
+import quizz.demo.tools.json.QuestionAdapter;
 import quizz.demo.tools.json.UserAdapter;
-
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +28,17 @@ public class Application {
 			if (userRepository.findAll().isEmpty()) {
 				new JSONLoader<>("src/main/resources/data/users.json", User[].class, User.class, userRepository,
 						new UserAdapter()).load();
+
+			}
+		};
+	}
+	
+	@Bean
+	ApplicationRunner initQuestionRepository(QuestionRepository questionRepository) {
+		return args -> {
+			if (questionRepository.findAll().isEmpty()) {
+				new JSONLoader<>("src/main/resources/data/questions.json", Question[].class, Question.class, questionRepository,
+						new QuestionAdapter()).load();
 
 			}
 		};
