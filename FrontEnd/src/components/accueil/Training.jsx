@@ -74,7 +74,7 @@ function Training() {
                                     {listQuestion &&
                                     <Question question={questionData} show={showAnswer} showButton={showButton}
                                               onHandleValidation={()=>handleValidation(values)} answerChoice={answerChoice}
-                                              answerChoiceCss={answerChoiceCss}
+                                              answerChoiceCss={answerChoiceCss}  nbQuestion={MOCK_QUESTIONNAIRE.questions.length }
                                               errors={errors} values={values}
                                               isValid={isValid} handleSubmit={handleSubmit} handleBlur={handleBlur}
                                               handleChange={handleChange}/>}
@@ -89,7 +89,7 @@ function Training() {
             {lastQuestion && <Fragment>
                 <div className=" result">
                     <h2>Exercice termier</h2>
-                    <h3> *** Resultat : {userResult} /{MOCK_QUESTIONNAIRE.questions.length} ***</h3>
+                    <h3> *** Resultat : {userResult} /{MOCK_QUESTIONNAIRE.questions.length -1} ***</h3>
                     <h5 className={userResult > 7 ? "correct" : "incorrect"}>
                      {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"
                         : "Vous n'avez pas validé ce quiz.Vous n'avez pas atteint le seuil de validation de cet exercice," +
