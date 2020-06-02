@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 import java.util.Properties;
 
 @Configuration
@@ -39,7 +38,7 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
           .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
-          .antMatchers("/home", "/login", "/token") // les pages/requêtes /home, /login et /token sont accessibles sans authentifications (pour pouvoir s'identifier).
+          .antMatchers("/home", "/login", "/token", "/quizz/**") // les pages/requêtes /home, /login et /token sont accessibles sans authentifications (pour pouvoir s'identifier).
                 .permitAll()
           .anyRequest()
           .authenticated() // toutes les qutess pages/requÃªtes nÃ©cessite une authentification pour pouvoir y accÃ©der.

@@ -5,18 +5,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import quizz.demo.model.entities.User;
 import quizz.demo.repositories.UserRepository;
 import quizz.demo.request.LoginForm;
 import quizz.demo.services.UserService;
-
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
 import java.util.Optional;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +24,7 @@ import org.springframework.http.ResponseEntity;
  * des requêtes /login et /token.
  */
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 public class AuthenticationController {
 
 	/**
@@ -63,13 +58,13 @@ public class AuthenticationController {
 				if (passwordRequest == null || !(passwordFromDB.equals(passwordRequest))) {
 					throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,
 							"Les 2 mots de passe ne correspondent pas");
-				}else
+				} else
 
-				return new ResponseEntity<String>("Authorized", HttpStatus.OK);
+					return new ResponseEntity<String>("Authorized", HttpStatus.OK);
 			}
 
 		} else
-			return new ResponseEntity<String>( "Aucun utilisateur trouvé",HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<String>("Aucun utilisateur trouvé", HttpStatus.UNAUTHORIZED);
 
 	}
 

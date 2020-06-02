@@ -1,0 +1,397 @@
+[
+  {
+     "id":1,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":1,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":2,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":3,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":4,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":5,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":2,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":6,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":7,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":8,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":9,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":10,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":3,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":11,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":12,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":13,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":14,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":15,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":4,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":16,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":17,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":18,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":19,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":20,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":5,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":21,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":22,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":23,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":24,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":25,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":6,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":26,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":27,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":28,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":29,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":30,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+}
+,
+{
+     "id":7,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":31,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":32,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":33,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":34,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":35,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+
+
+}
+,
+{
+     "id":8,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":36,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":37,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":38,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":39,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":40,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+},
+{
+     "id":9,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":41,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":42,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":43,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":44,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":45,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+}
+,
+{
+     "id":10,
+     "questionText":"Avant d'être appelé JavaScript, le langage s'appelait :",
+     "type":"ToExercise",
+     "theme":"JavaScript",
+     "level":"1",
+     "choiceType":"checkbox",
+     "choices": [
+           {
+               "id":46,
+               "choice":"JScript"
+               
+            },
+            {   
+               
+               "id":47,
+               "choice":"LiveScript"
+            },
+            {
+               
+               "id":48,
+               "choice":"CoffeeScript"
+               
+            },
+           {
+           
+               "id":49,
+               "choice":"ECMAScript"
+               
+           },
+           {
+           
+               "id":50,
+               "choice":"ActionScript"
+           }
+                  ],
+        "correctAnswer": [1],
+        "explanation":"Brendan Eich développe le LiveScript, un langage de script qui s'inspire du langage Java, et qui est destiné à être installé sur les serveurs développés par Netscape. Netscape se met à développer une version client du LiveScript, qui sera renommée JavaScript en hommage au langage Java créé par la société Sun Microsystems. En effet, à cette époque, le langage Java était de plus en plus populaire, et appeler le LiveScript JavaScript était une manière de faire de la publicité, et au Java, et au JavaScript lui-même.Issu du livre Dynamisez vos sites web avec JavaScript!"
+}
+]
