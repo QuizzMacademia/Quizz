@@ -18,7 +18,7 @@ const  Menu = () => {
                 <Nav  className="mr-auto">
                     <Nav.Link href="/Accueil">ACCUEIL</Nav.Link>
                     <Nav.Link href="/Accueil/QCM">Q.C.M</Nav.Link>
-                    <Nav.Link href="/Accueil/Entainement">S'EXERCER</Nav.Link>
+                    <Nav.Link href="/Accueil/Entrainement">S'EXERCER</Nav.Link>
                     <Nav.Link href="/Accueil/Certificat">CERTIFICAT</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>

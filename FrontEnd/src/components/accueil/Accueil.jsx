@@ -16,7 +16,7 @@ const Accueil = () => {
             <div id={"main"}>
                 <Switch>
                     <Route exact path='/Accueil' component={Home}/>
-                    <Route exact path='/Accueil/Entainement' component={Training}/>
+                    <Route exact path='/Accueil/Entrainement' component={Training}/>
                     <Route exact path='/Accueil/QCM' component={UserChoiceExercising}/>
                     <Route exact path='/Accueil/Certificat' component={Certificat}/>
                 </Switch>
