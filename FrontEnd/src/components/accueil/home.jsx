@@ -27,7 +27,7 @@ const Home = () => (
                                 <li >Niveau difficile</li>
                             </ul>
                        </Card.Text>
-                       <Card.Link href="/Accueil/Entainement"><Button variant="success" style={{height:"60px", width:"200px", marginTop:"20px"}}>Testez-vous avec des exercices</Button></Card.Link>
+                       <Card.Link href="/Accueil/Entrainement"><Button variant="success" style={{height:"60px", width:"200px", marginTop:"20px"}}>Testez-vous avec des exercices</Button></Card.Link>
 
                    </Card.Body>
                </div>
