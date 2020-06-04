@@ -83,7 +83,7 @@ function Training({match:{params:{id}}}) {
             }, (error) => {
                 console.error(error);
             })
-    }
+    };
 
     return (
         <div className="question">

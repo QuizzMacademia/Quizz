@@ -2,10 +2,10 @@ import React from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
-import {Check, X} from "react-bootstrap-icons";
 import {MyCheckbox} from "./MyCheckbox";
 import classNames from "classnames";
 import Button from "react-bootstrap/Button";
+import CheckAnswer from "./checkAnswer";
 
 const Question = ({question, show, onHandleValidation, showButton, errors,index, quizzSize, answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
 
@@ -18,14 +18,7 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                 })} key={idx}>
                     <div className={"choice-icon"}>
                         {answerChoice &&
-                        (question.correctAnswer.includes(item.id) || values.userChoice.includes(item.id + '')) &&
-                        < span>
-                        {
-                            question.correctAnswer.includes(item.id)
-                                ? <Check color="green" size={20}/>
-                                : <X color="red" size={20}/>
-                        }
-                        </span>
+                        < CheckAnswer question={question} item={item} values={values}/>
                         }
                     </div>
                     <MyCheckbox className="option" item={item.choice} name={`userChoice`}
