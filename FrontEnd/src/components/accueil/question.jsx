@@ -2,12 +2,12 @@ import React from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
-import {Check, X} from "react-bootstrap-icons";
 import {MyCheckbox} from "./MyCheckbox";
 import classNames from "classnames";
 import Button from "react-bootstrap/Button";
+import CheckAnswer from "./checkAnswer";
 
-const Question = ({question, show, onHandleValidation, showButton, errors,index, quizzSize, nbQuestion,answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
+const Question = ({question, show, onHandleValidation, showButton, errors,index, quizzSize, answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
 
     return (
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
@@ -18,14 +18,7 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                 })} key={idx}>
                     <div className={"choice-icon"}>
                         {answerChoice &&
-                        (question.correctAnswer.includes(item.id) || values.userChoice.includes(item.id + '')) &&
-                        < span>
-                        {
-                            question.correctAnswer.includes(item.id)
-                                ? <Check color="green" size={20}/>
-                                : <X color="red" size={20}/>
-                        }
-                        </span>
+                        < CheckAnswer question={question} item={item} values={values}/>
                         }
                     </div>
                     <MyCheckbox className="option" item={item.choice} name={`userChoice`}
@@ -36,10 +29,16 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
             {show && <Answer explication={question.explanation}/>}
             <div className="button-container">
                 {!showButton &&
-                <Button variant={"success"} onClick={onHandleValidation}
-                        disabled={(!isValid || values['userChoice'].length === 0)}>Valider</Button>}
+                <Button variant={"success"}
+                        onClick={onHandleValidation}
+                        disabled={(!isValid || values['userChoice'].length === 0)}>
+                    Valider
+                </Button>}
                 {showButton &&
-                <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>{!(index+1 === quizzSize)?"Question Suivante":"Consultez Resultat"}</Button>}
+                    <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>
+                        {!(index+1 === quizzSize)?"Question Suivante":"Consultez Resultat"}
+                    </Button>
+                }
             </div>
             {/* <pre>{JSON.stringify(errors, null, 4)}</pre>
              <p>--------------------------------------------</p>
