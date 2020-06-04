@@ -5,6 +5,7 @@ import './question.css';
 import Question from "./question";
 import axios from "axios";
 import {fromJS} from "immutable";
+import Result from "./ result";
 
 function Training({match:{params:{id}}}) {
 
@@ -113,16 +114,7 @@ function Training({match:{params:{id}}}) {
 
             </div>}
 
-            {lastQuestion && <Fragment>
-                <div className=" result">
-                    <h2>Exercice termier</h2>
-                    <h3> *** Resultat : {userResult} /{quizzSize} ***</h3>
-                    <h5 className={userResult > 7 ? "correct" : "incorrect"}>
-                     {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"
-                        : "Vous n'avez pas validé ce quiz.Vous n'avez pas atteint le seuil de validation de cet exercice," +
-                        " c'est-à-dire 70%. Ce n'est pas très grave car vous pourrez repasser le quiz dans 24h."}</h5>
-                </div>
-            </Fragment>}
+            {lastQuestion &&  <Result quizzSize={quizzSize} userResult={userResult} />}
             </>}
         </div>
     );
