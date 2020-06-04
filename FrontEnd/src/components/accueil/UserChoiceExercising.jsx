@@ -11,16 +11,21 @@ import {useHistory} from "react-router";
 
 function UserChoiceExercising() {
 
+//  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [isLoading, setLoading] = useState(false);
 
+    let history = useHistory();
+
+//  Permet de simuler le chargement du backend, change l'affichage du bouton
     const simulateNetworkRequest = () => {
         return new Promise((resolve) => {
             //setTimeout(handleClose, 2000)
         });
     }
 
+//  Permet de simuler le chargement du backend, change l'affichage du bouton
     useEffect(() => {
         if (isLoading) {
             simulateNetworkRequest().then(() => {
@@ -29,42 +34,45 @@ function UserChoiceExercising() {
         }
     }, [isLoading]);
 
-    const validationSchema = Yup.object().shape({
-        theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
-        level: Yup.string().required("Sélectionner un niveau d'entreinement.")
-    });
-
-    let history = useHistory();
-
+//  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
+//  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
         axios.post('http://localhost:8080/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
-//                    history.push({pathname: '/Accueil/Entrainement', search: `?id=${res.data}` });
+//  Suite au retour du backend, switch sur le component affichant la première question
                     history.push({pathname: `/Accueil/Entrainement/${res.data}`});
                 }
             }, (error) => {
                 console.error(error);
             })
-
         resetForm();
         setLoading(true);
     };
 
+//  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
+    const validationSchema = Yup.object().shape({
+        theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
+        level: Yup.string().required("Sélectionner un niveau d'entreinement.")
+    });
+
+//  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
         type:"EXERCISING",
         theme: "",
         level: ""
     };
 
+//  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
-        {value: "JavaScript", label: "JavaScript"},
+        {value: "JavaScript", label: "JavaScript"}
     ];
 
+//  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const MOCK_LEVEL = [
         {value: "", label: "Choisir un niveau"},
-        {value: "1", label: "1"},
+        {value: "1", label: "1"}
     ];
 
     return (

@@ -46,7 +46,5 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
         </Form>
     )
 };
+
 export default Question;
-
-
-
