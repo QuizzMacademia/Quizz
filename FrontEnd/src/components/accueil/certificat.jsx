@@ -1,9 +1,9 @@
 
-import React, { useState} from "react";
-import mock_questionnaire from '../shared/mock/mock_questionnaire';
+import React from "react";
 import Form from "react-bootstrap/Form";
+
 function Certificat() {
-    const [verif, setVerif] = useState(false);
+ /*   const [verif, setVerif] = useState(false);
     const handleResponse = () => {
 
     }
@@ -11,12 +11,12 @@ function Certificat() {
         evt.preventDefault();
         console.log('ok');
         setVerif(true)
-    }
+    } */
 
     return <div>
 
         <Form>
-            <h2> Q.C.M</h2>
+            <h2> CERTIFICAT </h2>
             {/*mock_questionnaire.questions.map((question, rang) =>
                 (<>
                     <h3>{rang + 1}: {question.questionText}</h3>

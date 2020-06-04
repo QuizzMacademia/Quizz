@@ -8,8 +8,6 @@ import classNames from "classnames";
 import Button from "react-bootstrap/Button";
 
 const Question = ({question, show, onHandleValidation, showButton, errors,index, quizzSize, nbQuestion,answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
-    console.log(question);
-    console.log(values);
 
     return (
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
@@ -36,7 +34,6 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                 </div>
             ))}
             {show && <Answer explication={question.explanation}/>}
-            {console.log(nbQuestion === question.id)}
             <div className="button-container">
                 {!showButton &&
                 <Button variant={"success"} onClick={onHandleValidation}

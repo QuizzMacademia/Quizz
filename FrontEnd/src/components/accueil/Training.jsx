@@ -4,8 +4,9 @@ import {Formik} from "formik";
 import './question.css';
 import Question from "./question";
 import axios from "axios";
+import {fromJS} from "immutable";
 
-function Training() {
+function Training({match:{params:{id}}}) {
 
     const [index, setIndex] = useState(0);
     const [quizzSize] = useState(10);
@@ -20,17 +21,17 @@ function Training() {
     const [userResult,setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
 
+   // const query = new URLSearchParams(props.location.search);
+
     const handleValidation = (values) => {
         setShowAnswer(true);
         setShowButton(true);
         setAnswerChoice(true);
         setAnswerChoiceCss(true);
-        console.log(typeof values.userChoice);
         if((typeof values.userChoice === "object" && values.userChoice.join() === questionData.correctAnswer.join()) ||
             (typeof values.userChoice === "string"&& values.userChoice in  questionData.correctAnswer)){
             setUseResult(userResult+1);
         }
-        console.log(userResult);
     };
 
     const validationSchemaCheckbox = Yup.object().shape({
@@ -47,8 +48,8 @@ function Training() {
 
     const handleNextQuestion = (values, {resetForm}) => {
         resetForm();
-        getQuestion();
         if (index < quizzSize - 1) {
+            getQuestion(index+1);
             setIndex(index + 1);
             setShowAnswer(false);
             setShowButton(false);
@@ -57,31 +58,26 @@ function Training() {
         } else {
             setListQuestion(false);
             setLastQuestion(true);
-            console.log("derniere question")
         }
-        console.log(values);
     };
 
     useEffect( () => {
         console.log("useEffect IN !!!");
-        axios.get(`http://localhost:8080/quizz/1/question/0`)
+        getQuestion(index);
+    }, []);
+
+    const getQuestion = (idx) => {
+        axios.get(`http://localhost:8080/quizz/${id}/question/${idx}`)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data);
-                    setQuestionData(res.data);
-                    setFirstGetQuestion(true)
-                }
-            }, (error) => {
-                console.error(error);
-            })
-    }, []);
+                 /*   let newQuestionData = fromJS(questionData);
+                    newQuestionData = newQuestionData.setIn(res.data);
+                    setQuestionData(newQuestionData.toJS());*/
+                    console.log(questionData);
 
-    const getQuestion = () => {
-        axios.get(`http://localhost:8080/quizz/1/question/${index}`)
-            .then(res => {
-                if (res.status === 200) {
-                    console.log(res.data)
                     setQuestionData(res.data);
+                    if(firstGetQuestion === false) setFirstGetQuestion(true)
                 }
             }, (error) => {
                 console.error(error);
@@ -102,7 +98,6 @@ function Training() {
 
                             {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
                                 <>
-                                    {console.log(questionData)}
                                     {listQuestion &&
                                     <Question question={questionData} show={showAnswer} showButton={showButton}
                                               onHandleValidation={()=>handleValidation(values)} answerChoice={answerChoice}

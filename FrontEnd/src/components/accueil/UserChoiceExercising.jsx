@@ -5,13 +5,8 @@ import {Form} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import './UserChoiceExercising.css';
 import {Formik} from "formik";
-import Question from "./question";
 import * as Yup from "yup";
-import MOCK_QUESTIONNAIRE from "../shared/mock/mock_questionnaire";
-import FormGroup from "react-bootstrap/FormGroup";
-import FormCheck from "react-bootstrap/FormCheck";
 import axios from "axios";
-import Training from "./Training";
 import {useHistory} from "react-router";
 
 function UserChoiceExercising() {
@@ -42,20 +37,17 @@ function UserChoiceExercising() {
     let history = useHistory();
 
     const handleSubmit = (values, {resetForm}) => {
-        console.log(values);
         axios.post('http://localhost:8080/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res.data);
-                    //setTimeout(handleClose, 500)
-                    history.push({pathname: '/Accueil/Entrainement', search: `?id=${res.data}` });
+//                    history.push({pathname: '/Accueil/Entrainement', search: `?id=${res.data}` });
+                    history.push({pathname: `/Accueil/Entrainement/${res.data}`});
                 }
             }, (error) => {
                 console.error(error);
             })
 
         resetForm();
-        console.log(values);
         setLoading(true);
     };
 
@@ -95,7 +87,7 @@ function UserChoiceExercising() {
                                             <Form.Label>Sujet de l'entreinement</Form.Label>
                                             <Form.Control as="select" onChange={handleChange} onBlur={handleBlur} >
                                                 {MOCK_SUJET.map((item, idx) => (
-                                                <option value={item.value} label={item.label} />))}
+                                                <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.theme && touched.theme &&
                                             <div className="error-message">
@@ -106,7 +98,7 @@ function UserChoiceExercising() {
                                             <Form.Label>Niveau de difficulté</Form.Label>
                                             <Form.Control as="select" onChange={handleChange} onBlur={handleBlur}>
                                                 {MOCK_LEVEL.map((item, idx) => (
-                                                    <option value={item.value} label={item.label} />))}
+                                                    <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.level &&
                                             touched.level &&
