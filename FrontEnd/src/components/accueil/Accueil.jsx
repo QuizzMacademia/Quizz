@@ -8,6 +8,8 @@ import Home from "./home";
 import Footer from "./footer";
 import UserChoiceExercising from "../training/UserChoiceExercising";
 import Training from "../training/Training";
+import Qcm from "../qcm/Qcm";
+import UserChoiceQcm from "../qcm/UserChoiceQcm";
 
 const Accueil = () => {
     return (
@@ -18,7 +20,8 @@ const Accueil = () => {
                     <Route exact path='/Accueil' component={Home}/>
                     <Route exact path='/Accueil/Entrainement' component={UserChoiceExercising}/>
                     <Route exact path='/Accueil/Entrainement/:id' component={Training}/>
-                    <Route exact path='/Accueil/QCM' render={() => <h1> Q C M</h1>}/>
+                    <Route exact path='/Accueil/QCM' component={UserChoiceQcm}/>
+                    <Route exact path='/Accueil/QCM/:id' component={Qcm}/>
                     <Route exact path='/Accueil/Certificat' component={Certificat}/>
                 </Switch>
             </div>
