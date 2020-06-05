@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import * as Yup from "yup";
 import {Formik} from "formik";
-import './question.css';
-import Question from "./question";
+import '../shared/question/question.css';
+import Question from "../shared/question/question";
 import axios from "axios";
-import Result from "./ result";
+import Result from "./result";
 
 function Training({match:{params:{id}}}) {
 

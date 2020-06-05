@@ -3,11 +3,11 @@ import './accueil.css'
 import {Route} from "react-router-dom";
 import Menu from "./menu";
 import {Switch} from "react-router";
-import Certificat from "./certificat";
+import Certificat from "../certificat/certificat";
 import Home from "./home";
 import Footer from "./footer";
-import UserChoiceExercising from "./UserChoiceExercising";
-import Training from "./Training";
+import UserChoiceExercising from "../training/UserChoiceExercising";
+import Training from "../training/Training";
 
 const Accueil = () => {
     return (
