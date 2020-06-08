@@ -13,7 +13,7 @@ const ResultQcm = ({quizzSize, userResult, resultReview}) => (
             {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"
                 : "Vous n'avez pas validé ce quiz. Vous n'avez pas atteint le seuil de validation de cet exercice," +
                 " c'est-à-dire 70%."}</h5>
-        {(resultReview.length !== 0 && userResult < 7  )&& <h4 style={{  marginLeft:"30px", textIndent:"20px", color:"#AC3BA8"}}>Compétences évaluées: </h4>}
+        {(resultReview.length !== 0 && userResult < 7  )&& <h4 style={{  marginLeft:"30px", textIndent:"20px", color:"#5b5a5e"}}>Compétences évaluées: </h4>}
         {(resultReview.length !== 0 && userResult < 7  ) &&
             <Accordion>
                 <Card style={{ width:"50%", margin:"auto"}}>
@@ -24,7 +24,7 @@ const ResultQcm = ({quizzSize, userResult, resultReview}) => (
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
                         <Card.Body style={{textAlign: "left", marginLeft: "10px"}}>{resultReview.map((item, idx) => (
-                            <h6 key={idx} > {item}</h6>))}
+                            <h6 key={idx} >- {item}</h6>))}
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
