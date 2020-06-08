@@ -21,7 +21,7 @@ function Qcm({match:{params:{id}}}) {
     const [answerChoiceCss, setAnswerChoiceCss] = useState(false);
     const [userResult,setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
-
+    const [resultReview,setResultReview] = useState([]);
 //  Fonction utiliser sur le bouton validation, permet de valider le choix de l'utilisateur et d'afficher l'explication.
     const handleValidation = (values) => {
         setShowAnswer(true);
@@ -31,6 +31,9 @@ function Qcm({match:{params:{id}}}) {
         if((typeof values.userChoice === "object" && values.userChoice.join() === questionData.correctAnswer.join()) ||
             (typeof values.userChoice === "string"&& values.userChoice in  questionData.correctAnswer)){
             setUseResult(userResult+1);
+        }else {
+            setResultReview([...resultReview, questionData.questionText]);
+            console.log(resultReview);
         }
     };
 
@@ -116,7 +119,7 @@ function Qcm({match:{params:{id}}}) {
                 </div>
             </div>}
 
-            {lastQuestion &&  <ResultQcm quizzSize={quizzSize} userResult={userResult} />}
+            {lastQuestion &&  <ResultQcm quizzSize={quizzSize} userResult={userResult} resultReview={resultReview}/>}
             </>}
         </div>
     );
