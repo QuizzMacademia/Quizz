@@ -87,7 +87,7 @@ p {
 .result h5{
     padding: 5px 50px;
     text-align: justify;
-    text-indent:30px;
+
 }
 .custom-control-label::after{
     cursor: pointer;

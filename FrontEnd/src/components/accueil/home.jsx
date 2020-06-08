@@ -13,11 +13,8 @@ const Home = () => (
                     Q.C.M est un ensemble de questionnaires utilisés pour vérifier l’acquisition de connaissances et
                     compétences.
                 </Card.Text>
-                <Card.Link href="/Accueil/QCM"><Button style={{
-                    height: "60px",
-                    width: "200px",
-                    marginTop: "20px",
-                }} variant="success">Accéder à cette page</Button></Card.Link>
+                <Card.Link href="/Accueil/QCM"><Button className={ "buttonMacademia"}
+                  >Accéder à cette page</Button></Card.Link>
 
             </Card.Body>
         </div>
@@ -33,11 +30,7 @@ const Home = () => (
                         <li>Niveau difficile</li>
                     </ul>
                 </Card.Text>
-                <Card.Link href="/Accueil/Entrainement"><Button variant="success" style={{
-                    height: "60px",
-                    width: "200px",
-                    marginTop: "20px"
-                }}>Testez-vous avec des exercices</Button></Card.Link>
+                <Card.Link href="/Accueil/Entrainement"><Button className={ "buttonMacademia"}>Testez-vous avec des exercices</Button></Card.Link>
 
             </Card.Body>
         </div>
@@ -57,9 +50,7 @@ const Home = () => (
                     </ul>
 
                 </Card.Text>
-                <Card.Link href="/Accueil/Certificat"><Button
-                    style={{height: "60px", width: "200px", marginTop: "20px"}} variant="success">Obtenir une
-                    certification</Button></Card.Link>
+                <Card.Link href="/Accueil/Certificat"><Button className={ "buttonMacademia"}>Obtenir une certification</Button></Card.Link>
 
             </Card.Body>
         </div>

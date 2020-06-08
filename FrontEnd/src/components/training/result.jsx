@@ -3,7 +3,7 @@ import React from "react";
 
 const Result = ({quizzSize,userResult}) => (
         <div className=" result">
-            <h2>Exercice Termier</h2>
+            <h2>Exercice Terminé</h2>
             <h3> *** Resultat : {userResult} /{quizzSize} ***</h3>
             <h5 className={userResult > 7 ? "correct" : "incorrect"}>
                 {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"

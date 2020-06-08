@@ -47,3 +47,10 @@ img{
 #corps {
     height: calc(100% - 160px);
 }
+.buttonMacademia{
+    height: 60px;
+    width: 200px;
+    margin-top: 20px;
+    background: linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%);
+    border:none !important;
+}

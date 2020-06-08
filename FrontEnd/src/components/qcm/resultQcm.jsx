@@ -7,8 +7,8 @@ import Button from "react-bootstrap/Button";
 
 const ResultQcm = ({quizzSize, userResult, resultReview}) => (
     <div className=" result">
-        <h2>Exercice Termier</h2>
-        <h3> *** Resultat : {userResult} /{quizzSize} ***</h3>
+        <h2>Exercice Termié</h2>
+        <h3> ***  Resultat : {userResult} /{quizzSize }  ***</h3>
         <h5 className={userResult > 7 ? "correct" : "incorrect"}>
             {userResult > 7 ? "Bravo ! Vous avez réussi cet exercice !"
                 : "Vous n'avez pas validé ce quiz. Vous n'avez pas atteint le seuil de validation de cet exercice," +
