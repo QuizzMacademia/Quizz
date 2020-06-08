@@ -12,7 +12,7 @@ const Home = () => (
                        <Card.Text style={{color:'dimgrey', paddingTop:'20px', paddingRight:"20px"}}>
                             Q.C.M est un ensemble de questionnaires utilisés pour vérifier l’acquisition de connaissances et compétences.
                        </Card.Text>
-                       <Card.Link href="/Accueil/QCM"><Button style={{height:"60px", width:"200px", marginTop:"20px"}} variant="success">Accéder à cette page</Button></Card.Link>
+                       <Card.Link href="/Accueil/QCM"><Button style={{height:"60px", width:"200px", marginTop:"20px", backgroundColor:" #03b381", border:"none"}}>Accéder à cette page</Button></Card.Link>
 
                    </Card.Body>
                </div>
