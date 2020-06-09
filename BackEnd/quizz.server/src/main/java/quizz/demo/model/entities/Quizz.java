@@ -1,6 +1,6 @@
 package quizz.demo.model.entities;
 
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -20,8 +20,8 @@ public class Quizz {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-    
-	@Enumerated (EnumType.STRING)
+
+	@Enumerated(EnumType.STRING)
 	private QuizzType type;
 
 	private int level;
@@ -33,25 +33,22 @@ public class Quizz {
 	private List<Question> questions = new ArrayList();
 
 	private int questionsNumber;
-	
-	//private LocalDateTime temporaryCodeExpirationDate;
+
+	private LocalDateTime expirationDate;
 
 	public Quizz() {
-		super();
-		
 	}
 
-	
-	public Quizz(long id, QuizzType type, int level, String theme, List<Question> questions, int questionsNumber) {
-		super();
+	public Quizz(long id, QuizzType type, int level, String theme, List<Question> questions, int questionsNumber,
+			LocalDateTime expirationDate) {
 		this.id = id;
 		this.type = type;
 		this.level = level;
 		this.theme = theme;
 		this.questions = questions;
 		this.questionsNumber = questionsNumber;
+		this.expirationDate = expirationDate;
 	}
-
 
 	public long getId() {
 		return id;
@@ -85,16 +82,13 @@ public class Quizz {
 		this.theme = theme;
 	}
 
-	
 	public List<Question> getQuestions() {
 		return questions;
 	}
 
-
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-
 
 	public int getQuestionsNumber() {
 		return questionsNumber;
@@ -104,10 +98,19 @@ public class Quizz {
 		this.questionsNumber = questionsNumber;
 	}
 
+	public LocalDateTime getexpirationDate() {
+		return expirationDate;
+	}
+
+	public void setexpirationDate(LocalDateTime expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Quizz [id=" + id + ", type=" + type + ", level=" + level + ", theme=" + theme + ", questions="
-				+ questions + ", questionsNumber=" + questionsNumber + "]";
+				+ questions + ", questionsNumber=" + questionsNumber + ", expirationDate=" + expirationDate
+				+ "]";
 	}
-	
+
 }

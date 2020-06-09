@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import quizz.demo.model.entities.Question;
 import quizz.demo.model.entities.QuestionType;
+import quizz.demo.model.entities.QuizzType;
 
 
 public interface QuestionService {
@@ -14,7 +15,11 @@ public interface QuestionService {
 	Optional<Question>getQuestionById(Long questionId);
 	
 	Question saveOrUpDate(Question question);
+
+	List<Question> getByTypeAndThemeAndLevel(QuestionType type, String theme, int level,
+			int questionsNumber);
+
 	
-	List<Question>getByTypeAndThemeAndLevel(QuestionType type, String theme, int level);
+
 	
 }

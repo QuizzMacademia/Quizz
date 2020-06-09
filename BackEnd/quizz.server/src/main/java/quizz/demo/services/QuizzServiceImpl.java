@@ -1,5 +1,7 @@
 package quizz.demo.services;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,10 @@ public class QuizzServiceImpl implements QuizzService {
 
 	@Autowired
 	QuestionService questionService;
-	
+
 	@Autowired
 	QuestionRepository questionRepository;
-	
+
 	@Override
 	public Optional<Quizz> getQuizzById(Long quizzId) {
 		return quizzRepository.findById(quizzId);
@@ -33,34 +35,40 @@ public class QuizzServiceImpl implements QuizzService {
 		return quizzRepository.save(quizz);
 	}
 
-	public Optional<Quizz> getQuizzbyTypeAndThemeAndLevel(QuizzType type, String theme, int level) {
+	public Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, String theme, int level) {
 		Quizz quizz = new Quizz();
-		Question question=new Question ();
-		switch(type) {
+		Question question = new Question();
+		switch (type) {
 		case EXERCISING:
-		question.setType(QuestionType.ToExercise);
-		break;
+			question.setType(QuestionType.ToExercise);
+			break;
 		case TRAINING:
-		question.setType(QuestionType.ToExercise);
-		break;
+			question.setType(QuestionType.ToExercise);
+			break;
 		case CERTIFICATION:
-		question.setType(QuestionType.ToCertificate);
-        break;
-        default:
-        break;
+			question.setType(QuestionType.ToCertificate);
+			break;
+		default:
+			break;
 		}
-		List<Question> questions=questionService.getByTypeAndThemeAndLevel(question.getType(), theme, level);
-        quizz.setQuestions(questions);
-        quizzRepository.save(quizz);
-        return Optional.ofNullable(quizz);
+		quizz.setQuestionsNumber(10);
+		List<Question> questions = questionService.getByTypeAndThemeAndLevel(question.getType(), theme, level,
+				quizz.getQuestionsNumber());
+		quizz.setQuestions(questions);
+		quizz.setType(type);
+		quizz.setTheme(theme);
+		quizz.setLevel(level);
+		if (type.equals(QuizzType.EXERCISING)) {
+			quizz.setexpirationDate(LocalDateTime.now().plus(2, ChronoUnit.MINUTES));
+		}
+		quizzRepository.save(quizz);
+
+		return Optional.ofNullable(quizz);
 	}
-    
 
 	@Override
 	public Optional<Question> getQuestiondByQuizzIdAndQuestionId(Long quizzId, int questionId) {
 		return quizzRepository.findByQuizzIdAndQuestionId(quizzId, questionId);
 	}
-	
-	
 
 }
