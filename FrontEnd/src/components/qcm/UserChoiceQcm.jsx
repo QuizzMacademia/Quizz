@@ -58,9 +58,11 @@ function UserChoiceQcm() {
 
 //  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
-        type:"TRAINING",
+//        type:"TRAINING",
+        type:"EXERCISING",
         theme: "",
-        category: ""
+        category: "",
+        level: "1"
     };
 
 //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
@@ -84,10 +86,10 @@ function UserChoiceQcm() {
         {value: "Tableau", label: "Tableau"}
     ];
 
-    const addNewDataToCategory = (newData) => {
+    const addNewDataToCategory = (theme) => {
         const tmpTab = [];
         tmpTab.push(...MOCK_DATA_SELECT);
-        tmpTab.push(...newData);
+        tmpTab.push(...MOCK_DATA_AXIOS);
         setCategory(tmpTab);
     };
 
@@ -108,11 +110,11 @@ function UserChoiceQcm() {
                                 <>
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
-                                            <Form.Label>Sujet du Q.C.M.</Form.Label>
+                                            <Form.Label>Sujet</Form.Label>
                                             <Form.Control as="select" onChange={handleChange} onBlur={e => {
                                                 // call the built-in handleBur
                                                 handleBlur(e);
-                                                addNewDataToCategory(MOCK_DATA_AXIOS);
+                                                if(values.theme !== "") addNewDataToCategory(values.theme);
                                                 }} >
                                                 {MOCK_SUJET.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
@@ -123,7 +125,7 @@ function UserChoiceQcm() {
                                             </div>}
                                         </Form.Group>
                                         <Form.Group as={Col} controlId="category">
-                                            <Form.Label>Catégorie du Q.C.M.</Form.Label>
+                                            <Form.Label>Catégorie</Form.Label>
                                             <Form.Control as="select" onChange={handleChange} onBlur={handleBlur}>
                                                 {category.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
@@ -144,9 +146,9 @@ function UserChoiceQcm() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
-                                        <pre>{JSON.stringify(errors, null, 4)}</pre>
+                                        {/*  <pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
-                                        <pre>{JSON.stringify(values, null, 4)}</pre>
+                                        <pre>{JSON.stringify(values, null, 4)}</pre> */}
                                     </Form>
 
                                 </>
