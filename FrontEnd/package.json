@@ -11,6 +11,7 @@
     "classnames": "^2.2.6",
     "formik": "latest",
     "immutable": "latest",
+    "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-prismjs": "^2.0.1",
     "react-bootstrap-icons": "^1.0.2-alpha4"
   }
 }
