@@ -53,14 +53,16 @@ function UserChoiceQcm() {
 //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
         theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
-        level: Yup.string().required("Sélectionner un niveau d'entreinement.")
+        category: Yup.string().required("Sélectionner un niveau d'entreinement.")
     });
 
 //  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
+//        type:"TRAINING",
         type:"EXERCISING",
         theme: "",
-        level: ""
+        category: "",
+        level: "1"
     };
 
 //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
@@ -70,17 +72,33 @@ function UserChoiceQcm() {
     ];
 
 //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
-    const MOCK_LEVEL = [
-        {value: "", label: "Choisir un niveau"},
-        {value: "1", label: "1"}
+    const [category, setCategory] = useState([
+            {value: "", label: "Choisir une catégorie"}
+        ]
+    );
+
+    const MOCK_DATA_SELECT = [
+        {value: "", label: "Choisir une catégorie"}
+    ]
+
+    const MOCK_DATA_AXIOS = [
+        {value: "Variable", label: "Variable"},
+        {value: "Tableau", label: "Tableau"}
     ];
+
+    const addNewDataToCategory = (theme) => {
+        const tmpTab = [];
+        tmpTab.push(...MOCK_DATA_SELECT);
+        tmpTab.push(...MOCK_DATA_AXIOS);
+        setCategory(tmpTab);
+    };
 
     return (
         <>
             <Modal show={show} onHide={handleClose} size="lg" centered>
                 <span className={"modalStyle"}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Choisissez le sujet et le niveau de votre entreinement.</Modal.Title>
+                    <Modal.Title>Choisissez le sujet et la catégorie de votre Q.C.M.</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{padding: "30px 20px"}}>
                        <Formik
@@ -92,8 +110,12 @@ function UserChoiceQcm() {
                                 <>
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
-                                            <Form.Label>Sujet de l'entreinement</Form.Label>
-                                            <Form.Control as="select" onChange={handleChange} onBlur={handleBlur} >
+                                            <Form.Label>Sujet</Form.Label>
+                                            <Form.Control as="select" onChange={handleChange} onBlur={e => {
+                                                // call the built-in handleBur
+                                                handleBlur(e);
+                                                if(values.theme !== "") addNewDataToCategory(values.theme);
+                                                }} >
                                                 {MOCK_SUJET.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
@@ -102,16 +124,16 @@ function UserChoiceQcm() {
                                                 {errors.theme}
                                             </div>}
                                         </Form.Group>
-                                        <Form.Group as={Col} controlId="level">
-                                            <Form.Label>Niveau de difficulté</Form.Label>
+                                        <Form.Group as={Col} controlId="category">
+                                            <Form.Label>Catégorie</Form.Label>
                                             <Form.Control as="select" onChange={handleChange} onBlur={handleBlur}>
-                                                {MOCK_LEVEL.map((item, idx) => (
+                                                {category.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
-                                            {errors.level &&
-                                            touched.level &&
+                                            {errors.category &&
+                                            touched.category &&
                                             <div className="error-message">
-                                                {errors.level}
+                                                {errors.category}
                                             </div>}
                                         </Form.Group>
                                         <div className={"choiceButton"}>
@@ -124,9 +146,9 @@ function UserChoiceQcm() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
-                                        {/*<pre>{JSON.stringify(errors, null, 4)}</pre>
+                                        {/*  <pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
-                                        <pre>{JSON.stringify(values, null, 4)}</pre>*/}
+                                        <pre>{JSON.stringify(values, null, 4)}</pre> */}
                                     </Form>
 
                                 </>
