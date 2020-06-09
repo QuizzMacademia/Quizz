@@ -1,6 +1,5 @@
 package quizz.demo.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +17,7 @@ import quizz.demo.model.entities.QuizzType;
 import quizz.demo.services.QuestionService;
 import quizz.demo.services.QuizzService;
 
+
 @RestController
 @RequestMapping("/quizz")
 @CrossOrigin
@@ -33,7 +33,7 @@ public class QuizzController {
 	@PostMapping(value = "/generate")
 	public ResponseEntity<Long> generateQuizz(@RequestParam(value = "type") QuizzType quizzType,
 			@RequestParam(value = "theme") String quizzTheme, @RequestParam(value = "level") int level) {
-		Quizz quizz = quizzService.getQuizzbyTypeAndThemeAndLevel(quizzType, quizzTheme, level)
+		Quizz quizz = quizzService.createQuizzbyTypeAndThemeAndLevel(quizzType, quizzTheme, level)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Une erreur est survenue pendant la génération du quizz!"));
 		Long quizzId = quizz.getId();
@@ -47,7 +47,6 @@ public class QuizzController {
 		Question question = quizzService.getQuestiondByQuizzIdAndQuestionId(quizzId, questionId).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aucun quizz trouvé avec l'id: " + questionId));
 		return new ResponseEntity<Question>(question, HttpStatus.OK);
-
 	}
 
 }
