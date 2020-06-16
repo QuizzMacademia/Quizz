@@ -50,9 +50,9 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                    </Button>
                 }
             </div>
-            <pre>{JSON.stringify(errors, null, 4)}</pre>
+            {/* <pre>{JSON.stringify(errors, null, 4)}</pre>
              <p>--------------------------------------------</p>
-             <pre>{JSON.stringify(values, null, 4)}</pre>
+             <pre>{JSON.stringify(values, null, 4)}</pre> */}
         </Form>
     )
 };
