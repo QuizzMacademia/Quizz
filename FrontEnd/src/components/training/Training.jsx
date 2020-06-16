@@ -19,7 +19,6 @@ function Training({match:{params:{id}}}) {
     const [answerChoice, setAnswerChoice] = useState(false);
     const [userResult, setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
-    const [chekRespQuestion, setChekRespQuestion]=useState(false);
     //fontion pour comparer deux tableaux
     function arraysIdentical(array1, array2) {
         if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x))))
@@ -35,7 +34,6 @@ function Training({match:{params:{id}}}) {
         setAnswerChoice(true);
         if((typeof values.userChoice === "object" && arraysIdentical( values.userChoice, questionData.correctAnswer ))
         ||(typeof values.userChoice === "string" && parseInt(values.userChoice) ===  questionData.correctAnswer[0])) {
-            setChekRespQuestion(true) ;
             setUseResult(userResult + 1);
         }
     };
@@ -58,15 +56,12 @@ function Training({match:{params:{id}}}) {
     //  Fonction pour passer à la question suivante, réinitialise le formulaire, télécharge la question et l'affiche.
     const handleNextQuestion = (values, {resetForm}) => {
         resetForm();
-        setChekRespQuestion(false) ;
         if (index < quizzSize - 1) {
             getQuestion(index+1);
             setIndex(index + 1);
             setShowAnswer(false);
             setShowButton(false);
             setAnswerChoice(false);
-            console.log(userResult);
-
         } else {
             setListQuestion(false);
             setLastQuestion(true);

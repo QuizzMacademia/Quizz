@@ -11,21 +11,21 @@ import {useHistory} from "react-router";
 
 function UserChoiceQcm() {
 
-//  Déclaration des variables utilisées dans le component
+    //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [isLoading, setLoading] = useState(false);
 
     let history = useHistory();
 
-//  Permet de simuler le chargement du backend, change l'affichage du bouton
+    //  Permet de simuler le chargement du backend, change l'affichage du bouton
     const simulateNetworkRequest = () => {
         return new Promise((resolve) => {
             //setTimeout(handleClose, 2000)
         });
     }
 
-//  Permet de simuler le chargement du backend, change l'affichage du bouton
+    //  Permet de simuler le chargement du backend, change l'affichage du bouton
     useEffect(() => {
         if (isLoading) {
             simulateNetworkRequest().then(() => {
@@ -34,13 +34,13 @@ function UserChoiceQcm() {
         }
     }, [isLoading]);
 
-//  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
-//  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
+    //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
+    //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
         axios.post('http://localhost:8080/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
-//  Suite au retour du backend, switch sur le component affichant la première question
+    //  Suite au retour du backend, switch sur le component affichant la première question
                     history.push({pathname: `/Accueil/Qcm/${res.data}`});
                 }
             }, (error) => {
@@ -50,28 +50,28 @@ function UserChoiceQcm() {
         setLoading(true);
     };
 
-//  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
+    //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
         theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
         category: Yup.string().required("Sélectionner un niveau d'entreinement.")
     });
 
-//  Permet d'initialiser le formulaire à ses valeurs par default
+    //  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
-//        type:"TRAINING",
+    //        type:"TRAINING",
         type:"EXERCISING",
         theme: "",
         category: "",
         level: "1"
     };
 
-//  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
+    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
         {value: "JavaScript", label: "JavaScript"}
     ];
 
-//  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
+    //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const [category, setCategory] = useState([
             {value: "", label: "Choisir une catégorie"}
         ]
