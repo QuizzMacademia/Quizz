@@ -21,28 +21,38 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                         < CheckAnswer question={question} item={item} values={values}/>
                         }
                     </div>
-                    <MyCheckbox className="option" item={item.choice} name={`userChoice`}
-                                value={item.id} type={question.choiceType} idx={item.id} hdlChange={handleChange}
-                                hdlBlur={handleBlur} hdlDisable={answerChoice}/>
+                    <MyCheckbox className="option"
+                                item={item.choice}
+                                name={`userChoice`}
+                                value={item.id}
+                                type={question.choiceType}
+                                idx={item.id}
+                                hdlChange={handleChange}
+                                hdlBlur={handleBlur}
+                                hdlDisable={answerChoice}/>
                 </div>
             ))}
             {show && <Answer explication={question.explanation}/>}
             <div className="button-container">
-                {!showButton &&
-                <Button variant={"success"}
+                {!showButton
+                && <Button variant={"success"}
                         onClick={onHandleValidation}
                         disabled={(!isValid || values['userChoice'].length === 0)}>
                     Valider
-                </Button>}
-                {showButton &&
-                    <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>
-                        {!(index+1 === quizzSize)?"Question Suivante":"Consultez Resultat"}
                     </Button>
                 }
+                {showButton
+                && <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>
+                        {!(index+1 === quizzSize)
+                            ? "Question Suivante"
+                            :"Consultez Resultat"
+                        }
+                   </Button>
+                }
             </div>
-            {/* <pre>{JSON.stringify(errors, null, 4)}</pre>
+            <pre>{JSON.stringify(errors, null, 4)}</pre>
              <p>--------------------------------------------</p>
-             <pre>{JSON.stringify(values, null, 4)}</pre> */}
+             <pre>{JSON.stringify(values, null, 4)}</pre>
         </Form>
     )
 };
