@@ -77,7 +77,7 @@ function Qcm({match:{params:{id}}}) {
 //  API pour récupérer une question dans le backend.
     const getQuestion = (idx) => {
 //  Récupère la question idx du questionnaire id
-        axios.get(`http://localhost:8080/quizz/${id}/question/${idx}`)
+        axios.get(`/quizz/${id}/question/${idx}`)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res.data);

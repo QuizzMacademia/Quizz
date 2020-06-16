@@ -18,7 +18,7 @@ const Login = () => {
     let history = useHistory();
 
     const onSubmit = (values) => {
-        axios.post('http://localhost:8080/login', values)
+        axios.post('/login', values)
             .then(res => {
                 if (res.status === 200) {
                     history.push('/Accueil');
