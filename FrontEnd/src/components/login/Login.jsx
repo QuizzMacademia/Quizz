@@ -10,17 +10,21 @@ import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
 import axios from "axios";
 import * as Yup from 'yup';
+import Loader from 'react-loader-spinner';
 
 const Login = () => {
-    const [actuelUser] = useState({email: "", password: ""});
     const [loginError, setLoginError] = useState(false);
+    const actualUser = {email: "", password: ""};
+    const [isLoding, setIsLoding] = useState(false);
 
     let history = useHistory();
 
     const onSubmit = (values) => {
-        axios.post('http://localhost:8080/login', values)
+        setIsLoding(true);
+        axios.post('/login', values)
             .then(res => {
                 if (res.status === 200) {
+                    setIsLoding(false);
                     history.push('/Accueil');
                 }
             }, (error) => {
@@ -30,7 +34,8 @@ const Login = () => {
                     values.email = "";
                     values.password = "";
                     setLoginError(false);
-                }, 2000);
+                    setIsLoding(false);
+                }, 1000);
             })
     }
 
@@ -45,7 +50,7 @@ const Login = () => {
                 <h2>Se Connecter</h2>
                 <hr/>
                 <Formik validationSchema={validationSchema}
-                        initialValues={actuelUser}
+                        initialValues={actualUser}
                         onSubmit={onSubmit}
                 >
                     {({errors, touched, handleSubmit}) => (
@@ -83,7 +88,13 @@ const Login = () => {
                                 <ErrorMessage name="password">{msg => <div
                                     className={'error-message'}>{msg}</div>}</ErrorMessage>
                             </div>
-
+                            {isLoding && <Loader
+                                type="Circles"
+                                color="#ff4b82"
+                                height={80}
+                                width={80}
+                                className={"loading"}
+                            />}
                             <Button variant="success" type={"submit"}>
                                 Valider
                             </Button>

@@ -37,7 +37,7 @@ function UserChoiceExercising() {
 //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
 //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
-        axios.post('http://localhost:8080/quizz/generate', null, {params: values})
+        axios.post('/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
 //  Suite au retour du backend, switch sur le component affichant la première question
