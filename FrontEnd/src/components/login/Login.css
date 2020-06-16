@@ -14,6 +14,7 @@
 .section{
  margin-bottom: 30px;
 }
+
 .error-message {
  color: #c3002f;
  margin-bottom: 1em;
@@ -21,9 +22,24 @@
  font-size: .8em;
  text-align: left;
 }
+
 FormGroup{
  margin-bottom: 0px;
 }
+
 .form-group.row {
  margin-bottom: 0rem;
+}
+
+.loading {
+ position: fixed;
+ z-index: 999;
+ height: 80px;
+ width: 80px;
+ overflow: visible;
+ margin: auto;
+ top: 0;
+ left: 0;
+ bottom: 0;
+ right: 0;
 }
