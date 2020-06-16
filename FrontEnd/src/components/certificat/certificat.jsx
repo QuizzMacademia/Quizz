@@ -1,9 +1,9 @@
 
 import React, {useEffect} from "react";
 import Prism from "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
+//import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/themes/prism-okaidia.css";
-//import "prismjs/plugins/line-numbers/prism-line-numbers.min"
+import "prismjs/plugins/line-numbers/prism-line-numbers.min"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 import {Form} from "react-bootstrap";
 import Answer from "../shared/question/answer";
