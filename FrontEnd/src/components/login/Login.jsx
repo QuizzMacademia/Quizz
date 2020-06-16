@@ -12,8 +12,8 @@ import axios from "axios";
 import * as Yup from 'yup';
 
 const Login = () => {
-    const [actuelUser] = useState({email: "", password: ""});
     const [loginError, setLoginError] = useState(false);
+    const actualUser = {email: "", password: ""};
 
     let history = useHistory();
 
@@ -45,7 +45,7 @@ const Login = () => {
                 <h2>Se Connecter</h2>
                 <hr/>
                 <Formik validationSchema={validationSchema}
-                        initialValues={actuelUser}
+                        initialValues={actualUser}
                         onSubmit={onSubmit}
                 >
                     {({errors, touched, handleSubmit}) => (
