@@ -101,37 +101,37 @@ function Training({match:{params:{id}}}) {
             />}
             {firstGetQuestion
             && <>
-            {!lastQuestion
-            && <div >
-                <h4> {questionData.questionText} </h4>
-                <div className="options-container">
-                    <div className="options">
-                        <Formik
-                            validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
-                            initialValues={initialValues}
-                            onSubmit={handleNextQuestion}>
+                {!lastQuestion
+                && <div>
+                    <h4> {questionData.questionText} </h4>
+                    <div className="options-container">
+                        <div className="options">
+                            <Formik
+                                validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
+                                initialValues={initialValues}
+                                onSubmit={handleNextQuestion}>
 
-                            {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
+                                {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
 
-                                <Question question={questionData}
-                                          onHandleValidation={()=>handleValidation(values)}
-                                          showAnswerChoiceButton={showAnswerChoiceButton}
-                                          quizzSize={quizzSize}
-                                          errors={errors}
-                                          values={values}
-                                          index={index}
-                                          isValid={isValid}
-                                          handleSubmit={handleSubmit}
-                                          handleBlur={handleBlur}
-                                          handleChange={handleChange}/>
+                                    <Question question={questionData}
+                                              onHandleValidation={() => handleValidation(values)}
+                                              showAnswerChoiceButton={showAnswerChoiceButton}
+                                              quizzSize={quizzSize}
+                                              errors={errors}
+                                              values={values}
+                                              index={index}
+                                              isValid={isValid}
+                                              handleSubmit={handleSubmit}
+                                              handleBlur={handleBlur}
+                                              handleChange={handleChange}/>
 
-                            )}
-                        </Formik>
+                                )}
+                            </Formik>
+                        </div>
                     </div>
-                </div>
-            </div>}
+                </div>}
 
-            {lastQuestion &&  <Result quizzSize={quizzSize} userResult={userResult} />}
+                {lastQuestion && <Result quizzSize={quizzSize} userResult={userResult}/>}
             </>}
         </div>
     );
