@@ -5,6 +5,7 @@ import '../shared/question/question.css';
 import Question from "../shared/question/question";
 import axios from "axios";
 import Result from "./result";
+import Loader from "react-loader-spinner";
 
 function Training({match:{params:{id}}}) {
 
@@ -13,12 +14,13 @@ function Training({match:{params:{id}}}) {
     const [quizzSize] = useState(10);
     const [questionData, setQuestionData] = useState({});
     const [lastQuestion, setLastQuestion] = useState(false);
-    const [listQuestion, setListQuestion] = useState(true);
     const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
     const [userResult, setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
-    //fontion pour comparer deux tableaux
+    const [isLoding, setIsLoding] = useState(false);
+
     function arraysIdentical(array1, array2) {
+        //fontion pour comparer deux tableaux
         if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x))))
         {
             return true;
@@ -57,7 +59,6 @@ function Training({match:{params:{id}}}) {
             setIndex(index + 1);
             setShowAnswerChoiceButton(false);
         } else {
-            setListQuestion(false);
             setLastQuestion(true);
         }
     };
@@ -70,10 +71,12 @@ function Training({match:{params:{id}}}) {
 
     //  API pour récupérer une question dans le backend.
     const getQuestion = (idx) => {
+        setIsLoding(true);
         //  Récupère la question idx du questionnaire id
         axios.get(`/quizz/${id}/question/${idx}`)
             .then(res => {
                 if (res.status === 200) {
+                    setIsLoding(false);
                     console.log(res.data);
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
@@ -88,6 +91,14 @@ function Training({match:{params:{id}}}) {
 
     return (
         <div className="question">
+            {isLoding
+            && <Loader
+                type="Circles"
+                color="#ff4b82"
+                height={80}
+                width={80}
+                className={"loading"}
+            />}
             {firstGetQuestion
             && <>
             {!lastQuestion
@@ -101,20 +112,19 @@ function Training({match:{params:{id}}}) {
                             onSubmit={handleNextQuestion}>
 
                             {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
-                                <>
-                                    {listQuestion &&
-                                    <Question question={questionData}
-                                              onHandleValidation={()=>handleValidation(values)}
-                                              showAnswerChoiceButton={showAnswerChoiceButton}
-                                              quizzSize={quizzSize}
-                                              errors={errors}
-                                              values={values}
-                                              index={index}
-                                              isValid={isValid}
-                                              handleSubmit={handleSubmit}
-                                              handleBlur={handleBlur}
-                                              handleChange={handleChange}/>}
-                                </>
+
+                                <Question question={questionData}
+                                          onHandleValidation={()=>handleValidation(values)}
+                                          showAnswerChoiceButton={showAnswerChoiceButton}
+                                          quizzSize={quizzSize}
+                                          errors={errors}
+                                          values={values}
+                                          index={index}
+                                          isValid={isValid}
+                                          handleSubmit={handleSubmit}
+                                          handleBlur={handleBlur}
+                                          handleChange={handleChange}/>
+
                             )}
                         </Formik>
                     </div>

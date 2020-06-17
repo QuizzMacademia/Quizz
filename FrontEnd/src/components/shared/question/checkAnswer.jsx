@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Check, X} from "react-bootstrap-icons";
 
 
@@ -13,4 +13,4 @@ const CheckAnswer = ({question, item, values}) => (
                         </span>
 );
 
-export default CheckAnswer;
+export default  memo(CheckAnswer);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
@@ -61,4 +61,4 @@ const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAn
     )
 };
 
-export default Question;
+export default  memo( Question);
