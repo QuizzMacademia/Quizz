@@ -5,36 +5,32 @@ import '../shared/question/question.css';
 import Question from "../shared/question/question";
 import axios from "axios";
 import Result from "./result";
+import Loader from "react-loader-spinner";
 
-function Training({match:{params:{id}}}) {
+function Training({match: {params: {id}}}) {
 
     //  Déclaration des constantes utilisées dans le component
     const [index, setIndex] = useState(0);
     const [quizzSize] = useState(10);
-    const [showAnswer, setShowAnswer] = useState(false);
-//    const questionData = MOCK_QUESTIONNAIRE.questions[index];
     const [questionData, setQuestionData] = useState({});
     const [lastQuestion, setLastQuestion] = useState(false);
-    const [listQuestion, setListQuestion] = useState(true);
-    const [showButton, setShowButton] = useState(false);
-    const [answerChoice, setAnswerChoice] = useState(false);
+    const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
     const [userResult, setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
-    //fontion pour comparer deux tableaux
+    const [isLoding, setIsLoding] = useState(false);
+
     function arraysIdentical(array1, array2) {
-        if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x))))
-        {
+        //fontion pour comparer deux tableaux
+        if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x)))) {
             return true;
         }
     }
 
     //  Fonction utiliser sur le bouton validation, permet de valider le choix de l'utilisateur et d'afficher l'explication.
     const handleValidation = (values) => {
-        setShowAnswer(true);
-        setShowButton(true);
-        setAnswerChoice(true);
-        if((typeof values.userChoice === "object" && arraysIdentical( values.userChoice, questionData.correctAnswer ))
-        ||(typeof values.userChoice === "string" && parseInt(values.userChoice) ===  questionData.correctAnswer[0])) {
+        setShowAnswerChoiceButton(true);
+        if ((typeof values.userChoice === "object" && arraysIdentical(values.userChoice, questionData.correctAnswer))
+            || (typeof values.userChoice === "string" && parseInt(values.userChoice) === questionData.correctAnswer[0])) {
             setUseResult(userResult + 1);
         }
     };
@@ -58,34 +54,34 @@ function Training({match:{params:{id}}}) {
     const handleNextQuestion = (values, {resetForm}) => {
         resetForm();
         if (index < quizzSize - 1) {
-            getQuestion(index+1);
+            getQuestion(index + 1);
             setIndex(index + 1);
-            setShowAnswer(false);
-            setShowButton(false);
-            setAnswerChoice(false);
+            setShowAnswerChoiceButton(false);
         } else {
-            setListQuestion(false);
             setLastQuestion(true);
         }
     };
 
     //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
-    useEffect( () => {
+    useEffect(() => {
         console.log("useEffect IN !!!");
         getQuestion(index);
     }, []);
 
     //  API pour récupérer une question dans le backend.
     const getQuestion = (idx) => {
+        setIsLoding(true);
         //  Récupère la question idx du questionnaire id
         axios.get(`/quizz/${id}/question/${idx}`)
             .then(res => {
                 if (res.status === 200) {
+                    setIsLoding(false);
                     console.log(res.data);
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
                     //  Permet de réaliser l'affichage de la première question.
-                    if(firstGetQuestion === false) setFirstGetQuestion(true)
+                    if (firstGetQuestion === false)
+                        setFirstGetQuestion(true)
                 }
             }, (error) => {
                 console.error(error);
@@ -94,23 +90,30 @@ function Training({match:{params:{id}}}) {
 
     return (
         <div className="question">
-            {firstGetQuestion && <>
-            {!lastQuestion && <div >
-                <h4> {questionData.questionText} </h4>
-                <div className="options-container">
-                    <div className="options">
-                        <Formik
-                            validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
-                            initialValues={initialValues}
-                            onSubmit={handleNextQuestion}>
+            {isLoding
+            && <Loader type="Circles"
+                       color="#ff4b82"
+                       height={80}
+                       width={80}
+                       className={"loading"}
+            />}
+            {firstGetQuestion
+            && <>
+                {!lastQuestion
+                && <div>
+                    <h4> {questionData.questionText} </h4>
+                    <div className="options-container">
+                        <div className="options">
+                            <Formik
+                                validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
+                                initialValues={initialValues}
+                                onSubmit={handleNextQuestion}>
 
-                            {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
-                                <>
-                                    {listQuestion &&
+                                {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
+
                                     <Question question={questionData}
-                                              show={showAnswer} showButton={showButton}
-                                              onHandleValidation={()=>handleValidation(values)}
-                                              answerChoice={answerChoice}
+                                              onHandleValidation={() => handleValidation(values)}
+                                              showAnswerChoiceButton={showAnswerChoiceButton}
                                               quizzSize={quizzSize}
                                               errors={errors}
                                               values={values}
@@ -118,15 +121,16 @@ function Training({match:{params:{id}}}) {
                                               isValid={isValid}
                                               handleSubmit={handleSubmit}
                                               handleBlur={handleBlur}
-                                              handleChange={handleChange}/>}
-                                </>
-                            )}
-                        </Formik>
-                    </div>
-                </div>
-            </div>}
+                                              handleChange={handleChange}
+                                    />
 
-            {lastQuestion &&  <Result quizzSize={quizzSize} userResult={userResult} />}
+                                )}
+                            </Formik>
+                        </div>
+                    </div>
+                </div>}
+
+                {lastQuestion && <Result quizzSize={quizzSize} userResult={userResult}/>}
             </>}
         </div>
     );

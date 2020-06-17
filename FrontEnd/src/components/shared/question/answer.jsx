@@ -1,7 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import "./question.css"
 
 const Answer = ({explication})=>(
-        <p >{explication}</p>
+        <p >
+            {explication}
+        </p>
 );
-export default Answer;
+export default  memo( Answer);

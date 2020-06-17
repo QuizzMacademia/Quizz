@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import {Form} from "react-bootstrap";
 import "./question.css"
 import Answer from "./answer";
@@ -7,18 +7,21 @@ import classNames from "classnames";
 import Button from "react-bootstrap/Button";
 import CheckAnswer from "./checkAnswer";
 
-const Question = ({question, show, onHandleValidation, showButton, errors,index, quizzSize, answerChoice, values, isValid, handleSubmit, handleBlur, handleChange}) => {
+const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange}) => {
 
     return (
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
             {question.choices.map((item, idx) => (
                 <div className={classNames("choice-style", {
-                    "incorrect": answerChoice && values.userChoice.includes(item.id + '') && !question.correctAnswer.includes(item.id),
-                    "correct": answerChoice && question.correctAnswer.includes(item.id)
+                    "incorrect": showAnswerChoiceButton
+                        && values.userChoice.includes(item.id + '')
+                        && !question.correctAnswer.includes(item.id),
+                    "correct": showAnswerChoiceButton
+                        && question.correctAnswer.includes(item.id)
                 })} key={idx}>
                     <div className={"choice-icon"}>
-                        {answerChoice &&
-                        < CheckAnswer question={question} item={item} values={values}/>
+                        {showAnswerChoiceButton
+                        && < CheckAnswer question={question} item={item} values={values}/>
                         }
                     </div>
                     <MyCheckbox className="option"
@@ -29,19 +32,20 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
                                 idx={item.id}
                                 hdlChange={handleChange}
                                 hdlBlur={handleBlur}
-                                hdlDisable={answerChoice}/>
+                                hdlDisable={showAnswerChoiceButton}/>
                 </div>
             ))}
-            {show && <Answer explication={question.explanation}/>}
+            {showAnswerChoiceButton
+            && <Answer explication={question.explanation}/>}
             <div className="button-container">
-                {!showButton
+                {!showAnswerChoiceButton
                 && <Button variant={"success"}
                         onClick={onHandleValidation}
                         disabled={(!isValid || values['userChoice'].length === 0)}>
                     Valider
                     </Button>
                 }
-                {showButton
+                {showAnswerChoiceButton
                 && <Button type={'submit'} style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)"}}>
                         {!(index+1 === quizzSize)
                             ? "Question Suivante"
@@ -57,4 +61,4 @@ const Question = ({question, show, onHandleValidation, showButton, errors,index,
     )
 };
 
-export default Question;
+export default  memo( Question);

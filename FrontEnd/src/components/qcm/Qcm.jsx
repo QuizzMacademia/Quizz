@@ -5,29 +5,32 @@ import '../shared/question/question.css';
 import Question from "../shared/question/question";
 import axios from "axios";
 import ResultQcm from "./resultQcm";
+import Loader from "react-loader-spinner";
 
 function Qcm({match:{params:{id}}}) {
     //  Déclaration des constantes utilisées dans le component
     const [index, setIndex] = useState(0);
     const [quizzSize] = useState(10);
-    const [showAnswer, setShowAnswer] = useState(false);
-//    const questionData = MOCK_QUESTIONNAIRE.questions[index];
     const [questionData, setQuestionData] = useState({});
     const [lastQuestion, setLastQuestion] = useState(false);
-    const [listQuestion, setListQuestion] = useState(true);
-    const [showButton, setShowButton] = useState(false);
-    const [answerChoice, setAnswerChoice] = useState(false);
-    const [userResult,setUseResult] = useState(0);
+    const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
+    const [userResult, setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
+    const [isLoding, setIsLoding] = useState(false);
     const [resultReview,setResultReview] = useState([]);
+    function arraysIdentical(array1, array2) {
+        //fontion pour comparer deux tableaux
+        if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x))))
+        {
+            return true;
+        }
+    }
     //  Fonction utiliser sur le bouton validation, permet de valider le choix de l'utilisateur et d'afficher l'explication.
     const handleValidation = (values) => {
-        setShowAnswer(true);
-        setShowButton(true);
-        setAnswerChoice(true);
-        if((typeof values.userChoice === "object" && values.userChoice.join() === questionData.correctAnswer.join()) ||
-            (typeof values.userChoice === "string"&& values.userChoice in  questionData.correctAnswer)){
-            setUseResult(userResult+1);
+        setShowAnswerChoiceButton(true);
+        if((typeof values.userChoice === "object" && arraysIdentical( values.userChoice, questionData.correctAnswer ))
+            ||(typeof values.userChoice === "string" && parseInt(values.userChoice) ===  questionData.correctAnswer[0])) {
+            setUseResult(userResult + 1);
         }else {
             setResultReview([...resultReview, questionData.questionText]);
             console.log(resultReview);
@@ -55,11 +58,8 @@ function Qcm({match:{params:{id}}}) {
         if (index < quizzSize - 1) {
             getQuestion(index+1);
             setIndex(index + 1);
-            setShowAnswer(false);
-            setShowButton(false);
-            setAnswerChoice(false);
+            setShowAnswerChoiceButton(false);
         } else {
-            setListQuestion(false);
             setLastQuestion(true);
         }
     };
@@ -72,10 +72,12 @@ function Qcm({match:{params:{id}}}) {
 
     //  API pour récupérer une question dans le backend.
     const getQuestion = (idx) => {
+        setIsLoding(true);
         //  Récupère la question idx du questionnaire id
         axios.get(`/quizz/${id}/question/${idx}`)
             .then(res => {
                 if (res.status === 200) {
+                    setIsLoding(false);
                     console.log(res.data);
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
@@ -89,6 +91,14 @@ function Qcm({match:{params:{id}}}) {
 
     return (
         <div className="question">
+            {isLoding
+            && <Loader
+                type="Circles"
+                color="#ff4b82"
+                height={80}
+                width={80}
+                className={"loading"}
+            />}
             {firstGetQuestion && <>
             {!lastQuestion && <div >
                 <h4> {questionData.questionText} </h4>
@@ -100,22 +110,18 @@ function Qcm({match:{params:{id}}}) {
                             onSubmit={handleNextQuestion}>
 
                             {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
-                                <>
-                                    {listQuestion &&
-                                    <Question question={questionData}
-                                              show={showAnswer}
-                                              showButton={showButton}
-                                              onHandleValidation={()=>handleValidation(values)}
-                                              answerChoice={answerChoice}
-                                              quizzSize={quizzSize}
-                                              errors={errors}
-                                              values={values}
-                                              index={index}
-                                              isValid={isValid}
-                                              handleSubmit={handleSubmit}
-                                              handleBlur={handleBlur}
-                                              handleChange={handleChange}/>}
-                                </>
+
+                                <Question question={questionData}
+                                          onHandleValidation={()=>handleValidation(values)}
+                                          showAnswerChoiceButton={showAnswerChoiceButton}
+                                          quizzSize={quizzSize}
+                                          errors={errors}
+                                          values={values}
+                                          index={index}
+                                          isValid={isValid}
+                                          handleSubmit={handleSubmit}
+                                          handleBlur={handleBlur}
+                                          handleChange={handleChange}/>
                             )}
                         </Formik>
                     </div>
