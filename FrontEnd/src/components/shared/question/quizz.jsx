@@ -3,8 +3,7 @@ import * as Yup from "yup";
 import Loader from "react-loader-spinner";
 import {Formik} from "formik";
 import Question from "./question";
-import Result from "../../training/result";
-import ResultQcm from "../../qcm/resultQcm";
+import ResultQuizz from "./resultQuizz";
 
 const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
 
@@ -104,8 +103,8 @@ const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , s
                     </div>
                 </div>}
 
-                {isTraining && lastQuestion && <Result quizzSize={quizzSize} userResult={userResult}/>}
-                {isQCM && lastQuestion &&  <ResultQcm quizzSize={quizzSize} userResult={userResult} resultReview={resultReview}/>}
+                {isTraining && lastQuestion && <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview}/>}
+                {isQCM && lastQuestion &&  <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview} isQCM={isQCM}/>}
             </>}
         </div>
     )
