@@ -37,12 +37,12 @@ const Login = () => {
                     setIsLoding(false);
                 }, 1000);
             })
-    }
+    };
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email().required(),
         password:Yup.string().required().min(4).max(18)
-    })
+    });
 
     return (
         <div className={'container'}>

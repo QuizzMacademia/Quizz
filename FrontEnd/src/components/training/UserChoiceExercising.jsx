@@ -45,7 +45,7 @@ function UserChoiceExercising() {
                 }
             }, (error) => {
                 console.error(error);
-            })
+            });
         resetForm();
         setLoading(true);
     };

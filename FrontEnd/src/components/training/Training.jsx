@@ -11,13 +11,10 @@ function Training({match:{params:{id}}}) {
     //  Déclaration des constantes utilisées dans le component
     const [index, setIndex] = useState(0);
     const [quizzSize] = useState(10);
-    const [showAnswer, setShowAnswer] = useState(false);
-//    const questionData = MOCK_QUESTIONNAIRE.questions[index];
     const [questionData, setQuestionData] = useState({});
     const [lastQuestion, setLastQuestion] = useState(false);
     const [listQuestion, setListQuestion] = useState(true);
-    const [showButton, setShowButton] = useState(false);
-    const [answerChoice, setAnswerChoice] = useState(false);
+    const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
     const [userResult, setUseResult] = useState(0);
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
     //fontion pour comparer deux tableaux
@@ -30,9 +27,7 @@ function Training({match:{params:{id}}}) {
 
     //  Fonction utiliser sur le bouton validation, permet de valider le choix de l'utilisateur et d'afficher l'explication.
     const handleValidation = (values) => {
-        setShowAnswer(true);
-        setShowButton(true);
-        setAnswerChoice(true);
+        setShowAnswerChoiceButton(true);
         if((typeof values.userChoice === "object" && arraysIdentical( values.userChoice, questionData.correctAnswer ))
         ||(typeof values.userChoice === "string" && parseInt(values.userChoice) ===  questionData.correctAnswer[0])) {
             setUseResult(userResult + 1);
@@ -60,9 +55,7 @@ function Training({match:{params:{id}}}) {
         if (index < quizzSize - 1) {
             getQuestion(index+1);
             setIndex(index + 1);
-            setShowAnswer(false);
-            setShowButton(false);
-            setAnswerChoice(false);
+            setShowAnswerChoiceButton(false);
         } else {
             setListQuestion(false);
             setLastQuestion(true);
@@ -85,7 +78,8 @@ function Training({match:{params:{id}}}) {
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
                     //  Permet de réaliser l'affichage de la première question.
-                    if(firstGetQuestion === false) setFirstGetQuestion(true)
+                    if(firstGetQuestion === false)
+                        setFirstGetQuestion(true)
                 }
             }, (error) => {
                 console.error(error);
@@ -94,8 +88,10 @@ function Training({match:{params:{id}}}) {
 
     return (
         <div className="question">
-            {firstGetQuestion && <>
-            {!lastQuestion && <div >
+            {firstGetQuestion
+            && <>
+            {!lastQuestion
+            && <div >
                 <h4> {questionData.questionText} </h4>
                 <div className="options-container">
                     <div className="options">
@@ -108,9 +104,8 @@ function Training({match:{params:{id}}}) {
                                 <>
                                     {listQuestion &&
                                     <Question question={questionData}
-                                              show={showAnswer} showButton={showButton}
                                               onHandleValidation={()=>handleValidation(values)}
-                                              answerChoice={answerChoice}
+                                              showAnswerChoiceButton={showAnswerChoiceButton}
                                               quizzSize={quizzSize}
                                               errors={errors}
                                               values={values}
