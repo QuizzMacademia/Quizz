@@ -7,7 +7,7 @@ import axios from "axios";
 import Result from "./result";
 import Loader from "react-loader-spinner";
 
-function Training({match:{params:{id}}}) {
+function Training({match: {params: {id}}}) {
 
     //  Déclaration des constantes utilisées dans le component
     const [index, setIndex] = useState(0);
@@ -21,8 +21,7 @@ function Training({match:{params:{id}}}) {
 
     function arraysIdentical(array1, array2) {
         //fontion pour comparer deux tableaux
-        if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x))))
-        {
+        if (array1.length === array2.length && array1.every(x => array2.includes(parseInt(x)))) {
             return true;
         }
     }
@@ -30,8 +29,8 @@ function Training({match:{params:{id}}}) {
     //  Fonction utiliser sur le bouton validation, permet de valider le choix de l'utilisateur et d'afficher l'explication.
     const handleValidation = (values) => {
         setShowAnswerChoiceButton(true);
-        if((typeof values.userChoice === "object" && arraysIdentical( values.userChoice, questionData.correctAnswer ))
-        ||(typeof values.userChoice === "string" && parseInt(values.userChoice) ===  questionData.correctAnswer[0])) {
+        if ((typeof values.userChoice === "object" && arraysIdentical(values.userChoice, questionData.correctAnswer))
+            || (typeof values.userChoice === "string" && parseInt(values.userChoice) === questionData.correctAnswer[0])) {
             setUseResult(userResult + 1);
         }
     };
@@ -55,7 +54,7 @@ function Training({match:{params:{id}}}) {
     const handleNextQuestion = (values, {resetForm}) => {
         resetForm();
         if (index < quizzSize - 1) {
-            getQuestion(index+1);
+            getQuestion(index + 1);
             setIndex(index + 1);
             setShowAnswerChoiceButton(false);
         } else {
@@ -64,7 +63,7 @@ function Training({match:{params:{id}}}) {
     };
 
     //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
-    useEffect( () => {
+    useEffect(() => {
         console.log("useEffect IN !!!");
         getQuestion(index);
     }, []);
@@ -81,7 +80,7 @@ function Training({match:{params:{id}}}) {
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
                     //  Permet de réaliser l'affichage de la première question.
-                    if(firstGetQuestion === false)
+                    if (firstGetQuestion === false)
                         setFirstGetQuestion(true)
                 }
             }, (error) => {
@@ -92,12 +91,11 @@ function Training({match:{params:{id}}}) {
     return (
         <div className="question">
             {isLoding
-            && <Loader
-                type="Circles"
-                color="#ff4b82"
-                height={80}
-                width={80}
-                className={"loading"}
+            && <Loader type="Circles"
+                       color="#ff4b82"
+                       height={80}
+                       width={80}
+                       className={"loading"}
             />}
             {firstGetQuestion
             && <>
@@ -123,7 +121,8 @@ function Training({match:{params:{id}}}) {
                                               isValid={isValid}
                                               handleSubmit={handleSubmit}
                                               handleBlur={handleBlur}
-                                              handleChange={handleChange}/>
+                                              handleChange={handleChange}
+                                    />
 
                                 )}
                             </Formik>
