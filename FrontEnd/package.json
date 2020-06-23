@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,7 +43,11 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^26.0.0",
     "babel-plugin-prismjs": "^2.0.1",
-    "react-bootstrap-icons": "^1.0.2-alpha4"
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "react-bootstrap-icons": "^1.0.2-alpha4",
+    "react-test-renderer": "^16.13.1"
   }
 }

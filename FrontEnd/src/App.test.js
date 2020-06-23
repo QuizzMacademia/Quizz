@@ -1,9 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import {shallow} from "enzyme";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Test App fonctionnement", function () {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<App/>);
+    });
+
+    afterEach(() => {
+        wrapper.unmount();
+    });
+
+    it('Le component App est bien défini', () => {
+        expect(wrapper).toBeDefined();
+    });
 });
