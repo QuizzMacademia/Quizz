@@ -9,6 +9,8 @@ import {Form} from "react-bootstrap";
 import Answer from "../shared/question/answer";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormCheck from "react-bootstrap/FormCheck";
+import CodeReadOnly from "../shared/Code/CodeReadOnly";
+import CodeEditor from "../shared/Code/CodeEditor";
 
 
 function Certificat() {
@@ -16,9 +18,9 @@ function Certificat() {
     const MOCK_QUESTION_CODE = {
         id: 9,
         questionText: `var var = 4;
-            text = 'Hello !';
-            var variable = 5.781e+8;
-            var 1variable = 10;`,
+text = 'Hello !';
+var variable = 5.781e+8;
+var 1variable = 10;`,
         type: 'trainning',
         theme: 'JavaScript',
         level: 1,
@@ -44,7 +46,7 @@ function Certificat() {
 
     return <div className="question">
 
-        <div style={{width: "70%", margin: "auto", borderRadius: "5px"}}>
+        <div style={{width: "70%", margin: "auto"}}>
             <br/>
             <h5>
         <pre className={"line-numbers"}>
@@ -54,6 +56,9 @@ function Certificat() {
       </pre>
             </h5>
             <br/>
+            <CodeReadOnly codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123'}/>
+            <br/>
+            <CodeEditor codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123456'}/>
 
             <Form style={{textAlign: "left", marginLeft: "10px"}}>
                 {MOCK_QUESTION_CODE.choices.map((item, idx) => (
