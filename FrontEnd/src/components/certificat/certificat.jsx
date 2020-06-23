@@ -1,17 +1,10 @@
-
 import React, {useEffect} from "react";
-import Prism from "prismjs";
-//import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/themes/prism-okaidia.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.min"
-import "prismjs/plugins/line-numbers/prism-line-numbers.css"
 import {Form} from "react-bootstrap";
 import Answer from "../shared/question/answer";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormCheck from "react-bootstrap/FormCheck";
 import CodeReadOnly from "../shared/Code/CodeReadOnly";
 import CodeEditor from "../shared/Code/CodeEditor";
-
 
 function Certificat() {
 
@@ -40,23 +33,13 @@ var 1variable = 10;`,
             'Ne pas oublier le point-virgule.'
     };
 
-    useEffect(() => {
-        Prism.highlightAll();
-    }, []);
-
     return <div className="question">
 
         <div style={{width: "70%", margin: "auto"}}>
-            <br/>
-            <h5>
-        <pre className={"line-numbers"}>
-        <code className="language-js">
-          {MOCK_QUESTION_CODE.questionText}
-        </code>
-      </pre>
-            </h5>
+
             <br/>
             <CodeReadOnly codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123'}/>
+
             <br/>
             <CodeEditor codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123456'}/>
 
