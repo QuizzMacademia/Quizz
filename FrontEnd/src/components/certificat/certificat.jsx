@@ -16,9 +16,9 @@ function Certificat() {
     const MOCK_QUESTION_CODE = {
         id: 9,
         questionText: `var var = 4;
-text = 'Hello !';
-var variable = 5.781e+8;
-var 1variable = 10;`,
+            text = 'Hello !';
+            var variable = 5.781e+8;
+            var 1variable = 10;`,
         type: 'trainning',
         theme: 'JavaScript',
         level: 1,

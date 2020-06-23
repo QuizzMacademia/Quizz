@@ -5,15 +5,13 @@ import {mount, shallow} from "enzyme";
 import * as axios from 'axios'
 import Form from "react-bootstrap/Form";
 
+
+jest.mock('axios');
 jest.mock('react-router', () => ({
     useHistory: () => ({
         push: jest.fn(),
     }),
 }));
-
-
-jest.mock('axios');
-
 
 describe("Test login fonctionnement", function () {
     let wrapper;
@@ -22,7 +20,7 @@ describe("Test login fonctionnement", function () {
     beforeEach(() => {
         wrapper = shallow(<Login/>);
         wrapperM = mount(<Login/>);
-        // axios.mockClear();
+        //axios.mockClear();
     });
 
     afterEach(() => {
@@ -76,6 +74,22 @@ describe("Test login fonctionnement", function () {
         expect(wrapperM.find('input').at(1).prop('value')).toEqual('123');
     });
 
+
+    it('axios methode post login', async () => {
+
+        const postSpy = jest.spyOn(axios, 'post',"");
+        await axios.post('/login',{"email": "John@yahoo.fr", "password": "12345678"});
+        expect(postSpy).toBeCalled();
+        expect(postSpy).toHaveBeenCalledWith('/login',{"email": "John@yahoo.fr", "password": "12345678"});
+
+    });
+    it('xios methode post login2', () => {
+        const user = [{"email": "John@yahoo.fr", "password": "12345678"}];
+        const resp = {data: true};
+        axios.post.mockResolvedValue(resp);
+        return Login.onSubmit.then(data => expect(data).toEqual(true));
+    });
+
     it('login', () => {
         wrapperM.find('input').at(0).simulate('change', {target: {name: 'email', value: 'go@gmail.com'}});
         wrapperM.find('input').at(1).simulate('change', {target: {name: 'password', value: '123'}});
@@ -83,13 +97,28 @@ describe("Test login fonctionnement", function () {
         expect(wrapperM.useState('actualUser')).toEqual({email: "go@gmail.com", password: "123"});
     });
 
-    it('post axios api', () => {
-        let mock = new MockAdapter(axios);
+    it('post axios api', async (thisArg, ...argArray) => {
+        const simulEmail= wrapperM.find('input').at(0).simulate('change', {target: {name: 'email', value: 'go@gmail.com'}});
+        const simulPSW = wrapperM.find('input').at(1).simulate('change', {target: {name: 'password', value: '123'}});
+        wrapperM.find('button').simulate('click');
+        const postSpy = jest.spyOn(axios, 'post' ,"");
         const data = {response: true};
-        mock.get('http://localhost:8080/login', {"email": "John@yahoo.fr", "password": "12345678"}).reply(200, data);
-        Login.then(response => {
-            expect(response).toEqual(data);
-
+       // await axios.post('/login',{"email": "John@yahoo.fr", "password": "12345678"});
+       // expect(postSpy).toBeCalled();
+        return axios.post('/login',{"email": "John@yahoo.fr", "password": "12345678"}).then(data => expect(data).toEqual(true));
+    });
+    it('axios api', async () => {
+        //const data = {response: true};
+        const postSpy = jest.spyOn(axios, 'post');
+        Login.onSubmit({"email": "John@yahoo.fr", "password": "12345678"}).then(response => {
+            expect(response).toEqual({
+                data: {},
+            });
+        });
+        //await axios.post('/login', {"email": "John@yahoo.fr", "password": "12345678"}))
+        expect(axios.request).toHaveBeenCalledWith({
+            method: 'post',
+            url: '/login'
         });
     });
 
