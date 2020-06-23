@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Login from "./Login"
 import {mount, shallow} from "enzyme";
-import axios from 'axios'
+import * as axios from 'axios'
 import Form from "react-bootstrap/Form";
 
 
@@ -12,7 +12,6 @@ jest.mock('react-router', () => ({
         push: jest.fn(),
     }),
 }));
-
 
 describe("Test login fonctionnement", function () {
     let wrapper;
@@ -60,7 +59,6 @@ describe("Test login fonctionnement", function () {
     });
 
     it('change email', () => {
-        //const onChange= jest.fn();
         const valeur =
             {target: {name: 'email', value: 'go@gmail.com'}}
         ;
@@ -76,6 +74,7 @@ describe("Test login fonctionnement", function () {
         expect(wrapperM.find('input').at(1).prop('value')).toEqual('123');
     });
 
+
     it('axios methode post login', async () => {
 
         const postSpy = jest.spyOn(axios, 'post',"");
@@ -89,6 +88,13 @@ describe("Test login fonctionnement", function () {
         const resp = {data: true};
         axios.post.mockResolvedValue(resp);
         return Login.onSubmit.then(data => expect(data).toEqual(true));
+    });
+
+    it('login', () => {
+        wrapperM.find('input').at(0).simulate('change', {target: {name: 'email', value: 'go@gmail.com'}});
+        wrapperM.find('input').at(1).simulate('change', {target: {name: 'password', value: '123'}});
+        wrapperM.find('button').simulate('click');
+        expect(wrapperM.useState('actualUser')).toEqual({email: "go@gmail.com", password: "123"});
     });
 
     it('post axios api', async (thisArg, ...argArray) => {
@@ -114,5 +120,13 @@ describe("Test login fonctionnement", function () {
             method: 'post',
             url: '/login'
         });
+    });
+
+    it('Test retour Axios', () => {
+        wrapperM.find('button').simulate('click');
+        axios.post.mockResolvedValue({ data: 200 });
+        expect(wrapperM.find('userLoginOK').toBe(true))
+//        expect(axios.request).toHaveBeenCalled();
+
     });
 });

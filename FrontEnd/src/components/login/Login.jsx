@@ -16,6 +16,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState(false);
     const actualUser = {email: "", password: ""};
     const [isLoding, setIsLoding] = useState(false);
+    let userLoginOK = false;
 
     let history = useHistory();
 
@@ -25,6 +26,7 @@ const Login = () => {
             .then(res => {
                 if (res.status === 200) {
                     setIsLoding(false);
+                    userLoginOK = true;
                     history.push('/Accueil');
                 }
             }, (error) => {
