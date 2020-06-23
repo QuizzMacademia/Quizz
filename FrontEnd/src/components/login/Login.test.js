@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Login from "./Login"
 import {mount, shallow} from "enzyme";
-import axios from 'axios'
+import * as axios from 'axios'
 import Form from "react-bootstrap/Form";
 
 jest.mock('react-router', () => ({
@@ -10,6 +10,10 @@ jest.mock('react-router', () => ({
         push: jest.fn(),
     }),
 }));
+
+
+jest.mock('axios');
+
 
 describe("Test login fonctionnement", function () {
     let wrapper;
@@ -57,7 +61,6 @@ describe("Test login fonctionnement", function () {
     });
 
     it('change email', () => {
-        //const onChange= jest.fn();
         const valeur =
             {target: {name: 'email', value: 'go@gmail.com'}}
         ;
@@ -66,7 +69,6 @@ describe("Test login fonctionnement", function () {
     });
 
     it('change password', () => {
-        const onChange = jest.fn();
         const valeur =
             {target: {name: 'password', value: '123'}}
         ;
@@ -78,7 +80,7 @@ describe("Test login fonctionnement", function () {
         wrapperM.find('input').at(0).simulate('change', {target: {name: 'email', value: 'go@gmail.com'}});
         wrapperM.find('input').at(1).simulate('change', {target: {name: 'password', value: '123'}});
         wrapperM.find('button').simulate('click');
-        expect(wrapperM.state('actuelUser')).toEqual({email: "go@gmail.com", password: "123"});
+        expect(wrapperM.useState('actualUser')).toEqual({email: "go@gmail.com", password: "123"});
     });
 
     it('post axios api', () => {
@@ -89,5 +91,13 @@ describe("Test login fonctionnement", function () {
             expect(response).toEqual(data);
 
         });
+    });
+
+    it('Test retour Axios', () => {
+        wrapperM.find('button').simulate('click');
+        axios.post.mockResolvedValue({ data: 200 });
+        expect(wrapperM.find('userLoginOK').toBe(true))
+//        expect(axios.request).toHaveBeenCalled();
+
     });
 });
