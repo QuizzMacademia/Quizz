@@ -5,4 +5,4 @@ export default React.createContext({
     isLogged: false,
     updateLoggedInUser: user => {},
     updateIsLogged: loggedState => {}
-})
+});
