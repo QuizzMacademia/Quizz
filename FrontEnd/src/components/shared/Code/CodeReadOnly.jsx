@@ -6,6 +6,7 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 function CodeReadOnly({codeValue, uniqueIdName}) {
 
+
     return (
         <>
             <AceEditor style={{borderRadius:"7px"}}
@@ -23,7 +24,8 @@ function CodeReadOnly({codeValue, uniqueIdName}) {
                 value={codeValue}
                 setOptions={{
                     showLineNumbers: true,
-                    maxLines: Infinity
+                    maxLines: Infinity,
+                    wrap : true
                 }}/>
         </>
     )

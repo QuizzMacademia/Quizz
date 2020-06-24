@@ -87,7 +87,7 @@ describe("Test login fonctionnement", function () {
         const user = [{"email": "John@yahoo.fr", "password": "12345678"}];
         const resp = {data: true};
         axios.post.mockResolvedValue(resp);
-        return Login.onSubmit.then(data => expect(data).toEqual(true));
+        return wrapperM.instance().onSubmit(data => expect(data).toEqual(true));
     });
 
     it('login', () => {
