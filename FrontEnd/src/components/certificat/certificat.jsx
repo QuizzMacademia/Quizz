@@ -1,33 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Form} from "react-bootstrap";
-import Answer from "../shared/question/answer";
+
 import FormGroup from "react-bootstrap/FormGroup";
 import FormCheck from "react-bootstrap/FormCheck";
 import CodeReadOnly from "../shared/Code/CodeReadOnly";
-import CodeEditor from "../shared/Code/CodeEditor";
-import {Check, X} from "react-bootstrap-icons";
 import MOCK_QUESTION_WITH_CODE from "../shared/mock/MOCK_Question_With_Code";
 
 function Certificat() {
+
     function sliceQuestionText(str) {
-        let tabQustionText = [];
-       let indexOfFirst = str.indexOf('#4#');
-        if (indexOfFirst === -1) {
-            tabQustionText.push({
-                type: "text",
-                value: str
-            });
-        } else {
-            tabQustionText.push({
-                type: "text",
-                value: str.slice(0, indexOfFirst)
-            });
-            tabQustionText.push({
-                type: "code",
-                value: str.slice(indexOfFirst + 3, str.length - 3)
-            });
-        }
-        return tabQustionText;
+        const deliminator = "#4#";
+        let tabQuestionText = [];
+
+            const types = str.startsWith(deliminator) ? ["code", "text"] : ["text", "code"];
+            tabQuestionText = str
+                .split(deliminator)
+                .map((value, index) => ({
+                    type: types[index % 2],
+                    value
+                }));
+
+        return tabQuestionText;
     }
 
     return (
