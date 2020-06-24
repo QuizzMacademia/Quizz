@@ -1,68 +1,102 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Form} from "react-bootstrap";
-import Answer from "../shared/question/answer";
+
 import FormGroup from "react-bootstrap/FormGroup";
 import FormCheck from "react-bootstrap/FormCheck";
 import CodeReadOnly from "../shared/Code/CodeReadOnly";
-import CodeEditor from "../shared/Code/CodeEditor";
+import MOCK_QUESTION_WITH_CODE from "../shared/mock/MOCK_Question_With_Code";
 
 function Certificat() {
 
-    const MOCK_QUESTION_CODE = {
-        id: 9,
-        questionText: `var var = 4;
-text = 'Hello !';
-var variable = 5.781e+8;
-var 1variable = 10;`,
-        type: 'trainning',
-        theme: 'JavaScript',
-        level: 1,
-        choiceType: 'checkbox',
-        choices: [
-            {id: 34, choice: 'var'},
-            {id: 35, choice: 'text'},
-            {id: 36, choice: 'variable'},
-            {id: 37, choice: '1variable'}
-        ],
-        correctAnswer: [36],
-        explanation: 'Pour déclarer une variable, il faut respecter plusieurs étapes :\n' +
-            '\n' +
-            'Écrire le mot-clé var ;\n' +
-            'Utiliser un nom de variable valide, vous pouvez retrouver au début de ce chapitre ce qui constitue un nom de variable valide ;\n' +
-            'Assigner une valeur si on le souhaite, elle peut être un chiffre, un nombre exponentiel, du texte, etc. ;\n' +
-            'Ne pas oublier le point-virgule.'
-    };
+    function sliceQuestionText(str) {
+        const deliminator = "#4#";
+        let tabQuestionText = [];
 
-    return <div className="question">
+            const types = str.startsWith(deliminator) ? ["code", "text"] : ["text", "code"];
+            tabQuestionText = str
+                .split(deliminator)
+                .map((value, index) => ({
+                    type: types[index % 2],
+                    value
+                }));
 
-        <div style={{width: "70%", margin: "auto"}}>
+        return tabQuestionText;
+    }
 
-            <br/>
-            <CodeReadOnly codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123'}/>
+    return (
+        <>
+            {/*<div className="question">
 
-            <br/>
-            <CodeEditor codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123456'}/>
+                <div style={{width: "70%", margin: "auto"}}>
 
-            <Form style={{textAlign: "left", marginLeft: "10px"}}>
-                {MOCK_QUESTION_CODE.choices.map((item, idx) => (
-                    <div key={idx}>
+                    <br/>
+                    <CodeReadOnly codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123'}/>
+
+                    <br/>
+                    <CodeEditor codeValue={MOCK_QUESTION_CODE.questionText} uniqueIdName={'Test123456'}/>
+
+                    <Form style={{textAlign: "left", marginLeft: "10px"}}>
+                        {MOCK_QUESTION_CODE.choices.map((item, idx) => (
+                            <div key={idx}>
 
 
-                        <div key={`custom-${MOCK_QUESTION_CODE.choiceType}-${idx}`}>
-                            <FormGroup>
-                                <FormCheck custom id={`custom-${MOCK_QUESTION_CODE.choiceType}-${idx}`} value={item.id}
-                                           type={MOCK_QUESTION_CODE.choiceType}
-                                           label={item.choice}/>
-                            </FormGroup>
-                        </div>
+                                <div key={`custom-${MOCK_QUESTION_CODE.choiceType}-${idx}`}>
+                                    <FormGroup>
+                                        <FormCheck custom id={`custom-${MOCK_QUESTION_CODE.choiceType}-${idx}`}
+                                                   value={item.id}
+                                                   type={MOCK_QUESTION_CODE.choiceType}
+                                                   label={item.choice}/>
+                                    </FormGroup>
+                                </div>
+
+                            </div>
+                        ))}
+                        <Answer explication={MOCK_QUESTION_CODE.explanation}/>
+                    </Form>
+                </div>
+            </div>
+*/}
+            {MOCK_QUESTION_WITH_CODE.questions.map((question, rang) => (
+                <div className="question" key={rang}>
+
+                    <div style={{width: "70%", margin: "auto"}}>
+
+                        {sliceQuestionText(question.questionText).map((item1, idx1) => (
+                            <div key={idx1}>
+                                {item1.type === 'text'
+                                    ? <p>{item1.value}</p>
+                                    : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`}/>}
+                            </div>
+                        ))}
+                        <Form style={{textAlign: "left", marginLeft: "10px"}}>
+                            {question.choices.map((item, idx) => (
+                                <div key={idx}>
+                                    <div key={`custom-${question.choiceType}-${idx}`}>
+                                        <FormGroup>
+                                            <FormCheck custom id={`custom-${question.choiceType}-${idx}`}
+                                                       value={item.id}
+                                                       type={question.choiceType}
+                                                       label={item.choice}/>
+                                        </FormGroup>
+                                    </div>
+                                </div>
+                            ))}
+                            {sliceQuestionText(question.explanation).map((item1, idx1) => (
+                                <div key={idx1}>
+                                    {item1.type === 'text'
+                                        ? <p>{item1.value}</p>
+                                        : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`}/>}
+                                </div>
+                            ))}
+
+                        </Form>
 
                     </div>
-                ))}
-                <Answer explication={MOCK_QUESTION_CODE.explanation}/>
-            </Form>
-        </div>
-        ;
-    </div>;
+                </div>
+
+            ))}
+        </>
+    )
 }
 
 export default Certificat;

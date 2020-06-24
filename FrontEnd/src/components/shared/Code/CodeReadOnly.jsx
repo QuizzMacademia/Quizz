@@ -6,9 +6,10 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 function CodeReadOnly({codeValue, uniqueIdName}) {
 
+
     return (
         <>
-            <AceEditor style={{borderRadius:"7px"}}
+            <AceEditor style={{borderRadius:"7px" , marginBottom:"10px"}}
                 mode="javascript"
                 theme="monokai"
                 onLoad={function(editor){ editor.renderer.setPadding(15); editor.renderer.setScrollMargin(15, 15, 15, 15); }}
@@ -23,7 +24,8 @@ function CodeReadOnly({codeValue, uniqueIdName}) {
                 value={codeValue}
                 setOptions={{
                     showLineNumbers: true,
-                    maxLines: Infinity
+                    maxLines: Infinity,
+                    wrap : true
                 }}/>
         </>
     )
