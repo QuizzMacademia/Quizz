@@ -28,8 +28,8 @@ const Login = () => {
                 if (res.status === 200) {
                     setIsLoding(false);
                     updateLoggedInUser(values.email);
-                    updateIsLogged(true);
-                    localStorage.setItem('isLogged', JSON.stringify(true))
+                    updateIsLogged(1);
+                    localStorage.setItem('isLogged', JSON.stringify(1))
                     history.push('/Accueil');
                 }
             }, (error) => {

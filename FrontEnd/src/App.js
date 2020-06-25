@@ -10,7 +10,7 @@ import RequireAuth from "./components/shared/Route/RequireAuth";
 function App() {
 
     const [loggedInUser, setLoggedInUser] = useState("");
-    const [isLogged, setIsLogged] = useState(false);
+    const [isLogged, setIsLogged] = useState(0);
 
     const contextLoginValue = {
         loggedInUser,
