@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import './App.css';
 import {Route} from 'react-router-dom';
-import {Redirect, Switch} from "react-router";
+import {Switch} from "react-router";
+import './App.css';
 import Login from "./components/login/Login";
 import Accueil from "./components/accueil/Accueil";
 import LoginContext from "./components/shared/Context/LoginContext";
+import RequireAuth from "./components/shared/RequireAuth";
 
 function App() {
 
@@ -16,13 +17,6 @@ function App() {
         isLogged,
         updateLoggedInUser: setLoggedInUser,
         updateIsLogged: setIsLogged
-    };
-
-    const RequireAuth = ({children}) => {
-        if (!isLogged) {
-            return <Redirect to={'/'}/>;
-        }
-        return children;
     };
 
     return (

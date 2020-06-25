@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import './Login.css'
@@ -11,14 +11,15 @@ import FormControl from "react-bootstrap/FormControl";
 import axios from "axios";
 import * as Yup from 'yup';
 import Loader from 'react-loader-spinner';
+import LoginContext from "../shared/Context/LoginContext";
 
 const Login = () => {
     const [loginError, setLoginError] = useState(false);
     const actualUser = {email: "", password: ""};
     const [isLoding, setIsLoding] = useState(false);
-    let userLoginOK = false;
-
     let history = useHistory();
+
+    const {updateLoggedInUser, updateIsLogged} = useContext(LoginContext);
 
     const onSubmit = (values) => {
         setIsLoding(true);
@@ -26,7 +27,9 @@ const Login = () => {
             .then(res => {
                 if (res.status === 200) {
                     setIsLoding(false);
-                    userLoginOK = true;
+                    updateLoggedInUser(values.email);
+                    updateIsLogged(true);
+                    localStorage.setItem('isLogged', JSON.stringify(true))
                     history.push('/Accueil');
                 }
             }, (error) => {
