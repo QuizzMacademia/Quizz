@@ -3,15 +3,17 @@ import {Redirect} from "react-router";
 import LoginContext from "../Context/LoginContext";
 
 const RequireAuth = ({children}) => {
-    const {isLogged} = useContext(LoginContext);
+    const {isLogged, updateIsLogged} = useContext(LoginContext);
 
-//    const isLogged =  parseInt(localStorage.getItem('isLogged'));
-    console.log(typeof(isLogged))
-
-    if (isLogged == 0) {
-        return <Redirect to={'/'}/>;
+    if (! isLogged) {
+        if(+localStorage.getItem('isLogged') === 1) {
+            updateIsLogged(+localStorage.getItem('isLogged') || 0);
+            return children;
+        }
+        return <Redirect to={'/'} />;
+    } else {
+        return children;
     }
-    return children;
 };
 
 export default RequireAuth;
