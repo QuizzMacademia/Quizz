@@ -16,10 +16,10 @@ const  Menu = () => {
                     alt={"logo-macademia"}/>
                 </Navbar.Brand>
                 <Nav  className="mr-auto">
-                    <Link to={"/Accueil"}>ACCUEIL</Link>
-                    <Link to={"/Accueil/QCM"}>Q.C.M</Link>
-                    <Link to={"/Accueil/Entrainement"}>S'EXERCER</Link>
-                    <Link to={"/Accueil/Certificat"}>Certif</Link>
+                    <Link className="link" to={"/Accueil"}>ACCUEIL</Link>
+                    <Link className="link" to={"/Accueil/QCM"}>Q.C.M</Link>
+                    <Link className="link" to={"/Accueil/Entrainement"}>S'EXERCER</Link>
+                    <Link className="link" to={"/Accueil/Certificat"}>Certif</Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>

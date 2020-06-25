@@ -6,14 +6,15 @@
     margin:auto;
 }
 
-.nav-pills .nav-link{
+.mr-auto .link{
     color: #909090;
 }
-.nav-link{
+.mr-auto .link{
     color: #909090;
 }
-.nav-link:hover{
+.mr-auto .link:hover{
     color: gainsboro;
+    text-decoration: none;
     
 }
 .container{
