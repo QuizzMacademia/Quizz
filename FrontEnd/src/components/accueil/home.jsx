@@ -1,24 +1,25 @@
-import React from "react";
-import './accueil.css'
+import React, {memo} from "react";
 import {Card} from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
+import './accueil.css'
 
 const Home = () => (
     <div className={"container"}>
         <div className="question" style={{margin: '40px auto 20px', width: "80%", padding: "20px "}}>
             <Card.Body>
                 <Card.Title> Q.C.M </Card.Title>
-
                 <Card.Text style={{color: 'dimgrey', paddingTop: '20px', paddingRight: "20px"}}>
                     Q.C.M est un ensemble de questionnaires utilisés pour vérifier l’acquisition de connaissances et
                     compétences.
                 </Card.Text>
-                <Card.Link href="/Accueil/QCM">
-                    <Button className={"buttonMacademia"}>
-                        Accéder à cette page
-                    </Button>
+                <Card.Link>
+                    <Link to={"/Accueil/QCM"}>
+                        <Button className={"buttonMacademia"}>
+                            Accéder à cette page
+                        </Button>
+                    </Link>
                 </Card.Link>
-
             </Card.Body>
         </div>
         <div className="question" style={{margin: '20px auto', width: "80%", padding: "20px "}}>
@@ -33,18 +34,18 @@ const Home = () => (
                         <li>Niveau difficile</li>
                     </ul>
                 </Card.Text>
-                <Card.Link href="/Accueil/Entrainement">
-                    <Button className={"buttonMacademia"}>
-                        Testez-vous avec des exercices
-                    </Button>
+                <Card.Link>
+                    <Link to={"/Accueil/Entrainement"}>
+                        <Button className={"buttonMacademia"}>
+                            Testez-vous avec des exercices
+                        </Button>
+                    </Link>
                 </Card.Link>
-
             </Card.Body>
         </div>
         <div className="question" style={{margin: '20px auto', width: "80%", padding: "20px "}}>
             <Card.Body>
                 <Card.Title>CERTIFICAT</Card.Title>
-
                 <Card.Text style={{color: 'dimgrey', paddingTop: '20px', paddingRight: "20px"}}>
                     Macademia offre le certificat de développeur JavaScript aux candidats intéressés à obtenir une
                     certification pour leurs compétences JS. Outre l'expertise en JavaScript,
@@ -55,15 +56,17 @@ const Home = () => (
                         <li>Le cours</li>
                         <li>Quiz</li>
                     </ul>
-
                 </Card.Text>
-                <Card.Link href="/Accueil/Certificat">
-                    <Button className={"buttonMacademia"}>Obtenir une certification
-                    </Button>
+                <Card.Link>
+                    <Link to={"/Accueil/Certificat"}>
+                        <Button className={"buttonMacademia"}>
+                            Obtenir une certification
+                        </Button>
+                    </Link>
                 </Card.Link>
-
             </Card.Body>
         </div>
     </div>
 );
-export default Home;
+
+export default memo(Home);

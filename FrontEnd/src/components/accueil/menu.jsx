@@ -1,11 +1,11 @@
-import React from "react";
+import React, {memo} from "react";
+import {Link} from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
-import './accueil.css'
 import Navbar from "react-bootstrap/Navbar";
+import './accueil.css'
 
 const  Menu = () => {
     return (
-
         <>
             <Navbar bg="dark" variant="dark">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -16,16 +16,15 @@ const  Menu = () => {
                     alt={"logo-macademia"}/>
                 </Navbar.Brand>
                 <Nav  className="mr-auto">
-                    <Nav.Link href="/Accueil">ACCUEIL</Nav.Link>
-                    <Nav.Link href="/Accueil/QCM">Q.C.M</Nav.Link>
-                    <Nav.Link href="/Accueil/Entrainement">S'EXERCER</Nav.Link>
-                    <Nav.Link href="/Accueil/Certificat">CERTIFICAT</Nav.Link>
+                    <Link to={"/Accueil"}>ACCUEIL</Link>
+                    <Link to={"/Accueil/QCM"}>Q.C.M</Link>
+                    <Link to={"/Accueil/Entrainement"}>S'EXERCER</Link>
+                    <Link to={"/Accueil/Certificat"}>Certif</Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </>
-
     );
 };
 
-export default Menu;
+export default memo(Menu);
