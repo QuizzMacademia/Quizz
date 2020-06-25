@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Redirect} from "react-router";
-import LoginContext from "./Context/LoginContext";
+import LoginContext from "../Context/LoginContext";
 
 const RequireAuth = ({children}) => {
     const {isLogged} = useContext(LoginContext);

@@ -5,7 +5,7 @@ import './App.css';
 import Login from "./components/login/Login";
 import Accueil from "./components/accueil/Accueil";
 import LoginContext from "./components/shared/Context/LoginContext";
-import RequireAuth from "./components/shared/RequireAuth";
+import RequireAuth from "./components/shared/Route/RequireAuth";
 
 function App() {
 

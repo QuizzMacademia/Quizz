@@ -10,7 +10,7 @@ import UserChoiceExercising from "../training/UserChoiceExercising";
 import Training from "../training/Training";
 import Qcm from "../qcm/Qcm";
 import UserChoiceQcm from "../qcm/UserChoiceQcm";
-import RequireAuth from "../shared/RequireAuth";
+import RequireAuth from "../shared/Route/RequireAuth";
 
 const Accueil = () => {
     return (
