@@ -11,7 +11,7 @@ const  Menu = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Navbar.Brand> <img
-                    src="/img/macademia-icon.jpeg"
+                    src="/img/Macademia-logo.svg"
                     className="d-inline-block align-top"
                     alt={"logo-macademia"}/>
                 </Navbar.Brand>
@@ -19,7 +19,7 @@ const  Menu = () => {
                     <Link className="link" to={"/Accueil"}>ACCUEIL</Link>
                     <Link className="link" to={"/Accueil/QCM"}>Q.C.M</Link>
                     <Link className="link" to={"/Accueil/Entrainement"}>S'EXERCER</Link>
-                    <Link className="link" to={"/Accueil/Certificat"}>Certif</Link>
+                    <Link className="link" to={"/Accueil/Certificat"}>CERTIFICATION</Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
