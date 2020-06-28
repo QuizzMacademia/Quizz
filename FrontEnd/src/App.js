@@ -6,6 +6,7 @@ import Login from "./components/login/Login";
 import Accueil from "./components/accueil/Accueil";
 import LoginContext from "./components/shared/Context/LoginContext";
 import RequireAuth from "./components/shared/Route/RequireAuth";
+import Inscription from "./components/login/inscription";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <div className="App">
                 <Switch>
                     <Route exact path='/' component={Login}/>
+                    <Route path='/Inscription' component={Inscription}/>
                     <RequireAuth>
                         <Route path='/Accueil' component={Accueil}/>
                     </RequireAuth>

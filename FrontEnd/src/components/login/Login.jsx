@@ -107,8 +107,8 @@ const Login = () => {
                         </Form>
                     )}
                 </Formik>
+                <Link className="link" to={"/Inscription"}>Je m'inscris</Link>
             </div>
-            <Link className="link" to={"/Inscription"}>Je m'inscris</Link>
         </div>
     )
 };
