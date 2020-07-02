@@ -10,6 +10,7 @@ import CheckAnswer from "./checkAnswer";
 const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange, sliceQuestionText}) => {
 
     return (
+        <>
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
             {question.choices.map((item, idx) => (
                 <div className={classNames("choice-style", {
@@ -35,6 +36,7 @@ const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAn
                                 hdlDisable={showAnswerChoiceButton}/>
                 </div>
             ))}
+
             {showAnswerChoiceButton
             && <Answer explication={question.explanation} sliceQuestionText={sliceQuestionText}/>}
             <div className="button-container">
@@ -58,6 +60,7 @@ const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAn
              <p>--------------------------------------------</p>
              <pre>{JSON.stringify(values, null, 4)}</pre> */}
         </Form>
+       </>
     )
 };
 
