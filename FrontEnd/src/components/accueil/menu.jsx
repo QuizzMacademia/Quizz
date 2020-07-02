@@ -20,6 +20,9 @@ const  Menu = () => {
                     <Link className="link" to={"/Accueil/QCM"}>Q.C.M</Link>
                     <Link className="link" to={"/Accueil/Entrainement"}>S'EXERCER</Link>
                     <Link className="link" to={"/Accueil/Certificat"}>CERTIFICATION</Link>
+                    <Link className="link" to={"/Deconnexion"}><img
+                        src="/img/Logout.svg"
+                        alt={"Déconnection de l'application"}/></Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
