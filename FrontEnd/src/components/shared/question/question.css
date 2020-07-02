@@ -15,12 +15,12 @@
     }
 .options-container{
     display: inline-block;
-    width:80%;
+    width:90%;
     margin: auto;
 }
 .options{
     width:100%;
-    margin: auto;
+    /*margin: auto;*/
     padding-bottom: 20px;
     padding-top: 20px;;
 
@@ -31,7 +31,7 @@
     margin-bottom: 15px;
     font-size: 1.3rem;
     text-align: left;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 
 }
 .button-container{

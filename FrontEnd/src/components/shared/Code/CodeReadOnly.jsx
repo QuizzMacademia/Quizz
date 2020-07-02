@@ -12,7 +12,7 @@ function CodeReadOnly({codeValue, uniqueIdName}) {
             <AceEditor style={{borderRadius:"7px" , marginBottom:"10px"}}
                 mode="javascript"
                 theme="monokai"
-                onLoad={function(editor){ editor.renderer.setPadding(15); editor.renderer.setScrollMargin(15, 15, 15, 15); }}
+                onLoad={function(editor){ editor.renderer.setPadding(0); editor.renderer.setScrollMargin(15, 15, 15, 15); }}
                 name={uniqueIdName}
                 editorProps={{ $blockScrolling: true }}
                 fontSize={20}
@@ -26,7 +26,8 @@ function CodeReadOnly({codeValue, uniqueIdName}) {
                     showLineNumbers: true,
                     maxLines: Infinity,
                     wrap : true
-                }}/>
+                }}
+            />
         </>
     )
 }
