@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 import {Formik} from "formik";
 import Question from "./question";
 import ResultQuizz from "./resultQuizz";
+import CodeReadOnly from "../Code/CodeReadOnly";
 
 const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
 
@@ -59,6 +60,20 @@ const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , s
             setLastQuestion(true);
         }
     };
+    function sliceQuestionText(str) {
+        const deliminator = "#4#";
+        let tabQuestionText = [];
+
+        const types = str.startsWith(deliminator) ? ["code", "text"] : ["text", "code"];
+        tabQuestionText = str
+            .split(deliminator)
+            .map((value, index) => ({
+                type: types[index % 2],
+                value
+            }));
+
+        return tabQuestionText;
+    }
 
 
     return (
@@ -74,7 +89,15 @@ const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , s
             && <>
                 {!lastQuestion
                 && <div>
-                    <h4> {questionData.questionText} </h4>
+                    <h4>  {sliceQuestionText(questionData.questionText).map((item1, idx1) => (
+                        <div key={idx1}>
+                            {item1.type === 'text'
+                                ? <p>{item1.value}</p>
+                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`}/>}
+                        </div>
+                    ))}
+
+                        </h4>
                     <div className="options-container">
                         <div className="options">
                             <Formik
@@ -95,6 +118,7 @@ const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , s
                                               handleSubmit={handleSubmit}
                                               handleBlur={handleBlur}
                                               handleChange={handleChange}
+                                              sliceQuestionText={sliceQuestionText}
                                     />
 
                                 )}
@@ -103,7 +127,7 @@ const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , s
                     </div>
                 </div>}
 
-                {isTraining && lastQuestion && <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview}/>}
+                {isTraining && lastQuestion && <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview} />}
                 {isQCM && lastQuestion &&  <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview} isQCM={isQCM}/>}
             </>}
         </div>

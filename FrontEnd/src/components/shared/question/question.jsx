@@ -7,7 +7,7 @@ import classNames from "classnames";
 import Button from "react-bootstrap/Button";
 import CheckAnswer from "./checkAnswer";
 
-const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange}) => {
+const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange, sliceQuestionText}) => {
 
     return (
         <Form onSubmit={handleSubmit} style={{textAlign: "left", marginLeft: "10px"}}>
@@ -36,7 +36,7 @@ const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAn
                 </div>
             ))}
             {showAnswerChoiceButton
-            && <Answer explication={question.explanation}/>}
+            && <Answer explication={question.explanation} sliceQuestionText={sliceQuestionText}/>}
             <div className="button-container">
                 {!showAnswerChoiceButton
                 && <Button variant={"success"}

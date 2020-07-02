@@ -1,9 +1,16 @@
 import React, {memo} from "react";
 import "./question.css"
+import CodeReadOnly from "../Code/CodeReadOnly";
 
-const Answer = ({explication})=>(
+const Answer = ({explication, sliceQuestionText})=>(
         <p >
-            {explication}
+                {sliceQuestionText(explication).map((item1, idx1) => (
+                    <div key={idx1}>
+                            {item1.type === 'text'
+                                ? <p>{item1.value}</p>
+                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`}/>}
+                    </div>
+                ))}
         </p>
 );
 export default  memo( Answer);
