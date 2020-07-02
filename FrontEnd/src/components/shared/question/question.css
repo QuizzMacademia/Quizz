@@ -7,16 +7,17 @@
     border-radius: 5px;}
 
 .question  h4 {
-        font-size: 1.7rem;
-        margin-bottom: 30px;
-        line-height: 1.5;
-        text-align: left;
-        margin-left: 60px;
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    text-align: left;
+    margin-right: 45px;
+    margin-left: 50px;
     }
 .options-container{
     display: inline-block;
     width:90%;
-    margin: auto;
+
 }
 .options{
     width:100%;
