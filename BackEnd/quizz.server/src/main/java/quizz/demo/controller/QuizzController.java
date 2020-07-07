@@ -40,7 +40,7 @@ public class QuizzController {
 	// Provides Quizz's id by quizz's type, by theme and by difficulty's level
 	@PostMapping(value = "/generate")
 	public ResponseEntity<Long> generateQuizz(@RequestParam(value = "type") QuizzType quizzType,
-			@RequestParam(value = "theme") Theme quizzTheme, @RequestParam(value = "level") int level) {
+			@RequestParam(value = "theme") String quizzTheme, @RequestParam(value = "level") int level) {
 		Quizz quizz = quizzService.createQuizzbyTypeAndThemeAndLevel(quizzType, quizzTheme, level)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Une erreur est survenue pendant la génération du quizz!"));

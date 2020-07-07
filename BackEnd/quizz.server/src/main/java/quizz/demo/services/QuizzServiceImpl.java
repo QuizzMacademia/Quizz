@@ -5,7 +5,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import quizz.demo.model.entities.Category;
 import quizz.demo.model.entities.Question;
@@ -16,6 +18,7 @@ import quizz.demo.model.entities.Theme;
 import quizz.demo.repositories.CategoryRepository;
 import quizz.demo.repositories.QuestionRepository;
 import quizz.demo.repositories.QuizzRepository;
+import quizz.demo.repositories.ThemeRepository;
 
 @Service
 public class QuizzServiceImpl implements QuizzService {
@@ -28,6 +31,9 @@ public class QuizzServiceImpl implements QuizzService {
 
 	@Autowired
 	QuestionRepository questionRepository;
+	
+	@Autowired
+	ThemeRepository themeRepository;
 
 
 	@Override
@@ -40,7 +46,7 @@ public class QuizzServiceImpl implements QuizzService {
 		return quizzRepository.save(quizz);
 	}
 
-	public Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, Theme theme, int level) {
+	public Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, String theme, int level) {
 		Quizz quizz = new Quizz();
 		Question question = new Question();
 		switch (type) {
@@ -61,8 +67,11 @@ public class QuizzServiceImpl implements QuizzService {
 				quizz.getQuestionsNumber());
 		quizz.setQuestions(questions);
 		quizz.setType(type);
-		quizz.setTheme(theme);
-		quizz.setLevel(level);
+		Theme quizzTheme=themeRepository.findThemeByTheme(theme).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				"Aucun theme trouvé! "));
+		quizz.setTheme(quizzTheme);
+        quizz.setLevel(level);
+		
 		if (type.equals(QuizzType.EXERCISING)) {
 			quizz.setExpirationDate(LocalDateTime.now().plus(2, ChronoUnit.MINUTES));
 		}

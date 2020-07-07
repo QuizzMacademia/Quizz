@@ -35,7 +35,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Question> getByTypeAndThemeAndLevel(QuestionType type, Theme theme, int level, int questionsNumber) {
+	public List<Question> getByTypeAndThemeAndLevel(QuestionType type, String theme, int level, int questionsNumber) {
 		Pageable pageable = PageRequest.of(0, questionsNumber);
 		return questionRepository.findByTypeAndThemeAndLevel(type, theme, level, pageable, questionsNumber);
 	}

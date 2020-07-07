@@ -16,7 +16,7 @@ public interface QuestionService {
 
 	Question saveOrUpDate(Question question);
 
-	List<Question> getByTypeAndThemeAndLevel(QuestionType type, Theme theme, int level, int questionsNumber);
+	List<Question> getByTypeAndThemeAndLevel(QuestionType type, String theme, int level, int questionsNumber);
     
 	Optional<Question> getQuestionByQuizzIdAndQuestionId(Long quizzId, int questionId);
 

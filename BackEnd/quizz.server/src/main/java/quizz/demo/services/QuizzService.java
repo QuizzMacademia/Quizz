@@ -11,7 +11,7 @@ public interface QuizzService {
 
 	Optional<Quizz> getQuizzById(Long quizzId);
 
-	Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, Theme theme, int level);
+	Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, String theme, int level);
 
 	Quizz saveOrUpDate(Quizz quizz);
 

@@ -11,8 +11,8 @@ import quizz.demo.model.entities.Theme;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-	@Query("select q from Question q where q.type = ?1 and q.theme = ?2 and q.level = ?3 order by rand()")
-	List<Question> findByTypeAndThemeAndLevel(QuestionType type, Theme theme, int level, Pageable pageable,
+	@Query("select q from Question q where q.type = ?1 and q.theme.theme = ?2 and q.level = ?3 order by rand()")
+	List<Question> findByTypeAndThemeAndLevel(QuestionType type, String theme, int level, Pageable pageable,
 			int questionsNumber);
 	
 	@Query("select question from Quizz quizz join quizz.questions question where quizz.id= ?1 and INDEX(question)= ?2")
