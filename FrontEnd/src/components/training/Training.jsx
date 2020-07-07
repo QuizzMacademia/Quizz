@@ -45,7 +45,8 @@ function Training({match: {params: {id}}}) {
                     getQuestion={getQuestionTraining}
                     index={index}
                     setIndex={setIndex}
-                    isTraining={isTraining}/>
+                    isTraining={isTraining}
+                    lengthQuizz={10}/>
         </div>
     );
 }

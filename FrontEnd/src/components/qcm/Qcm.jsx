@@ -31,7 +31,8 @@ function Qcm({match:{params:{id}}}) {
                     //  Enregistre dans le hooks questionData la question retourné par le backend
                     setQuestionData(res.data);
                     //  Permet de réaliser l'affichage de la première question.
-                    if(firstGetQuestion === false) setFirstGetQuestion(true)
+                    if(firstGetQuestion === false)
+                        setFirstGetQuestion(true)
                 }
             }, (error) => {
                 console.error(error);
@@ -46,7 +47,8 @@ function Qcm({match:{params:{id}}}) {
                    getQuestion={getQuestionQCM}
                    index={index}
                    setIndex={setIndex}
-                   isQCM={isQCM}/>
+                   isQCM={isQCM}
+                   lengthQuizz={4}/>
         </div>
     );
 }

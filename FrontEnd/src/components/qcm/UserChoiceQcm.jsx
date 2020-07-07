@@ -37,15 +37,18 @@ function UserChoiceQcm() {
     //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
-        axios.post('/quizz/generate', null, {params: values})
+        //quizz/id?type=TRAINING&theme=javascript&category=Les conditions
+
+        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.category}`)
             .then(res => {
                 if (res.status === 200) {
     //  Suite au retour du backend, switch sur le component affichant la première question
                     history.push({pathname: `/Accueil/Qcm/${res.data}`});
+                    console.log(res.data)
                 }
             }, (error) => {
                 console.error(error);
-            })
+            });
         resetForm();
         setLoading(true);
     };
@@ -81,16 +84,21 @@ function UserChoiceQcm() {
         {value: "", label: "Choisir une catégorie"}
     ]
 
-    const MOCK_DATA_AXIOS = [
-        {value: "Variable", label: "Variable"},
-        {value: "Tableau", label: "Tableau"}
-    ];
-
     const addNewDataToCategory = (theme) => {
-        const tmpTab = [];
-        tmpTab.push(...MOCK_DATA_SELECT);
-        tmpTab.push(...MOCK_DATA_AXIOS);
-        setCategory(tmpTab);
+        const categoryTab = [...MOCK_DATA_SELECT];
+
+        axios.get(`/quizz/categories?type=TRAINING&theme=${theme}`)
+            .then(res => {
+                if (res.status === 200) {
+                    res.data.map((item) => (
+                    categoryTab.push({value: item.category, label: item.category})
+                    ));
+                    setCategory(categoryTab);
+                }
+            }, (error) => {
+                console.error(error);
+            });
+
     };
 
     return (
