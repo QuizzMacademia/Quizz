@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import quizz.demo.model.entities.Category;
 import quizz.demo.model.entities.Question;
 import quizz.demo.model.entities.QuestionType;
+import quizz.demo.model.entities.Theme;
 import quizz.demo.repositories.QuestionRepository;
 
 @Service
@@ -32,11 +35,13 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public List<Question> getByTypeAndThemeAndLevel(QuestionType type, String theme, int level,
-			int questionsNumber) {
+	public List<Question> getByTypeAndThemeAndLevel(QuestionType type, Theme theme, int level, int questionsNumber) {
 		Pageable pageable = PageRequest.of(0, questionsNumber);
-		return questionRepository.findByTypeAndThemeAndLevel(type, theme, level, pageable,
-				questionsNumber);
+		return questionRepository.findByTypeAndThemeAndLevel(type, theme, level, pageable, questionsNumber);
 	}
+	@Override
+	public Optional<Question> getQuestionByQuizzIdAndQuestionId(Long quizzId, int questionId) {
 
+		return questionRepository.findByQuizzIdAndQuestionId(quizzId, questionId);
+	}
 }

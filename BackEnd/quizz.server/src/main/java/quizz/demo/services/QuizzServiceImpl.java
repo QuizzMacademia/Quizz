@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import quizz.demo.model.entities.Category;
 import quizz.demo.model.entities.Question;
 import quizz.demo.model.entities.QuestionType;
 import quizz.demo.model.entities.Quizz;
 import quizz.demo.model.entities.QuizzType;
+import quizz.demo.model.entities.Theme;
+import quizz.demo.repositories.CategoryRepository;
 import quizz.demo.repositories.QuestionRepository;
 import quizz.demo.repositories.QuizzRepository;
 
@@ -25,6 +29,7 @@ public class QuizzServiceImpl implements QuizzService {
 	@Autowired
 	QuestionRepository questionRepository;
 
+
 	@Override
 	public Optional<Quizz> getQuizzById(Long quizzId) {
 		return quizzRepository.findById(quizzId);
@@ -35,7 +40,7 @@ public class QuizzServiceImpl implements QuizzService {
 		return quizzRepository.save(quizz);
 	}
 
-	public Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, String theme, int level) {
+	public Optional<Quizz> createQuizzbyTypeAndThemeAndLevel(QuizzType type, Theme theme, int level) {
 		Quizz quizz = new Quizz();
 		Question question = new Question();
 		switch (type) {
@@ -59,7 +64,7 @@ public class QuizzServiceImpl implements QuizzService {
 		quizz.setTheme(theme);
 		quizz.setLevel(level);
 		if (type.equals(QuizzType.EXERCISING)) {
-			quizz.setexpirationDate(LocalDateTime.now().plus(2, ChronoUnit.MINUTES));
+			quizz.setExpirationDate(LocalDateTime.now().plus(2, ChronoUnit.MINUTES));
 		}
 		quizzRepository.save(quizz);
 
@@ -67,8 +72,11 @@ public class QuizzServiceImpl implements QuizzService {
 	}
 
 	@Override
-	public Optional<Question> getQuestiondByQuizzIdAndQuestionId(Long quizzId, int questionId) {
-		return quizzRepository.findByQuizzIdAndQuestionId(quizzId, questionId);
+	public Optional<Quizz> getQuizzByTypeAndThemeAndCategory(QuizzType type, String theme, String Category) {
+
+		return quizzRepository.findByTypeAndThemeThemeAndCategoryCategory(type, theme, Category);
 	}
+
+	
 
 }

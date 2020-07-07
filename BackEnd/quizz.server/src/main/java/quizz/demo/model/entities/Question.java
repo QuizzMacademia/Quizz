@@ -1,6 +1,5 @@
 package quizz.demo.model.entities;
 
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,41 +12,46 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Question {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String questionText;
-	
+
 	@Enumerated(EnumType.STRING)
 	private QuestionType type;
-	
-	private String theme;
-	
+    
+	@OneToOne
+	private Theme theme;
+
 	private int level;
-	
-	private String choiceType;///check box ou radio button 
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
-	private Set <Choice>choices=new HashSet<>();
-	
-	private int [] correctAnswer ;//Ici on n'a pas encore prévu la partie script!!!
-	
+
+	private String choiceType;/// check box ou radio button
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Choice> choices = new HashSet<>();
+
+	private int[] correctAnswer;// Ici on n'a pas encore prévu la partie script!!!
+
 	@Lob
 	private String explanation;
 
+	@ManyToOne
+	private Category category;
+
 	public Question() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Question(long id, String questionText, QuestionType type, String theme, int level, String choiceType,
-			Set<Choice> choices, int[] correctAnswer, String explanation) {
+	public Question(long id, String questionText, QuestionType type, Theme theme, int level, String choiceType,
+			Set<Choice> choices, int[] correctAnswer, String explanation, Category category) {
 		super();
 		this.id = id;
 		this.questionText = questionText;
@@ -58,6 +62,7 @@ public class Question {
 		this.choices = choices;
 		this.correctAnswer = correctAnswer;
 		this.explanation = explanation;
+		this.category = category;
 	}
 
 	public long getId() {
@@ -84,11 +89,11 @@ public class Question {
 		this.type = type;
 	}
 
-	public String getTheme() {
+	public Theme getTheme() {
 		return theme;
 	}
 
-	public void setTheme(String theme) {
+	public void setTheme(Theme theme) {
 		this.theme = theme;
 	}
 
@@ -132,11 +137,18 @@ public class Question {
 		this.explanation = explanation;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", questionText=" + questionText + ", type=" + type + ", theme=" + theme
 				+ ", level=" + level + ", choiceType=" + choiceType + ", choices=" + choices + ", correctAnswer="
-				+ Arrays.toString(correctAnswer) + ", explanation=" + explanation + "]";
-	}
-	
+				+ Arrays.toString(correctAnswer) + ", explanation=" + explanation + ", category=" + category + "]";
+	}	
 }
