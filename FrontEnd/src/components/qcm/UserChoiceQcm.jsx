@@ -50,7 +50,7 @@ function UserChoiceQcm() {
                 console.error(error);
                 setMessageError(true);
                 setLoading(false);
-                resetForm({Formik});
+                resetForm();
 
             });
 
@@ -127,7 +127,7 @@ function UserChoiceQcm() {
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
                                             <Form.Label>Sujet</Form.Label>
-                                            <Form.Control as="select" onChange={handleChange} onBlur={e => {
+                                            <Form.Control as="select" value={values.theme} onChange={handleChange} onBlur={e => {
                                                 // call the built-in handleBur
                                                 handleBlur(e);
                                                 if(values.theme !== "") addNewDataToCategory(values.theme);
@@ -142,7 +142,7 @@ function UserChoiceQcm() {
                                         </Form.Group>
                                         <Form.Group as={Col} controlId="category">
                                             <Form.Label>Catégorie</Form.Label>
-                                            <Form.Control as="select" defaultValue={"choisir"} onChange={handleChange} onBlur={handleBlur}>
+                                            <Form.Control as="select" value={values.category} onChange={handleChange} onBlur={handleBlur}>
                                                 {category.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
@@ -162,9 +162,9 @@ function UserChoiceQcm() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
-                                       <pre>{JSON.stringify(errors, null, 4)}</pre>
+                                        {/* <pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
-                                        <pre>{JSON.stringify(values, null, 4)}</pre>
+                                        <pre>{JSON.stringify(values, null, 4)}</pre>*/}
                                     </Form>
 
                                 </>
