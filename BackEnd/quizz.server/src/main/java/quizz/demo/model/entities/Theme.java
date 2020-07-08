@@ -8,22 +8,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Theme {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String theme;
-	
+
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Category> categories = new ArrayList();
+	private List<Category> categories = new ArrayList<>();
+
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@OneToMany(cascade = CascadeType.ALL) // je mets une cascade parceque une category peut exister sans un quizz
+//	private List<Quizz> quizzes = new ArrayList<>();
 
 	public Theme() {
 		super();
@@ -34,11 +37,13 @@ public class Theme {
 		this.id = id;
 		this.theme = theme;
 		this.categories = categories;
+		//this.quizzes = quizzes;
 	}
 
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -63,4 +68,5 @@ public class Theme {
 	public String toString() {
 		return "Theme [id=" + id + ", theme=" + theme + ", categories=" + categories + "]";
 	}
+
 }
