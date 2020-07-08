@@ -5,11 +5,11 @@
 		"categories": [
 			{
 				"id": 1,
-				"category": "Le type des données"
+				"category": "Le langage"
 			},
 			{
 				"id": 2,
-				"category": "Les conditions"
+				"category": "Le type des données"
 			},
 			{
 				"id": 3,
@@ -25,7 +25,7 @@
 			},
 			{
 				"id": 6,
-				"category": "Opérations"
+				"category": "Les opérations"
 			}
 		]
 	}
