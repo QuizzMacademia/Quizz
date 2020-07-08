@@ -6,9 +6,9 @@ import Question from "./question";
 import ResultQuizz from "./resultQuizz";
 import CodeReadOnly from "../Code/CodeReadOnly";
 
-const Quizz = ({questionData, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
+const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
 
-    const [quizzSize] = useState(10);
+    const [quizzSize] = useState(lengthQuizz);
     const [lastQuestion, setLastQuestion] = useState(false);
     const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
     const [userResult, setUseResult] = useState(0);
