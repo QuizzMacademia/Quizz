@@ -39,7 +39,7 @@ function UserChoiceQcm() {
     const handleSubmit = (values,{ resetForm}) => {
         //quizz/id?type=TRAINING&theme=javascript&category=Les conditions
 
-        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.theme}`)
+        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.category}`)
             .then(res => {
                 if (res.status === 200) {
                  //  Suite au retour du backend, switch sur le component affichant la première question
