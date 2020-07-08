@@ -15,7 +15,7 @@ function UserChoiceQcm() {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [isLoading, setLoading] = useState(false);
-
+    const [messageError, setMessageError] = useState(false);
     let history = useHistory();
 
     //  Permet de simuler le chargement du backend, change l'affichage du bouton
@@ -36,21 +36,26 @@ function UserChoiceQcm() {
 
     //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
-    const handleSubmit = (values, {resetForm}) => {
+    const handleSubmit = (values,{ resetForm}) => {
         //quizz/id?type=TRAINING&theme=javascript&category=Les conditions
 
-        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.category}`)
+        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.theme}`)
             .then(res => {
                 if (res.status === 200) {
-    //  Suite au retour du backend, switch sur le component affichant la première question
+                 //  Suite au retour du backend, switch sur le component affichant la première question
                     history.push({pathname: `/Accueil/Qcm/${res.data}`});
                     console.log(res.data)
                 }
             }, (error) => {
                 console.error(error);
+                setMessageError(true);
+                setLoading(false);
+                resetForm({Formik});
+
             });
-        resetForm();
+
         setLoading(true);
+        resetForm();
     };
 
     //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
@@ -63,25 +68,25 @@ function UserChoiceQcm() {
     const initialValues = {
     //        type:"TRAINING",
         type:"EXERCISING",
-        theme: "",
-        category: "",
+        theme: "choisir",
+        category: "choisir",
         level: "1"
     };
 
     //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
-        {value: "", label: "Choisir un sujet"},
-        {value: "JavaScript", label: "JavaScript"}
+        {sel:"true", value: "", label: "Choisir un sujet"},
+        {sel:"false", value: "JavaScript", label: "JavaScript"}
     ];
 
     //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const [category, setCategory] = useState([
-            {value: "", label: "Choisir une catégorie"}
+            {value: "choisir", label: "Choisir une catégorie"}
         ]
     );
 
     const MOCK_DATA_SELECT = [
-        {value: "", label: "Choisir une catégorie"}
+        {value: "choisir", label: "Choisir une catégorie"}
     ]
 
     const addNewDataToCategory = (theme) => {
@@ -97,6 +102,7 @@ function UserChoiceQcm() {
                 }
             }, (error) => {
                 console.error(error);
+
             });
 
     };
@@ -109,6 +115,8 @@ function UserChoiceQcm() {
                     <Modal.Title>Choisissez le sujet et la catégorie de votre Q.C.M.</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{padding: "30px 20px"}}>
+                    {messageError &&
+                    <div style={{textAlign: "center", color:"red"}}>Une erreur technique est survenue</div>}
                        <Formik
                             validationSchema={validationSchema}
                             initialValues={initialValues}
@@ -134,7 +142,7 @@ function UserChoiceQcm() {
                                         </Form.Group>
                                         <Form.Group as={Col} controlId="category">
                                             <Form.Label>Catégorie</Form.Label>
-                                            <Form.Control as="select" onChange={handleChange} onBlur={handleBlur}>
+                                            <Form.Control as="select" defaultValue={"choisir"} onChange={handleChange} onBlur={handleBlur}>
                                                 {category.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
@@ -154,9 +162,9 @@ function UserChoiceQcm() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
-                                        {/*  <pre>{JSON.stringify(errors, null, 4)}</pre>
+                                       <pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
-                                        <pre>{JSON.stringify(values, null, 4)}</pre> */}
+                                        <pre>{JSON.stringify(values, null, 4)}</pre>
                                     </Form>
 
                                 </>
