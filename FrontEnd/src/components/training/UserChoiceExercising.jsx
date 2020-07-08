@@ -15,7 +15,7 @@ function UserChoiceExercising() {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [isLoading, setLoading] = useState(false);
-
+    const [messageError, setMessageError] = useState(false);
     let history = useHistory();
 
 //  Permet de simuler le chargement du backend, change l'affichage du bouton
@@ -45,6 +45,9 @@ function UserChoiceExercising() {
                 }
             }, (error) => {
                 console.error(error);
+                setMessageError(true);
+                setLoading(false);
+                resetForm();
             });
         resetForm();
         setLoading(true);
@@ -83,6 +86,8 @@ function UserChoiceExercising() {
                     <Modal.Title>Choisissez le sujet et le niveau de votre entreinement.</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{padding: "30px 20px"}}>
+                    {messageError &&
+                    <div style={{textAlign: "center", color:"red"}}>Une erreur technique est survenue</div>}
                        <Formik
                             validationSchema={validationSchema}
                             initialValues={initialValues}
@@ -93,7 +98,7 @@ function UserChoiceExercising() {
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
                                             <Form.Label>Sujet de l'entreinement</Form.Label>
-                                            <Form.Control as="select" onChange={handleChange} onBlur={handleBlur} >
+                                            <Form.Control as="select" value={values.theme} onChange={handleChange} onBlur={handleBlur} >
                                                 {MOCK_SUJET.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
@@ -104,7 +109,7 @@ function UserChoiceExercising() {
                                         </Form.Group>
                                         <Form.Group as={Col} controlId="level">
                                             <Form.Label>Niveau de difficulté</Form.Label>
-                                            <Form.Control as="select" onChange={handleChange} onBlur={handleBlur}>
+                                            <Form.Control as="select" value={values.level} onChange={handleChange} onBlur={handleBlur}>
                                                 {MOCK_LEVEL.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
