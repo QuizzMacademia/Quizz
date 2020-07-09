@@ -60,33 +60,32 @@ function UserChoiceQcm() {
 
     //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
-        theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
-        category: Yup.string().required("Sélectionner un niveau d'entreinement.")
+        theme: Yup.string().required("Sélectionner un sujet d'entrainement."),
+        category: Yup.string().required("Sélectionner une catégorie.")
     });
 
     //  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
-    //        type:"TRAINING",
-        type:"EXERCISING",
-        theme: "choisir",
-        category: "choisir",
+        type:"TRAINING",
+        theme: "",
+        category: "",
         level: "1"
     };
 
-    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
-    const MOCK_SUJET = [
-        {sel:"true", value: "", label: "Choisir un sujet"},
-        {sel:"false", value: "JavaScript", label: "JavaScript"}
-    ];
-
     //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const [category, setCategory] = useState([
-            {value: "choisir", label: "Choisir une catégorie"}
+            {value: "", label: "Choisir une catégorie"}
         ]
     );
 
+    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
+    const MOCK_SUJET = [
+        {value: "", label: "Choisir un sujet"},
+        {value: "JavaScript", label: "JavaScript"}
+    ];
+
     const MOCK_DATA_SELECT = [
-        {value: "choisir", label: "Choisir une catégorie"}
+        {value: "", label: "Choisir une catégorie"}
     ]
 
     const addNewDataToCategory = (theme) => {
@@ -102,9 +101,7 @@ function UserChoiceQcm() {
                 }
             }, (error) => {
                 console.error(error);
-
             });
-
     };
 
     return (
