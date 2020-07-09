@@ -62,7 +62,9 @@ function UserChoiceQcm() {
     //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
-        {value: "JavaScript", label: "JavaScript"}
+        {value: "Javascript", label: "JavaScript"},
+        {value: "Java", label: "Java"},
+        {value: "Python", label: "Python"}
     ];
 
     const addNewDataToCategory = (theme) => {

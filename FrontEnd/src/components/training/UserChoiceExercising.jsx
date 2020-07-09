@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -14,49 +14,35 @@ function UserChoiceExercising() {
 //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
-
-//  Permet de simuler le chargement du backend, change l'affichage du bouton
-    const simulateNetworkRequest = () => {
-        return new Promise((resolve) => {
-            //setTimeout(handleClose, 2000)
-        });
-    }
-
-//  Permet de simuler le chargement du backend, change l'affichage du bouton
-    useEffect(() => {
-        if (isLoading) {
-            simulateNetworkRequest().then(() => {
-                setLoading(false);
-            });
-        }
-    }, [isLoading]);
 
 //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
 //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
+        setIsLoading(true);
         axios.post('/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
 //  Suite au retour du backend, switch sur le component affichant la première question
+                    setIsLoading(false);
                     history.push({pathname: `/Accueil/Entrainement/${res.data}`});
                 }
             }, (error) => {
                 console.error(error);
                 setMessageError(true);
-                setLoading(false);
+                setIsLoading(false);
                 resetForm();
             });
         resetForm();
-        setLoading(true);
+        setIsLoading(true);
     };
 
 //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
-        theme: Yup.string().required("Sélectionner un sujet d'entreinement."),
-        level: Yup.string().required("Sélectionner un niveau d'entreinement.")
+        theme: Yup.string().required("Sélectionner un sujet d'entrainement."),
+        level: Yup.string().required("Sélectionner un niveau d'entrainement.")
     });
 
 //  Permet d'initialiser le formulaire à ses valeurs par default
@@ -69,13 +55,20 @@ function UserChoiceExercising() {
 //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
-        {value: "Javascript", label: "JavaScript"}
+        {value: "Javascript", label: "JavaScript"},
+        {value: "Java", label: "Java"},
+        {value: "Python", label: "Python"}
     ];
 
 //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const MOCK_LEVEL = [
         {value: "", label: "Choisir un niveau"},
-        {value: "1", label: "1"}
+        {value: "1", label: "1"},
+        {value: "2", label: "2"},
+        {value: "3", label: "3"},
+        {value: "4", label: "4"},
+        {value: "5", label: "5"},
+        {value: "6", label: "6"}
     ];
 
     return (
@@ -83,7 +76,7 @@ function UserChoiceExercising() {
             <Modal show={show} onHide={handleClose} size="lg" centered>
                 <span className={"modalStyle"}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Choisissez le sujet et le niveau de votre entreinement.</Modal.Title>
+                    <Modal.Title>Choisissez le sujet et le niveau de votre entrainement.</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{padding: "30px 20px"}}>
                     {messageError &&
@@ -97,7 +90,7 @@ function UserChoiceExercising() {
                                 <>
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
-                                            <Form.Label>Sujet de l'entreinement</Form.Label>
+                                            <Form.Label>Sujet de l'entrainement</Form.Label>
                                             <Form.Control as="select" value={values.theme} onChange={handleChange} onBlur={handleBlur} >
                                                 {MOCK_SUJET.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
