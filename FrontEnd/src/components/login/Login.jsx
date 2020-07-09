@@ -17,17 +17,17 @@ import {Link} from "react-router-dom";
 const Login = () => {
     const [loginError, setLoginError] = useState(false);
     const actualUser = {email: "", password: ""};
-    const [isLoding, setIsLoding] = useState(false);
+    const [isLoading, setisLoading] = useState(false);
     let history = useHistory();
 
     const {updateLoggedInUser, updateIsLogged} = useContext(LoginContext);
 
     const onSubmit = (values) => {
-        setIsLoding(true);
+        setisLoading(true);
         axios.post('/login', values)
             .then(res => {
                 if (res.status === 200) {
-                    setIsLoding(false);
+                    setisLoading(false);
                     updateLoggedInUser(values.email);
                     updateIsLogged(1);
                     localStorage.setItem('isLogged', JSON.stringify(1))
@@ -40,7 +40,7 @@ const Login = () => {
                     values.email = "";
                     values.password = "";
                     setLoginError(false);
-                    setIsLoding(false);
+                    setisLoading(false);
                 }, 1000);
             })
     };
@@ -94,14 +94,14 @@ const Login = () => {
                                 <ErrorMessage name="password">{msg => <div
                                     className={'error-message'}>{msg}</div>}</ErrorMessage>
                             </div>
-                            {isLoding && <Loader
+                            {isLoading && <Loader
                                 type="Circles"
                                 color="#ff4b82"
                                 height={80}
                                 width={80}
                                 className={"loading"}
                             />}
-                            <Button variant="success" type={"submit"} disabled={isLoding}>
+                            <Button variant="success" type={"submit"} disabled={isLoading}>
                                 Valider
                             </Button>
                         </Form>

@@ -8,24 +8,25 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import {useHistory} from "react-router";
+import Loader from "react-loader-spinner";
 
 function UserChoiceExercising() {
 
-//  Déclaration des variables utilisées dans le component
+    //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
 
-//  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
-//  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
+    //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
+    //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
         setIsLoading(true);
         axios.post('/quizz/generate', null, {params: values})
             .then(res => {
                 if (res.status === 200) {
-//  Suite au retour du backend, switch sur le component affichant la première question
+                    //  Suite au retour du backend, switch sur le component affichant la première question
                     setIsLoading(false);
                     history.push({pathname: `/Accueil/Entrainement/${res.data}`});
                 }
@@ -39,20 +40,20 @@ function UserChoiceExercising() {
         setIsLoading(true);
     };
 
-//  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
+    //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
         theme: Yup.string().required("Sélectionner un sujet d'entrainement."),
         level: Yup.string().required("Sélectionner un niveau d'entrainement.")
     });
 
-//  Permet d'initialiser le formulaire à ses valeurs par default
+    //  Permet d'initialiser le formulaire à ses valeurs par default
     const initialValues = {
         type:"EXERCISING",
         theme: "",
         level: ""
     };
 
-//  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
+    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
         {value: "Javascript", label: "JavaScript"},
@@ -60,7 +61,7 @@ function UserChoiceExercising() {
         {value: "Python", label: "Python"}
     ];
 
-//  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
+    //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const MOCK_LEVEL = [
         {value: "", label: "Choisir un niveau"},
         {value: "1", label: "1"},
@@ -122,14 +123,19 @@ function UserChoiceExercising() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
+                                        {isLoading && <Loader
+                                            type="Circles"
+                                            color="#ff4b82"
+                                            height={80}
+                                            width={80}
+                                            className={"loading"}
+                                        />}
                                         {/*<pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
                                         <pre>{JSON.stringify(values, null, 4)}</pre>*/}
                                     </Form>
-
                                 </>
                             )}
-
                         </Formik>
                 </Modal.Body>
                     </span>

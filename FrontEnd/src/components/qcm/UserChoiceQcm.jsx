@@ -8,6 +8,7 @@ import {Formik} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import {useHistory} from "react-router";
+import Loader from "react-loader-spinner";
 
 function UserChoiceQcm() {
 
@@ -70,6 +71,7 @@ function UserChoiceQcm() {
     const addNewDataToCategory = (theme) => {
         const categoryTab = [...MOCK_DATA_SELECT];
 
+        setIsLoading(true);
         axios.get(`/quizz/categories?type=TRAINING&theme=${theme}`)
             .then(res => {
                 if (res.status === 200) {
@@ -77,10 +79,13 @@ function UserChoiceQcm() {
                     categoryTab.push({value: item.category, label: item.category})
                     ));
                     setCategory(categoryTab);
+                    setIsLoading(false);
                 }
             }, (error) => {
                 console.error(error);
+                setIsLoading(false);
             });
+        setIsLoading(false);
     };
 
     return (
@@ -137,6 +142,13 @@ function UserChoiceQcm() {
                                                 {isLoading ? 'Chargement…' : 'Commencer'}
                                             </Button>
                                         </div>
+                                        {isLoading && <Loader
+                                            type="Circles"
+                                            color="#ff4b82"
+                                            height={80}
+                                            width={80}
+                                            className={"loading"}
+                                        />}
                                         {/* <pre>{JSON.stringify(errors, null, 4)}</pre>
                                         <p>--------------------------------------------</p>
                                         <pre>{JSON.stringify(values, null, 4)}</pre>*/}
