@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -14,47 +14,28 @@ function UserChoiceQcm() {
     //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
 
-    //  Permet de simuler le chargement du backend, change l'affichage du bouton
-    const simulateNetworkRequest = () => {
-        return new Promise((resolve) => {
-            //setTimeout(handleClose, 2000)
-        });
-    }
-
-    //  Permet de simuler le chargement du backend, change l'affichage du bouton
-    useEffect(() => {
-        if (isLoading) {
-            simulateNetworkRequest().then(() => {
-                setLoading(false);
-            });
-        }
-    }, [isLoading]);
-
     //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
-    const handleSubmit = (values,{ resetForm}) => {
-        //quizz/id?type=TRAINING&theme=javascript&category=Les conditions
-
+    const handleSubmit = (values, {resetForm}) => {
+        setIsLoading(true);
         axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.category}`)
             .then(res => {
                 if (res.status === 200) {
                  //  Suite au retour du backend, switch sur le component affichant la première question
+                    setIsLoading(false);
                     history.push({pathname: `/Accueil/Qcm/${res.data}`});
-                    console.log(res.data)
                 }
             }, (error) => {
                 console.error(error);
                 setMessageError(true);
-                setLoading(false);
+                setIsLoading(false);
                 resetForm();
-
             });
-
-        setLoading(true);
+        setIsLoading(false);
         resetForm();
     };
 
