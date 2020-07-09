@@ -68,25 +68,21 @@ function UserChoiceQcm() {
     const initialValues = {
         type:"TRAINING",
         theme: "",
-        category: "",
-        level: "1"
+        category: ""
     };
 
+    const MOCK_DATA_SELECT = [
+        {value: "", label: "Choisir une catégorie"}
+    ]
+
     //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
-    const [category, setCategory] = useState([
-            {value: "", label: "Choisir une catégorie"}
-        ]
-    );
+    const [category, setCategory] = useState(MOCK_DATA_SELECT);
 
     //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
         {value: "JavaScript", label: "JavaScript"}
     ];
-
-    const MOCK_DATA_SELECT = [
-        {value: "", label: "Choisir une catégorie"}
-    ]
 
     const addNewDataToCategory = (theme) => {
         const categoryTab = [...MOCK_DATA_SELECT];
@@ -124,11 +120,10 @@ function UserChoiceQcm() {
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
                                             <Form.Label>Sujet</Form.Label>
-                                            <Form.Control as="select" value={values.theme} onChange={handleChange} onBlur={e => {
-                                                // call the built-in handleBur
-                                                handleBlur(e);
-                                                if(values.theme !== "") addNewDataToCategory(values.theme);
-                                                }} >
+                                            <Form.Control as="select" value={values.theme} onChange={event => {
+                                                handleChange(event)
+                                                event.target.value === "" ? setCategory(MOCK_DATA_SELECT) : addNewDataToCategory(event.target.value);
+                                            }} onBlur={handleBlur} >
                                                 {MOCK_SUJET.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
@@ -141,7 +136,7 @@ function UserChoiceQcm() {
                                             <Form.Label>Catégorie</Form.Label>
                                             <Form.Control as="select" value={values.category} onChange={handleChange} onBlur={handleBlur}>
                                                 {category.map((item, idx) => (
-                                                    <option key={`level-${idx}`} value={item.value} label={item.label} />))}
+                                                    <option key={`category-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.category &&
                                             touched.category &&
