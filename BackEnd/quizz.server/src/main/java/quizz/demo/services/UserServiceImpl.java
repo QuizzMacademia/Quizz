@@ -14,5 +14,10 @@ UserRepository userRepository;
 	public Optional<User> getUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+	@Override
+	public Boolean alreadyExistsByEmail(String email) {
+		Optional<User> oUser=userRepository.findByEmail(email);
+		return oUser.isPresent();
+	}
 
 }

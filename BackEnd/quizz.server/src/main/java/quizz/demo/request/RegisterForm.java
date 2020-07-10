@@ -1,15 +1,24 @@
 package quizz.demo.request;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
 
+import com.sun.istack.NotNull;
+
 public class RegisterForm {
 
-	@NonNull
-	@Size(min = 8, max = 20)
+	
+ 	@Size(min = 8,max=40)
+	@Lob
 	private String password;
+	
+	
+	@Size(min = 8,max=40)
+	@Lob
+	private String passwordConfirmation;
 
 	@NonNull
 	@Email
@@ -19,9 +28,11 @@ public class RegisterForm {
 
 	}
 
-	public RegisterForm(@Size(min = 8, max = 20) String password, @Email String email) {
+	public RegisterForm(@Size(min = 8, max = 20) String password, @Size(min = 8, max = 20) String passwordConfirmation,
+			@Email String email) {
 		super();
 		this.password = password;
+		this.passwordConfirmation = passwordConfirmation;
 		this.email = email;
 	}
 
@@ -31,6 +42,14 @@ public class RegisterForm {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
 	}
 
 	public String getEmail() {
@@ -43,6 +62,8 @@ public class RegisterForm {
 
 	@Override
 	public String toString() {
-		return "RegisterForm [password=" + password + ", email=" + email + "]";
+		return "RegisterForm [password=" + password + ", passwordConfirmation=" + passwordConfirmation + ", email="
+				+ email + "]";
 	}
+	
 }

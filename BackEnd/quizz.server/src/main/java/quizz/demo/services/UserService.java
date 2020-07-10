@@ -6,4 +6,5 @@ import quizz.demo.model.entities.User;
 public interface UserService {
 
 	Optional<User> getUserByEmail(String email);
+    Boolean alreadyExistsByEmail(String email);
 }
