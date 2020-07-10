@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, { useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import './Login.css'
@@ -8,7 +8,6 @@ import FormGroup from "react-bootstrap/FormGroup";
 import Row from "react-bootstrap/Row";
 import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
-import axios from "axios";
 import * as Yup from 'yup';
 import Loader from 'react-loader-spinner';
 
