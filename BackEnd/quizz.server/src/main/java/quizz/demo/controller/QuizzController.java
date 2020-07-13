@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import quizz.demo.model.entities.Category;
 import quizz.demo.model.entities.Question;
+import quizz.demo.model.entities.QuestionType;
 import quizz.demo.model.entities.Quizz;
 import quizz.demo.model.entities.QuizzInfo;
 import quizz.demo.model.entities.QuizzType;
@@ -21,6 +22,8 @@ import quizz.demo.model.entities.Theme;
 import quizz.demo.services.CategoryService;
 import quizz.demo.services.QuestionService;
 import quizz.demo.services.QuizzService;
+import quizz.demo.services.ThemeService;
+
 
 @RestController
 @RequestMapping("/quizz")
@@ -36,18 +39,40 @@ public class QuizzController {
 	@Autowired
 	CategoryService categoryService;
 
-	// Provides Quizz's id and questions number by quizz's type, by theme and by difficulty's level
+	@Autowired
+	ThemeService themeService;
+
+	//Provides quizz levels by type and theme
+	@GetMapping(value="/levels")
+	public ResponseEntity<List<Integer>> getLevels(@RequestParam(value="type")QuestionType questionType, @RequestParam(value="theme")String questionTheme){
+	List<Integer>levels=questionService.getLevelsByQuestionTypeAndTheme(questionType, questionTheme);
+	return new ResponseEntity<List<Integer>>(levels,HttpStatus.OK);
+	}
+
+	// Provides quizz's id and questions number by quizz's type, by theme and by
+	// difficulty's level
 	@PostMapping(value = "/generate")
 	public ResponseEntity<QuizzInfo> generateQuizz(@RequestParam(value = "type") QuizzType quizzType,
 			@RequestParam(value = "theme") String quizzTheme, @RequestParam(value = "level") int level) {
 		Quizz quizz = quizzService.createQuizzbyTypeAndThemeAndLevel(quizzType, quizzTheme, level)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Une erreur est survenue pendant la génération du quizz!"));
-		QuizzInfo quizzInfo= new QuizzInfo();
+		QuizzInfo quizzInfo = new QuizzInfo();
 		quizzInfo.setQuizzId(quizz.getId());
 		quizzInfo.setQuizzQuestionNumber(quizz.getQuestionsNumber());
 		return new ResponseEntity<QuizzInfo>(quizzInfo, HttpStatus.OK);
 	}
+	
+	// Provides quizz themes by type
+		@GetMapping(value = "/themes")
+		public ResponseEntity<List<Theme>> getThemes(@RequestParam(value = "type") QuizzType quizzType) {
+			List<Theme> themes = themeService.getThemesByQuizzType(quizzType)
+					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+							"Une erreur est survenue pendant la génération du quizz!"));
+			return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
+		}
+		
+	//Provides quizz levels by type and theme
 
 	// Provides Quizz categories, by type and theme
 	@GetMapping(value = "/categories")
