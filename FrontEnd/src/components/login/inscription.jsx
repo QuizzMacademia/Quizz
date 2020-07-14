@@ -24,10 +24,7 @@ const Inscription = () => {
         setIsLoding(true);
         console.log(values);
         axios.post('/register', values)
-            .then((res, rej)=> {
-                debugger
-                console.log(res);
-                console.log(rej.statusText);
+            .then((res)=> {
                 if (res.status === 200) {
                     history.push('/');
                     console.log("200")
