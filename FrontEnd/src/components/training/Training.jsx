@@ -16,7 +16,6 @@ function Training({match: {params: {id}}}) {
         //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
         console.log("useEffect IN !!!");
         getQuestionTraining(index);
-        console.log(location);
     }, []);
 
 
