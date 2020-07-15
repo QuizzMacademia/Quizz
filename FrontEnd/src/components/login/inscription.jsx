@@ -13,12 +13,11 @@ import Loader from 'react-loader-spinner';
 import axios from "axios";
 
 const Inscription = () => {
-    //const [loginError, setLoginError] = useState(false);
+
     const insUser = {email: "", password: "",passwordConfirmation:""};
     const [isLoding, setIsLoding] = useState(false);
     let history = useHistory();
     const[message,setMessage]=useState("");
-    const MOCK_Email = ["John@yahoo.fr","Angelina@yahoo.fr","Frank@gmail.fr","Nina@yahoo.fr","Jennifer@yahoo.fr"];
 
     const onSubmit = (values, {resetForm}) => {
         setIsLoding(true);
@@ -27,10 +26,7 @@ const Inscription = () => {
             .then((res)=> {
                 if (res.status === 200) {
                     history.push('/');
-                    console.log("200")
-                }
-
-
+                    console.log("200")}
                 })
             .catch((e)=>{
                 console.log("400");
@@ -74,7 +70,7 @@ const Inscription = () => {
                                                              touched.email && errors.email ? "is-invalid" : ""
                                                          }`}
                                             />
-                                        </FormGroup>
+                                            </FormGroup>
                                     )}
                                 </Field>
                                 <ErrorMessage name="email">{msg => <div
