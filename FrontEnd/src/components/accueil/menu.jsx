@@ -22,7 +22,8 @@ const  Menu = () => {
                     <Link className="link" to={"/Accueil/Certificat"}>CERTIFICATION</Link>
                     <Link className="link" to={"/Deconnexion"}><img
                         src="/img/Logout.svg"
-                        alt={"Déconnection de l'application"}/></Link>
+                        alt={"Déconnection de l'application"}/>
+                    </Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>

@@ -10,40 +10,42 @@ import FormLabel from "react-bootstrap/FormLabel";
 import FormControl from "react-bootstrap/FormControl";
 import * as Yup from 'yup';
 import Loader from 'react-loader-spinner';
+import axios from "axios";
 
 const Inscription = () => {
-    //const [loginError, setLoginError] = useState(false);
-    const insUser = {email: "", password: "",confirmationPassword:""};
+
+    const insUser = {email: "", password: "",passwordConfirmation:""};
     const [isLoding, setIsLoding] = useState(false);
     let history = useHistory();
     const[message,setMessage]=useState("");
-    const MOCK_Email = ["John@yahoo.fr","Angelina@yahoo.fr","Frank@gmail.fr","Nina@yahoo.fr","Jennifer@yahoo.fr"];
 
     const onSubmit = (values, {resetForm}) => {
         setIsLoding(true);
         console.log(values);
-        let emailExist = MOCK_Email.indexOf(values.email);
-        console.log(emailExist)
-        debugger
-        if(emailExist !== -1)
+        axios.post('/register', values)
+            .then((res)=> {
+                if (res.status === 200) {
+                    history.push('/');
+                    console.log("200")}
+                })
+            .catch((e)=>{
+                console.log("400");
+                console.log(e.response.status);
+                if(e.response.status === 400)
+                    setMessage("Cette adresse e-mail est déjà utilisée");
+                else
+                    setMessage("Les deux mots de passent ne correspondent pas!");
 
-        {setMessage("Cette adresse e-mail est déjà utilisée");
-            setIsLoding(false);
-            history.push('/Inscription')}
-        else if(emailExist === -1 && values.password === values.confirmationPassword)
-        {history.push('/');
-        setIsLoding(false);}
-        else
-        {history.push('/Inscription');
-        setMessage("Mot de passe invalide");
-        setIsLoding(false);}
+            });
+
         resetForm();
+        setIsLoding(false);
     };
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email("Email doit être valide").required("Ce champs est obligatoire"),
-        password: Yup.string().required("Ce champs est obligatoire").min(4, " mot de passe doit contenir au moins 3 caractères").max(18," mot de passe doit contenir au plus 18 caractères"),
-        confirmationPassword:Yup.string().required("Ce champs est obligatoire").min(4, " mot de passe doit contenir au moins 3 caractères").max(18," mot de passe doit contenir au plus 18 caractères")
+        password: Yup.string().required("Ce champs est obligatoire").min(8, " mot de passe doit contenir au moins 8 caractères").max(20," mot de passe doit contenir au plus 20 caractères"),
+        passwordConfirmation:Yup.string().required("Ce champs est obligatoire").min(8, " mot de passe doit contenir au moins 8 caractères").max(20," mot de passe doit contenir au plus 20 caractères")
     });
 
     return (
@@ -68,7 +70,7 @@ const Inscription = () => {
                                                              touched.email && errors.email ? "is-invalid" : ""
                                                          }`}
                                             />
-                                        </FormGroup>
+                                            </FormGroup>
                                     )}
                                 </Field>
                                 <ErrorMessage name="email">{msg => <div
@@ -92,19 +94,19 @@ const Inscription = () => {
                                 </ErrorMessage>
                             </div>
                             <div className={"section"}>
-                                <Field name="confirmationPassword">
-                                    {({field}) => (<FormGroup as={Row} controlId="confirmationPassword">
+                                <Field name="passwordConfirmation">
+                                    {({field}) => (<FormGroup as={Row} controlId="passwordConfirmation">
                                             <FormLabel>Confirmation du mot de passe </FormLabel>
                                             <FormControl type={"password"} value={field.value} onChange={field.onChange}
                                                          placeholder="Entrer à nouveau votre mot de passe"
                                                          className={`form-control ${
-                                                             touched.confirmationPassword && errors.confirmationPassword ? "is-invalid" : ""
+                                                             touched.passwordConfirmation && errors.passwordConfirmation ? "is-invalid" : ""
                                                          }`}
                                             />
                                         </FormGroup>
                                     )}
                                 </Field>
-                                <ErrorMessage name="confirmationPassword">{msg => <div
+                                <ErrorMessage name="passwordConfirmation">{msg => <div
                                     className={'error-message'}>{msg}</div>}</ErrorMessage>
                             </div>
                             {isLoding && <Loader
