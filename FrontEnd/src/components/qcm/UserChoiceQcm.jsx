@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -23,12 +23,12 @@ function UserChoiceQcm() {
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
         setIsLoading(true);
-        axios.get(`/quizz/id?type=TRAINING&theme=${values.theme}&category=${values.category}`)
+        axios.get(`/quizz/id/questionNumber?type=TRAINING&theme=${values.theme}&category=${values.category}`)
             .then(res => {
                 if (res.status === 200) {
                  //  Suite au retour du backend, switch sur le component affichant la première question
                     setIsLoading(false);
-                    history.push({pathname: `/Accueil/Qcm/${res.data}`});
+                    history.push({pathname: `/Accueil/Qcm/${res.data.quizzId}`},  res.data.quizzQuestionNumber );
                 }
             }, (error) => {
                 console.error(error);
@@ -59,7 +59,7 @@ function UserChoiceQcm() {
 
     //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const [category, setCategory] = useState(MOCK_DATA_SELECT);
-
+    const [theme, setTheme] = useState(MOCK_DATA_SELECT);
     //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
     const MOCK_SUJET = [
         {value: "", label: "Choisir un sujet"},
@@ -67,6 +67,33 @@ function UserChoiceQcm() {
         {value: "Java", label: "Java"},
         {value: "Python", label: "Python"}
     ];
+
+
+    const addNewDataToTheme = () => {
+        const themeTab = [...MOCK_DATA_SELECT];
+
+        setIsLoading(true);
+        axios.get(`/quizz/themes?type=TRAINING`)
+            .then(res => {
+                if (res.status === 200) {
+                    res.data.map((item) => (
+                        themeTab.push({value: item.theme, label: item.theme})
+                    ));
+                    setTheme(themeTab);
+                    setIsLoading(false);
+                }
+            }, (error) => {
+                console.error(error);
+                setIsLoading(false);
+            });
+        setIsLoading(false);
+    };
+    useEffect(() => {
+        //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
+        console.log("useEffect IN !!!");
+        addNewDataToTheme();
+    }, []);
+
 
     const addNewDataToCategory = (theme) => {
         const categoryTab = [...MOCK_DATA_SELECT];
@@ -112,7 +139,7 @@ function UserChoiceQcm() {
                                                 handleChange(event)
                                                 event.target.value === "" ? setCategory(MOCK_DATA_SELECT) : addNewDataToCategory(event.target.value);
                                             }} onBlur={handleBlur} >
-                                                {MOCK_SUJET.map((item, idx) => (
+                                                {theme.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.theme && touched.theme &&

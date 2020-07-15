@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../shared/question/question.css';
 import axios from "axios";
 import Quizz from "../shared/question/quizz";
+import {useLocation} from "react-router";
 
 function Qcm({match:{params:{id}}}) {
 
@@ -9,6 +10,7 @@ function Qcm({match:{params:{id}}}) {
     const [firstGetQuestion, setFirstGetQuestion] = useState(false);
     const [isLoding, setIsLoding] = useState(false);
     const [index, setIndex] = useState(0);
+    const location = useLocation();
 
     const isQCM = true;
 
@@ -48,7 +50,7 @@ function Qcm({match:{params:{id}}}) {
                    index={index}
                    setIndex={setIndex}
                    isQCM={isQCM}
-                   lengthQuizz={4}/>
+                   lengthQuizz={location.state}/>
         </div>
     );
 }

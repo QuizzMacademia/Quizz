@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -10,6 +10,7 @@ import axios from "axios";
 import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
 
+
 function UserChoiceExercising() {
 
     //  Déclaration des variables utilisées dans le component
@@ -18,6 +19,13 @@ function UserChoiceExercising() {
     const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
+
+    const MOCK_DATA_SELECT = [
+        {value: "", label: " Sélectionner un choix"}
+    ]
+
+    const [theme, setTheme] = useState(MOCK_DATA_SELECT);
+    const [levels, setLevels] = useState(MOCK_DATA_SELECT);
 
     //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
@@ -28,7 +36,7 @@ function UserChoiceExercising() {
                 if (res.status === 200) {
                     //  Suite au retour du backend, switch sur le component affichant la première question
                     setIsLoading(false);
-                    history.push({pathname: `/Accueil/Entrainement/${res.data}`});
+                    history.push({pathname: `/Accueil/Entrainement/${res.data.quizzId}`}, res.data.quizzQuestionNumber );
                 }
             }, (error) => {
                 console.error(error);
@@ -39,6 +47,52 @@ function UserChoiceExercising() {
         resetForm();
         setIsLoading(true);
     };
+
+    const addNewDataToTheme = () => {
+        const themeTab = [...MOCK_DATA_SELECT];
+
+        setIsLoading(true);
+        axios.get(`/quizz/themes?type=EXERCISING`)
+            .then(res => {
+                if (res.status === 200) {
+                    res.data.map((item) => (
+                        themeTab.push({value: item.theme, label: item.theme})
+                    ));
+                    setTheme(themeTab);
+                    setIsLoading(false);
+                }
+            }, (error) => {
+                console.error(error);
+                setIsLoading(false);
+            });
+        setIsLoading(false);
+    };
+    const addNewDataToLevel = (valuesTheme) => {
+        const levelTab = [...MOCK_DATA_SELECT];
+        setIsLoading(true);
+        console.log("In addnewdatatolevel !!!")
+        axios.get(`/quizz/levels?type=ToExercise&theme=${valuesTheme}`)
+            .then(res => {
+                if (res.status === 200) {
+                    console.log(res.data);
+                    res.data.map((item) => (
+                        levelTab.push({value: item, label: item})
+                    ));
+                    setLevels(levelTab);
+                    setIsLoading(false);
+                }
+            }, (error) => {
+                console.error(error);
+                setIsLoading(false);
+            });
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
+        console.log("useEffect IN !!!");
+        addNewDataToTheme();
+    }, []);
 
     //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
     const validationSchema = Yup.object().shape({
@@ -53,24 +107,6 @@ function UserChoiceExercising() {
         level: ""
     };
 
-    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
-    const MOCK_SUJET = [
-        {value: "", label: "Choisir un sujet"},
-        {value: "Javascript", label: "JavaScript"},
-        {value: "Java", label: "Java"},
-        {value: "Python", label: "Python"}
-    ];
-
-    //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
-    const MOCK_LEVEL = [
-        {value: "", label: "Choisir un niveau"},
-        {value: "1", label: "1"},
-        {value: "2", label: "2"},
-        {value: "3", label: "3"},
-        {value: "4", label: "4"},
-        {value: "5", label: "5"},
-        {value: "6", label: "6"}
-    ];
 
     return (
         <>
@@ -92,8 +128,11 @@ function UserChoiceExercising() {
                                     <Form onSubmit={handleSubmit}>
                                         <Form.Group as={Col} controlId="theme">
                                             <Form.Label>Sujet de l'entrainement</Form.Label>
-                                            <Form.Control as="select" value={values.theme} onChange={handleChange} onBlur={handleBlur} >
-                                                {MOCK_SUJET.map((item, idx) => (
+                                            <Form.Control as="select" value={values.theme} onChange={event => {
+                                                handleChange(event)
+                                                event.target.value === "" ? setLevels(MOCK_DATA_SELECT) : addNewDataToLevel(event.target.value);
+                                            }} onBlur={handleBlur} >
+                                                {theme.map((item, idx) => (
                                                 <option key={`theme-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.theme && touched.theme &&
@@ -103,8 +142,8 @@ function UserChoiceExercising() {
                                         </Form.Group>
                                         <Form.Group as={Col} controlId="level">
                                             <Form.Label>Niveau de difficulté</Form.Label>
-                                            <Form.Control as="select" value={values.level} onChange={handleChange} onBlur={handleBlur}>
-                                                {MOCK_LEVEL.map((item, idx) => (
+                                            <Form.Control as="select" value={values.level} onChange={handleChange}  onBlur={handleBlur}>
+                                                {levels.map((item, idx) => (
                                                     <option key={`level-${idx}`} value={item.value} label={item.label} />))}
                                             </Form.Control>
                                             {errors.level &&
