@@ -10,6 +10,7 @@ import axios from "axios";
 import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
 
+
 function UserChoiceExercising() {
 
     //  Déclaration des variables utilisées dans le component
@@ -28,7 +29,7 @@ function UserChoiceExercising() {
                 if (res.status === 200) {
                     //  Suite au retour du backend, switch sur le component affichant la première question
                     setIsLoading(false);
-                    history.push({pathname: `/Accueil/Entrainement/${res.data}`});
+                    history.push({pathname: `/Accueil/Entrainement/${res.data.quizzId}`}, res.data.quizzQuestionNumber );
                 }
             }, (error) => {
                 console.error(error);
