@@ -284,8 +284,8 @@
 		}
 	},
 	{
-		"id":9,
-		"questionText":"Je viens de réaliser une concaténation, est-elle correcte :#4# var text = \"J'aime \" -\"le JavaScript !\";#4# ?",
+		"id": 9,
+		"questionText": "Je viens de réaliser une concaténation, est-elle correcte :#4# var text = \"J'aime \" -\"le JavaScript !\";#4# ?",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -513,6 +513,694 @@
 		"explanation": "Pour déclarer une variable, il faut respecter plusieurs étapes :\n\nÉcrire le mot-clé var ;\nUtiliser un nom de variable valide, vous pouvez retrouver au début de ce chapitre ce qui constitue un nom de variable valide ;\nAssigner une valeur si on le souhaite, elle peut être un chiffre, un nombre exponentiel, du texte, etc. ;\nNe pas oublier le point-virgule.",
 		"category": {
 			"id": 2
+		}
+	},
+	{
+		"id": 16,
+		"questionText": "Qu'est-ce qu'un JRE ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 67,
+				"choice": "Un outil permettant de développer des programmes."
+			},
+			{
+				"id": 68,
+				"choice": "Un environnement permettant d’exécuter des programmes écrits en Java."
+			},
+			{
+				"id": 69,
+				"choice": "Une instruction du langage Java"
+			},
+			{
+				"id": 70,
+				"choice": "Un site web référençant les fonctionnalités d’un langage de programmation."
+			}
+		],
+		"correctAnswer": [
+			68
+		],
+		"explanation": "JRE est l’acronyme de Java Runtime Environment, soit, un environnement où vos programmes Java pourront s’exécuter. C’est donc grâce à ceci que vos programmes pourront être utilisés sur vos ordinateurs. Sans cet environnement, impossible de faire fonctionner un programme écrit en Java !",
+		"category": {
+			"id": 1
+		}
+	},
+	{
+		"id": 17,
+		"questionText": "Qu’est-ce qu’une variable  :",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 71,
+				"choice": "Un conteneur permettant de stocker des données (entier, caractère, booléen…)"
+			},
+			{
+				"id": 72,
+				"choice": "Une instruction du langage Java"
+			},
+			{
+				"id": 73,
+				"choice": "Une entité permettant de manipuler des nombres"
+			},
+			{
+				"id": 74,
+				"choice": "Une entité permettant de manipuler des caractères"
+			}
+		],
+		"correctAnswer": [
+			71
+		],
+		"explanation": "Les variables sont des réceptacles permettant à vos programmes de mémoriser des données (entier, booléen, caractère…) afin de pouvoir les manipuler, les modifier, les utiliser...",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 18,
+		"questionText": "Quel est la valeur de la variable ci-dessous : \n #4#  int entier = 0xFE;#4#",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 75,
+				"choice": "Rien, cette variable est mal initialisée."
+			},
+			{
+				"id": 76,
+				"choice": "Rien, FE n’est pas un entier mais des caractères !"
+			},
+			{
+				"id": 77,
+				"choice": "254"
+			},
+			{
+				"id": 78,
+				"choice": "32"
+			}
+		],
+		"correctAnswer": [
+			77
+		],
+		"explanation": "La variable contient la valeur 254. 0xFE correspond à la notation hexadécimale de l’entier 254.",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 19,
+		"questionText": "Ce code est-il correct ? \n #4#  int i = 10;\n int j = 12\n int k = 0;\n k = (i*i)*(j*j)/j+i;\n#4#",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 79,
+				"choice": "Oui, rien ne manque."
+			},
+			{
+				"id": 80,
+				"choice": "Non, les noms de variables doivent avoir au moins deux caractères."
+			},
+			{
+				"id": 81,
+				"choice": "Non, la variable k doit impérativement être de type double."
+			},
+			{
+				"id": 82,
+				"choice": "Non, une des variables est mal déclarée !"
+			}
+		],
+		"correctAnswer": [
+			82
+		],
+		"explanation": "La variable j est mal déclarée : il manque le point virgule final de la déclaration, sans lui, le programme ne compilera pas !",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 20,
+		"questionText": "Que vaut la variable result : \n #4#  double i = 10;\n double j = 3;\n int result = i / j; \n#4#",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 83,
+				"choice": "3.333333333333333333333..."
+			},
+			{
+				"id": 84,
+				"choice": "3.4"
+			},
+			{
+				"id": 85,
+				"choice": "3"
+			},
+			{
+				"id": 86,
+				"choice": "Rien, il y a une erreur dans le programme..."
+			}
+		],
+		"correctAnswer": [
+			86
+		],
+		"explanation": "Le calcul étant basé sur des doubles, le compilateur refusera de stocker le résultat dans un entier car il y a un risque de perte de précision… Le programme ne compilera donc pas car il y a une erreur...",
+		"category": {
+			"id": 6
+		}
+	},
+	{
+		"id": 21,
+		"questionText": "Qu'est-ce qui ne va pas, ici ? \n #4#  Scanner sc = new Scanner(System.in);\n system.out.println('Veuillez saisir un entier : ');\n double d = sc.nextInt(); \nSystem.out.println('Vous avez saisi le nombre : ' + d);#4#",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 87,
+				"choice": "Rien. Tout va bien."
+			},
+			{
+				"id": 88,
+				"choice": "L’objet Scanner est mal initialisé."
+			},
+			{
+				"id": 89,
+				"choice": "Il y a une incohérence entre la variable d et le type de retour de l’objet Scanner."
+			},
+			{
+				"id": 90,
+				"choice": "La méthode nextInt() n’existe pas..."
+			}
+		],
+		"correctAnswer": [
+			89
+		],
+		"explanation": "l y a un problème de cohérence entre la variable qui va stocker la saisie clavier et la méthode qui récupère cette saisie : une variable double est utilisée sur un retour de type entier.",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 22,
+		"questionText": "Avec quel mot-clé peut-on restreindre l’étendue d’une variable, d’une méthode ou d’une classe ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 91,
+				"choice": "new"
+			},
+			{
+				"id": 92,
+				"choice": "public"
+			},
+			{
+				"id": 93,
+				"choice": "private"
+			},
+			{
+				"id": 94,
+				"choice": "this"
+			},
+			{
+				"id": 95,
+				"choice": "void"
+			},
+			{
+				"id": 96,
+				"choice": "class"
+			}
+		],
+		"correctAnswer": [
+			91
+		],
+		"explanation": "Pour instancier une classe et ainsi créer un objet, il faut utiliser le mot-clé new",
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 23,
+		"questionText": "Quelle caractéristique principale a une méthode polymorphe ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 97,
+				"choice": "Elle n’a rien de spécial."
+			},
+			{
+				"id": 98,
+				"choice": "Elle a toujours les mêmes caractéristiques, peu importe l’objet qui l’invoque."
+			},
+			{
+				"id": 99,
+				"choice": "Elle n’a pas le même nombre de paramètres en fonction de l’objet qui l’invoque."
+			},
+			{
+				"id": 100,
+				"choice": "Elle n’a pas le même nom en fonction de l’objet qui l’invoque."
+			}
+		],
+		"correctAnswer": [
+			98
+		],
+		"explanation": "Une méthode polymorphe est une méthode qui permet d’avoir un comportement différent en fonction du type d’objet tout en s’assurant que l’invocation de la méthode est identique à tout le monde. Vous pouvez donc, sans vous soucier du type d’objet utilisé, invoquer une méthode polymorphe.",
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 24,
+		"questionText": "Quels sont les méthodes de la classe Object qui sont (très) souvent redéfinies pour bénéficier des avantages du polymorphisme ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 101,
+				"choice": "equals(), wait() et notify()"
+			},
+			{
+				"id": 102,
+				"choice": "equals, toString() et notify()"
+			},
+			{
+				"id": 103,
+				"choice": "equals(), toString() et hashCode()"
+			},
+			{
+				"id": 104,
+				"choice": "toString(), hashcode() et notify()"
+			},
+			{
+				"id": 105,
+				"choice": "equals(), hashCode() et notify()"
+			},
+			{
+				"id": 106,
+				"choice": "equals(), hashCode() et tostring()"
+			}
+		],
+		"correctAnswer": [
+			103
+		],
+		"explanation": "Les méthodes equals(), toString() et hashCode() sont les méthodes que vous aurez à redéfinir le plus souvent car ce sont ces méthodes qui permettent à vos objets d’avoir une identité propre. Si vous ne le faites pas, je vous rappelle que ce sera la méthode de la classe mère qui sera invoqué, donc la classe Object !",
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 25,
+		"questionText": "Qu’offre Java avec les interfaces java.util.Collection et java.util.Map ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 107,
+				"choice": "Les interfaces dont héritent les collections présentes."
+			},
+			{
+				"id": 108,
+				"choice": "Rien, ces interfaces n’existent pas."
+			},
+			{
+				"id": 109,
+				"choice": "Rien, ce ne sont pas des interfaces mais des classes."
+			},
+			{
+				"id": 110,
+				"choice": "Rien, ces interfaces n’ont pas d’implémentation."
+			}
+		],
+		"correctAnswer": [
+			107
+		],
+		"explanation": "Ces interfaces forment la première pierre à l’édifice des classes permettant de gérer des collections d’objets en Java. Ces objets implémentant ces interfaces vos offrent la possibilité de gérer, plus finement qu’avec des tableaux classiques, des paquets d’objets : certains sont triés automatiquement, certains n’autorisent pas les doublons, etc.",
+		"category": {
+			"id": 8
+		}
+	},
+	{
+		"id": 26,
+		"questionText": "Qu’est-ce qu’une classe abstraite ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 2
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 111,
+				"choice": "C’est une classe déclarée avec le mot-clé abstract, ne pouvant pas être instanciée et pouvant contenir des méthodes abstraites, donc sans corps de méthode."
+			},
+			{
+				"id": 112,
+				"choice": "C’est une classe ne pouvant pas être héritée."
+			},
+			{
+				"id": 113,
+				"choice": "C’est une classe ne pouvant pas avoir de constructeur."
+			},
+			{
+				"id": 114,
+				"choice": "C’est une classe du langage Java permettant de créer plusieurs objets en son sein."
+			}
+		],
+		"correctAnswer": [
+			111
+		],
+		"explanation": "Une classe abstraite est une classe ne pouvant pas être instanciée mais rien ne l’empêche d’avoir des méthodes, un constructeur ou tout autre chose qu’une classe normale peut avoir.",
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 27,
+		"questionText": "Pour lancer un programme  mon_fichier.py  qui utilise Python, j'utilise la commande suivante :",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 115,
+				"choice": "python mon_fichier.py -o python"
+			},
+			{
+				"id": 116,
+				"choice": "python mon_fichier.py"
+			},
+			{
+				"id": 117,
+				"choice": "python"
+			},
+			{
+				"id": 118,
+				"choice": "python5"
+			}
+		],
+		"correctAnswer": [
+			116
+		],
+		"explanation": "",
+		"category": {
+			"id": 1
+		}
+	},
+	{
+		"id": 28,
+		"questionText": "Pourquoi l'inventeur de Python a-t-il choisi ce nom ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 119,
+				"choice": "Il aimait beaucoup les serpents."
+			},
+			{
+				"id": 120,
+				"choice": "Il aimait beaucoup le groupe d'humoristes Monty Python."
+			}
+		],
+		"correctAnswer": [
+			120
+		],
+		"explanation": "",
+		"category": {
+			"id": 1
+		}
+	},
+	{
+		"id":29,
+		"questionText":"Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 121,
+				"choice": " #4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+			},
+			{
+				"id": 122,
+				"choice": " #4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+			},
+			{
+				"id": 123,
+				"choice": " #4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+			},
+			{
+				"id": 124,
+				"choice": " #4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
+			}
+		],
+		"correctAnswer": [
+			122
+		],
+		"explanation": "",
+		"category": {
+			"id": 2
+		}
+	},
+	 {
+		"id": 30,
+		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 125,
+				"choice": " #4# def message(recipient, sender): \n pass #4#"
+			},
+			{
+				"id": 126,
+				"choice": " #4# func message(recipient, sender): \n pass #4#"
+			},
+			{
+				"id": 127,
+				"choice": " #4# function message(recipient, sender): \n pass #4#"
+			},
+			{
+				"id": 128,
+				"choice": "#4# def message recipient, sender \n pass#4#"
+			}
+		],
+		"correctAnswer": [
+			125
+		],
+		"explanation": "",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 31,
+		"questionText": "Pour transformer une chaîne de caractères en liste, j'utilise la méthode suivante :",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 129,
+				"choice": ".list()"
+			},
+			{
+				"id": 130,
+				"choice": " .to_list()"
+			},
+			{
+				"id": 131,
+				"choice": " .split()"
+			}
+		],
+		"correctAnswer": [
+			131
+		],
+		"explanation": "",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 32,
+		"questionText": "Pour supprimer les espaces blancs au début et à la fin d'une chaîne de caractères, j'utilise la méthode suivante :",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 132,
+				"choice": ".without_blanks()"
+			},
+			{
+				"id": 133,
+				"choice": " .strip() "
+			},
+			{
+				"id": 134,
+				"choice": " .remove_blanks()"
+			}
+		],
+		"correctAnswer": [
+			133
+		],
+		"explanation": "",
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 33,
+		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "checkbox",
+		"choices": [
+			{
+				"id": 135,
+				"choice": " #4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+			},
+			{
+				"id": 136,
+				"choice": " #4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+			},
+			{
+				"id": 137,
+				"choice": " #4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+			},
+			{
+				"id": 138,
+				"choice": " #4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+			}
+		],
+		"correctAnswer": [
+			136, 138
+		],
+		"explanation": "",
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 34,
+		"questionText": "Chaque élément d'une liste est associé à son index, c'est à dire à sa position.",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 139,
+				"choice": "Vrai"
+			},
+			{
+				"id": 140,
+				"choice": " Faux "
+			}
+		],
+		"correctAnswer": [
+			139
+		],
+		"explanation": "",
+		"category": {
+			"id": 9
+		}
+	},
+	{
+		"id": 35,
+		"questionText": "#4# friends = {\"Doctor Who\" : \"Le tardis\", \"Red\" : \"Storybrooke\", \"Frodon\" : \"La Terre du Milieu\"} #4# \n Pour remplacer \"Le tardis\" par \"Gallifrey\", j'écris :",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+				"id": 141,
+				"choice": "friends[0] = \"Gallifrey\""
+			},
+			{
+				"id": 142,
+				"choice": " friends[\"Doctor Who\"] = \"Gallifrey\" "
+			},
+			{
+				"id": 143,
+				"choice": "friends.replace('Le tardis', \"Gallifrey\")"
+			}
+		],
+		"correctAnswer": [
+			142
+		],
+		"explanation": "",
+		"category": {
+			"id": 9
 		}
 	}
 ]

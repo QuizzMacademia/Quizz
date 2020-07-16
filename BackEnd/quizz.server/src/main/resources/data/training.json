@@ -90,5 +90,94 @@
 		"category": {
 			"id": 4
 		}
+	},
+	{
+		"id": 5,
+		"type": "TRAINING",
+		"level": 1,
+		"theme": {
+			"id": 2
+		},
+		"questionsNumber": 4,
+		"questions": [
+			{
+				"id": 17
+			},
+			{
+				"id": 18
+			},
+			{
+				"id": 19
+			},
+			{
+				"id": 20
+			}
+		],
+		"category": {
+			"id": 2
+		}
+	},
+	{
+		"id": 6,
+		"type": "TRAINING",
+		"level": 1,
+		"theme": {
+			"id": 2
+		},
+		"questionsNumber": 3,
+		"questions": [
+			{
+				"id": 22
+			},
+			{
+				"id": 23
+			},
+			{
+				"id": 24
+			}
+		],
+		"category": {
+			"id": 7
+		}
+	},
+	{
+		"id": 7,
+		"type": "TRAINING",
+		"level": 1,
+		"theme": {
+			"id": 3
+		},
+		"questionsNumber": 2,
+		"questions": [
+			{
+				"id": 27
+			},
+			{
+				"id": 28
+			}
+		],
+		"category": {
+			"id": 1
+		}
+	},
+	{
+		"id": 8,
+		"type": "TRAINING",
+		"level": 1,
+		"theme": {
+			"id": 3
+		},
+		"questionsNumber": 2,
+		"questions": [
+			{
+				"id": 34
+			},
+			{
+				"id": 35
+			}
+		],
+		"category": {
+			"id": 9
+		}
 	}
 ]

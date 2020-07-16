@@ -5,21 +5,33 @@
 		"themes": [
 			{
 				"id": 1
+			},
+			{
+				"id": 2
+			},
+			{
+				"id": 3
 			}
 		]
 	},
 	{
 		"id": 2,
-		"category": "Le type des données",
+		"category": "Les variables",
 		"themes": [
 			{
 				"id": 1
+			},
+			{
+				"id": 2
+			},
+			{
+				"id": 3
 			}
 		]
 	},
 	{
 		"id": 3,
-		"category": "Les conditions",
+		"category": "Les conditions et les boucles",
 		"themes": [
 			{
 				"id": 1
@@ -46,11 +58,37 @@
 	},
 	{
 		"id": 6,
-		"category": "Les opérations",
+		"category": "Les operations",
 		"themes": [
 			{
 				"id": 1
+			},
+			{
+				"id": 2
+			}
+		]
+	},
+	{
+		"id": 7,
+		"category": "Les classes et les methodes",
+		"themes": [
+			{
+				"id": 2
+			},
+			{
+				"id": 3
+			}
+		]
+	},
+	
+	{
+		"id": 9,
+		"category": "Les tableaux et les listes",
+		"themes": [
+			{
+				"id": 3
 			}
 		]
 	}
+	
 ]

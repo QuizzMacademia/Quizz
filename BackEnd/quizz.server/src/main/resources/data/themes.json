@@ -9,11 +9,11 @@
 			},
 			{
 				"id": 2,
-				"category": "Le type des données"
+				"category": "Les variables"
 			},
 			{
 				"id": 3,
-				"category": "Les conditions"
+				"category": "Les conditions et les boucles"
 			},
 			{
 				"id": 4,
@@ -26,6 +26,55 @@
 			{
 				"id": 6,
 				"category": "Les opérations"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"theme": "Java",
+		"categories": [
+			{
+				"id": 1,
+				"category": "Le langage"
+			},
+			{
+				"id": 2,
+				"category": "Les variables"
+			},
+			{
+				"id": 6,
+				"category": "Les opérations"
+			},
+			{
+				"id": 7,
+				"category": "Les classes et les méthodes"
+			},
+			{
+				"id": 8,
+				"category": "Les interfaces"
+			}
+		]
+	},
+	{
+		"id": 3,
+		"theme": "Python",
+		"categories": [
+			{
+				"id": 1,
+				"category": "Le langage"
+			},
+			{
+				"id": 2,
+				"category": "Les variables"
+			},
+			
+			{
+				"id": 7,
+				"category": "Les classes et les méthodes"
+			},
+			{
+				"id": 9,
+				"category": "Les tableaux et les listes"
 			}
 		]
 	}
