@@ -6,7 +6,7 @@
 		"theme": {
 			"id": 1
 		},
-		"questionsNumber": 4,
+		"questionsNumber": 3,
 		"questions": [
 			{
 				"id": 8
@@ -15,10 +15,7 @@
 				"id": 9
 			},
 			{
-				"id": 13
-			},
-			{
-				"id": 17
+				"id": 15
 			}
 		],
 		"category": {
@@ -32,7 +29,7 @@
 		"theme": {
 			"id": 1
 		},
-		"questionsNumber": 4,
+		"questionsNumber": 3,
 		"questions": [
 			{
 				"id": 10
@@ -42,9 +39,6 @@
 			},
 			{
 				"id": 12
-			},
-			{
-				"id": 14
 			}
 		],
 		"category": {

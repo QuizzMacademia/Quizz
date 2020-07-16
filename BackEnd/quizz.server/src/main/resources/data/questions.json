@@ -284,8 +284,8 @@
 		}
 	},
 	{
-		"id": 9,
-		"questionText": "Je viens de réaliser une concaténation, est-elle correcte : var text = \"J'aime \" -'le JavaScript !'; ?",
+		"id":9,
+		"questionText":"Je viens de réaliser une concaténation, est-elle correcte :#4# var text = \"J'aime \" -\"le JavaScript !\";#4# ?",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -294,24 +294,24 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 34,
+				"id": 49,
 				"choice": "Oui"
 			},
 			{
-				"id": 35,
+				"id": 50,
 				"choice": "Non, il faut utiliser le signe + au lieu du - !"
 			},
 			{
-				"id": 36,
+				"id": 51,
 				"choice": "Non, car on ne peut pas faire une concaténation dès la déclaration d'une variable."
 			},
 			{
-				"id": 37,
+				"id": 52,
 				"choice": "Non, il faut utiliser les apostrophes sur les deux chaînes de caractères."
 			}
 		],
 		"correctAnswer": [
-			35
+			49
 		],
 		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
 		"category": {
@@ -320,7 +320,7 @@
 	},
 	{
 		"id": 10,
-		"questionText": "Que va être le résultat de cette condition ? var result = 8 % 2 > 0 || !(3 % 2 < 1);",
+		"questionText": "Que va être le résultat de cette condition ? #4#var result = 8 % 2 > 0 || !(3 % 2 < 1);#4# ?",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -329,26 +329,26 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 38,
+				"id": 53,
 				"choice": "true"
 			},
 			{
-				"id": 39,
+				"id": 54,
 				"choice": "false"
 			},
 			{
-				"id": 40,
+				"id": 55,
 				"choice": "Ce code renvoie une erreur"
 			},
 			{
-				"id": 41,
+				"id": 56,
 				"choice": "42"
 			}
 		],
 		"correctAnswer": [
-			38
+			53
 		],
-		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n//Condition initiale:\nvar result = (8 % 2) > 0\\!(3%2);\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;\nLa condition ainsi décomposée est déjà plus facile à cerner:\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false.\nEn revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true!\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final,notre condition renvoie true !",
+		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n\n#4#// Condition initiale :\nvar result = 8 % 2 > 0 || !(3 % 2 < 1);\n\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;\n#4#\nLa condition ainsi décomposée est déjà plus facile à cerner :\n\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final, notre condition renvoie true!",
 		"category": {
 			"id": 3
 		}
@@ -421,76 +421,6 @@
 	},
 	{
 		"id": 13,
-		"questionText": "Je viens de réaliser une concaténation, est-elle correcte :#4# var text = \"J'aime \" -\"le JavaScript !\";#4# ?",
-		"type": "ToExercise",
-		"theme": {
-			"id": 1
-		},
-		"level": "1",
-		"choiceType": "checkbox",
-		"choices": [
-			{
-				"id": 49,
-				"choice": "Oui"
-			},
-			{
-				"id": 50,
-				"choice": "Non, il faut utiliser le signe + au lieu du - !"
-			},
-			{
-				"id": 51,
-				"choice": "Non, car on ne peut pas faire une concaténation dès la déclaration d'une variable."
-			},
-			{
-				"id": 52,
-				"choice": "Non, il faut utiliser les apostrophes sur les deux chaînes de caractères."
-			}
-		],
-		"correctAnswer": [
-			49
-		],
-		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
-		"category": {
-			"id": 2
-		}
-	},
-	{
-		"id": 14,
-		"questionText": "Que va être le résultat de cette condition ? #4#var result = 8 % 2 > 0 || !(3 % 2 < 1);#4# ?",
-		"type": "ToExercise",
-		"theme": {
-			"id": 1
-		},
-		"level": "1",
-		"choiceType": "checkbox",
-		"choices": [
-			{
-				"id": 53,
-				"choice": "true"
-			},
-			{
-				"id": 54,
-				"choice": "false"
-			},
-			{
-				"id": 55,
-				"choice": "Ce code renvoie une erreur"
-			},
-			{
-				"id": 56,
-				"choice": "42"
-			}
-		],
-		"correctAnswer": [
-			53
-		],
-		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n\n#4#// Condition initiale :\nvar result = 8 % 2 > 0 || !(3 % 2 < 1);\n\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;\n#4#\nLa condition ainsi décomposée est déjà plus facile à cerner :\n\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final, notre condition renvoie true!",
-		"category": {
-			"id": 3
-		}
-	},
-	{
-		"id": 15,
 		"questionText": "Est-il possible de raccourcir la troisième ligne de ce code ? #4#var number1 = 60, number2 = 2;\n\t\t\t\n number1 = number2 + 40;#4#",
 		"type": "ToExercise",
 		"theme": {
@@ -517,7 +447,7 @@
 		}
 	},
 	{
-		"id": 16,
+		"id": 14,
 		"questionText": "Quel est le résultat de ce code ? #4#var number1 = \"2\", number2 = \"3\", resultat;\nresultat = number1 + number2;\nalert(resultat);#4#",
 		"type": "ToExercise",
 		"theme": {
@@ -552,7 +482,7 @@
 		}
 	},
 	{
-		"id": 17,
+		"id": 15,
 		"questionText": "Laquelle de ces variables sera déclarée correctement ? #4#var var = 4;\ntext = 'Hello !';\nvar variable = 5.781e+8;\nvar 1variable = 10;#4#",
 		"type": "ToExercise",
 		"theme": {
