@@ -19,7 +19,7 @@ export function MyCheckbox({name, value, type, idx, item, hdlChange,hdlDisable ,
                                      onChange={hdlChange} onBlur={hdlBlur} disabled={hdlDisable} />
                         {item.startsWith("#4#")
                             ? <CodeReadOnly codeValue={item.replace(/#4#/g, "")} uniqueIdName={`code-${idx + 1}`}/>
-                            : <p>{item}</p>}
+                            : <p style={{color:"#2a292b"}}>{item}</p>}
                 </FormCheck>
             </FormGroup>
         </div>
