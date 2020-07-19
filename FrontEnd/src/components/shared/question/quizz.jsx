@@ -27,7 +27,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
             || (typeof values.userChoice === "string" && parseInt(values.userChoice) === questionData.correctAnswer[0])) {
             setUseResult(userResult + 1);
         }else {
-            setResultReview([...resultReview, questionData.questionText]);
+            setResultReview([...resultReview, questionData.questionText.replace(/#4#/g, "")]);
             console.log(resultReview);
         }
     };
