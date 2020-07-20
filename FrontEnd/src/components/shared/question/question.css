@@ -32,8 +32,6 @@
     margin-bottom: 15px;
     font-size: 1.3rem;
     text-align: left;
-    /*margin-left: 20px;*/
-
 }
 .button-container{
     display: flex;
@@ -68,8 +66,8 @@ p {
 .incorrect{
     color:red;
 }
-.custom-control-input:disabled~.custom-control-label, .custom-control-input[disabled]~.custom-control-label{
-    color : inherit !important;
+.custom-control-input:disabled~.custom-control-label, .custom-control-input[disabled]~.custom-control-label {
+    color: inherit !important;
 }
 .result{
     padding: 10px;
@@ -91,5 +89,8 @@ p {
 
 }
 .custom-control-label::after{
+    cursor: pointer;
+}
+.form-check-input{
     cursor: pointer;
 }

@@ -312,6 +312,7 @@
 		],
 		"correctAnswer": [
 			34
+
 		],
 		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
 		"category": {
@@ -491,9 +492,6 @@
 		"level": "1",
 		"choiceType": "checkbox",
 		"choices": [
-			{
-				
-			},
 			{
 				"id": 55,
 				"choice": "text"
@@ -989,20 +987,21 @@
 		"choiceType": "radio",
 		"choices": [
 			{
+
 				"id": 112,
-				"choice": " #4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 113,
-				"choice": " #4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 114,
-				"choice": " #4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 115,
-				"choice": " #4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
 			}
 		],
 		"correctAnswer": [
@@ -1015,7 +1014,7 @@
 	},
 	 {
 		"id": 30,
-		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"questionText": "Pour créer une nouvelle fonction \"message\" qui prend deux paramètres (\"recipient\" et \"sender\"), j'écris :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1024,20 +1023,22 @@
 		"choiceType": "radio",
 		"choices": [
 			{
+
 				"id": 116,
-				"choice": " #4# def message(recipient, sender): \n pass #4#"
+				"choice": "#4# def message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 117,
-				"choice": " #4# func message(recipient, sender): \n pass #4#"
+				"choice": "#4# func message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 118,
-				"choice": " #4# function message(recipient, sender): \n pass #4#"
+				"choice": "#4# function message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 119,
 				"choice": "#4# def message recipient, sender \n pass#4#"
+
 			}
 		],
 		"correctAnswer": [
@@ -1112,7 +1113,7 @@
 	},
 	{
 		"id": 33,
-		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"questionText": "La méthode format s'utilise de la manière suivante (2 bonnes réponses) :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1121,24 +1122,26 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
+
 				"id": 126,
-				"choice": " #4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+				"choice": "#4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
 				"id": 127,
-				"choice": " #4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+				"choice": "#4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
 			},
 			{
 				"id": 128,
-				"choice": " #4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+				"choice": "#4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
 				"id": 129,
-				"choice": " #4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+				"choice": "#4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
 			}
 		],
 		"correctAnswer": [
-			127, 129
+			126, 128
+
 		],
 		"explanation": "",
 		"category": {
@@ -1174,7 +1177,7 @@
 	},
 	{
 		"id": 35,
-		"questionText": "#4# friends = {\"Doctor Who\" : \"Le tardis\", \"Red\" : \"Storybrooke\", \"Frodon\" : \"La Terre du Milieu\"} #4# \n Pour remplacer \"Le tardis\" par \"Gallifrey\", j'écris :",
+		"questionText": "#4# friends = {\"Doctor Who\" : \"Le tardis\", \"Red\" : \"Storybrooke\", \"Frodon\" : \"La Terre du Milieu\"}#4# \n Pour remplacer \"Le tardis\" par \"Gallifrey\", j'écris :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1183,16 +1186,17 @@
 		"choiceType": "radio",
 		"choices": [
 			{
+
 				"id": 132,
-				"choice": "friends[0] = \"Gallifrey\""
+				"choice": "#4# friends[0] = \"Gallifrey\"#4#"
 			},
 			{
 				"id": 133,
-				"choice": " friends[\"Doctor Who\"] = \"Gallifrey\" "
+				"choice": "#4# friends[\"Doctor Who\"] = \"Gallifrey\"#4# "
 			},
 			{
 				"id": 134,
-				"choice": "friends.replace('Le tardis', \"Gallifrey\")"
+				"choice": "#4# friends.replace('Le tardis', \"Gallifrey\") #4#"
 			}
 		],
 		"correctAnswer": [
