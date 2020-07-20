@@ -1012,7 +1012,7 @@
 	},
 	 {
 		"id": 30,
-		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"questionText": "Pour créer une nouvelle fonction \"message\" qui prend deux paramètres (\"recipient\" et \"sender\"), j'écris :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1109,7 +1109,7 @@
 	},
 	{
 		"id": 33,
-		"questionText": "Je souhaite afficher le message 'I'm aliiiiiiiiiiiive !' si le contenu de la variable est 'Sia'. Comment faire ?",
+		"questionText": "La méthode format s'utilise de la manière suivante (2 bonnes réponses) :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1135,7 +1135,7 @@
 			}
 		],
 		"correctAnswer": [
-			136, 138
+			135, 137
 		],
 		"explanation": "",
 		"category": {
