@@ -294,24 +294,24 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 49,
+				"id": 34,
 				"choice": "Oui"
 			},
 			{
-				"id": 50,
+				"id": 35,
 				"choice": "Non, il faut utiliser le signe + au lieu du - !"
 			},
 			{
-				"id": 51,
+				"id": 36,
 				"choice": "Non, car on ne peut pas faire une concaténation dès la déclaration d'une variable."
 			},
 			{
-				"id": 52,
+				"id": 37,
 				"choice": "Non, il faut utiliser les apostrophes sur les deux chaînes de caractères."
 			}
 		],
 		"correctAnswer": [
-			49
+			34
 		],
 		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
 		"category": {
@@ -329,24 +329,24 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 53,
+				"id": 38,
 				"choice": "true"
 			},
 			{
-				"id": 54,
+				"id":39,
 				"choice": "false"
 			},
 			{
-				"id": 55,
+				"id": 40,
 				"choice": "Ce code renvoie une erreur"
 			},
 			{
-				"id": 56,
+				"id": 41,
 				"choice": "42"
 			}
 		],
 		"correctAnswer": [
-			53
+			38
 		],
 		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n\n#4#// Condition initiale :\nvar result = 8 % 2 > 0 || !(3 % 2 < 1);\n\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;\n#4#\nLa condition ainsi décomposée est déjà plus facile à cerner :\n\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final, notre condition renvoie true!",
 		"category": {
@@ -430,16 +430,16 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 57,
+				"id": 49,
 				"choice": "Oui, il suffit d'utiliser l'opérateur +="
 			},
 			{
-				"id": 58,
+				"id": 50,
 				"choice": "Non"
 			}
 		],
 		"correctAnswer": [
-			58
+			50
 		],
 		"explanation": "Pour ceux qui auraient répondu « Oui » je vous conseille de regarder attentivement le code qui suit : #4#number1 = number1 + 40; // On ajoute 40 à la variable \"number1\".\nnumber1 += 40; // On fait la même chose mais de façon raccourcie.\nnumber1 = number2 + 40; // Là on n'ajoute rien du tout à \"number1\", on remplace juste sa valeur actuelle par celle de \"number2\" additionnée à la valeur 40.\n\n// De ce fait, on ne peut donc pas écrire :\nnumber1 += 40;#4#",
 		"category": {
@@ -457,24 +457,24 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 59,
+				"id": 51,
 				"choice": "-1"
 			},
 			{
-				"id": 60,
+				"id": 52,
 				"choice": "5"
 			},
 			{
-				"id": 61,
+				"id": 53,
 				"choice": "23"
 			},
 			{
-				"id": 62,
+				"id": 54,
 				"choice": "Rien, le script rencontre une erreur"
 			}
 		],
 		"correctAnswer": [
-			61
+			53
 		],
 		"explanation": "N'oubliez pas : les chaînes de caractères se concatènent avec l'opérateur + même si elles contiennent des chiffres. Si vous voulez faire le calcul, pensez bien à utiliser la fonction parseInt() sur chaque chaîne !",
 		"category": {
@@ -495,20 +495,20 @@
 				
 			},
 			{
-				"id": 64,
+				"id": 55,
 				"choice": "text"
 			},
 			{
-				"id": 65,
+				"id": 56,
 				"choice": "variable"
 			},
 			{
-				"id": 66,
+				"id": 57,
 				"choice": "1variable"
 			}
 		],
 		"correctAnswer": [
-			65
+			56
 		],
 		"explanation": "Pour déclarer une variable, il faut respecter plusieurs étapes :\n\nÉcrire le mot-clé var ;\nUtiliser un nom de variable valide, vous pouvez retrouver au début de ce chapitre ce qui constitue un nom de variable valide ;\nAssigner une valeur si on le souhaite, elle peut être un chiffre, un nombre exponentiel, du texte, etc. ;\nNe pas oublier le point-virgule.",
 		"category": {
@@ -526,24 +526,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 67,
+				"id": 58,
 				"choice": "Un outil permettant de développer des programmes."
 			},
 			{
-				"id": 68,
+				"id": 59,
 				"choice": "Un environnement permettant d’exécuter des programmes écrits en Java."
 			},
 			{
-				"id": 69,
+				"id": 60,
 				"choice": "Une instruction du langage Java"
 			},
 			{
-				"id": 70,
+				"id": 61,
 				"choice": "Un site web référençant les fonctionnalités d’un langage de programmation."
 			}
 		],
 		"correctAnswer": [
-			68
+			59
 		],
 		"explanation": "JRE est l’acronyme de Java Runtime Environment, soit, un environnement où vos programmes Java pourront s’exécuter. C’est donc grâce à ceci que vos programmes pourront être utilisés sur vos ordinateurs. Sans cet environnement, impossible de faire fonctionner un programme écrit en Java !",
 		"category": {
@@ -561,24 +561,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 71,
+				"id": 62,
 				"choice": "Un conteneur permettant de stocker des données (entier, caractère, booléen…)"
 			},
 			{
-				"id": 72,
+				"id": 63,
 				"choice": "Une instruction du langage Java"
 			},
 			{
-				"id": 73,
+				"id": 64,
 				"choice": "Une entité permettant de manipuler des nombres"
 			},
 			{
-				"id": 74,
+				"id": 65,
 				"choice": "Une entité permettant de manipuler des caractères"
 			}
 		],
 		"correctAnswer": [
-			71
+			62
 		],
 		"explanation": "Les variables sont des réceptacles permettant à vos programmes de mémoriser des données (entier, booléen, caractère…) afin de pouvoir les manipuler, les modifier, les utiliser...",
 		"category": {
@@ -596,24 +596,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 75,
+				"id": 66,
 				"choice": "Rien, cette variable est mal initialisée."
 			},
 			{
-				"id": 76,
+				"id": 67,
 				"choice": "Rien, FE n’est pas un entier mais des caractères !"
 			},
 			{
-				"id": 77,
+				"id": 68,
 				"choice": "254"
 			},
 			{
-				"id": 78,
+				"id": 69,
 				"choice": "32"
 			}
 		],
 		"correctAnswer": [
-			77
+			68
 		],
 		"explanation": "La variable contient la valeur 254. 0xFE correspond à la notation hexadécimale de l’entier 254.",
 		"category": {
@@ -631,24 +631,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 79,
+				"id": 70,
 				"choice": "Oui, rien ne manque."
 			},
 			{
-				"id": 80,
+				"id": 71,
 				"choice": "Non, les noms de variables doivent avoir au moins deux caractères."
 			},
 			{
-				"id": 81,
+				"id": 72,
 				"choice": "Non, la variable k doit impérativement être de type double."
 			},
 			{
-				"id": 82,
+				"id":73,
 				"choice": "Non, une des variables est mal déclarée !"
 			}
 		],
 		"correctAnswer": [
-			82
+			73
 		],
 		"explanation": "La variable j est mal déclarée : il manque le point virgule final de la déclaration, sans lui, le programme ne compilera pas !",
 		"category": {
@@ -666,24 +666,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 83,
+				"id": 74,
 				"choice": "3.333333333333333333333..."
 			},
 			{
-				"id": 84,
+				"id": 75,
 				"choice": "3.4"
 			},
 			{
-				"id": 85,
+				"id": 76,
 				"choice": "3"
 			},
 			{
-				"id": 86,
+				"id":77,
 				"choice": "Rien, il y a une erreur dans le programme..."
 			}
 		],
 		"correctAnswer": [
-			86
+			77
 		],
 		"explanation": "Le calcul étant basé sur des doubles, le compilateur refusera de stocker le résultat dans un entier car il y a un risque de perte de précision… Le programme ne compilera donc pas car il y a une erreur...",
 		"category": {
@@ -701,24 +701,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 87,
+				"id": 78,
 				"choice": "Rien. Tout va bien."
 			},
 			{
-				"id": 88,
+				"id": 79,
 				"choice": "L’objet Scanner est mal initialisé."
 			},
 			{
-				"id": 89,
+				"id": 80,
 				"choice": "Il y a une incohérence entre la variable d et le type de retour de l’objet Scanner."
 			},
 			{
-				"id": 90,
+				"id": 81,
 				"choice": "La méthode nextInt() n’existe pas..."
 			}
 		],
 		"correctAnswer": [
-			89
+			80
 		],
 		"explanation": "l y a un problème de cohérence entre la variable qui va stocker la saisie clavier et la méthode qui récupère cette saisie : une variable double est utilisée sur un retour de type entier.",
 		"category": {
@@ -736,32 +736,32 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 91,
+				"id": 82,
 				"choice": "new"
 			},
 			{
-				"id": 92,
+				"id": 83,
 				"choice": "public"
 			},
 			{
-				"id": 93,
+				"id": 84,
 				"choice": "private"
 			},
 			{
-				"id": 94,
+				"id": 85,
 				"choice": "this"
 			},
 			{
-				"id": 95,
+				"id": 86,
 				"choice": "void"
 			},
 			{
-				"id": 96,
+				"id": 87,
 				"choice": "class"
 			}
 		],
 		"correctAnswer": [
-			91
+			82
 		],
 		"explanation": "Pour instancier une classe et ainsi créer un objet, il faut utiliser le mot-clé new",
 		"category": {
@@ -779,24 +779,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 97,
+				"id": 88,
 				"choice": "Elle n’a rien de spécial."
 			},
 			{
-				"id": 98,
+				"id": 89,
 				"choice": "Elle a toujours les mêmes caractéristiques, peu importe l’objet qui l’invoque."
 			},
 			{
-				"id": 99,
+				"id": 90,
 				"choice": "Elle n’a pas le même nombre de paramètres en fonction de l’objet qui l’invoque."
 			},
 			{
-				"id": 100,
+				"id":91,
 				"choice": "Elle n’a pas le même nom en fonction de l’objet qui l’invoque."
 			}
 		],
 		"correctAnswer": [
-			98
+			89
 		],
 		"explanation": "Une méthode polymorphe est une méthode qui permet d’avoir un comportement différent en fonction du type d’objet tout en s’assurant que l’invocation de la méthode est identique à tout le monde. Vous pouvez donc, sans vous soucier du type d’objet utilisé, invoquer une méthode polymorphe.",
 		"category": {
@@ -814,32 +814,32 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 101,
+				"id": 92,
 				"choice": "equals(), wait() et notify()"
 			},
 			{
-				"id": 102,
+				"id": 93,
 				"choice": "equals, toString() et notify()"
 			},
 			{
-				"id": 103,
+				"id": 94,
 				"choice": "equals(), toString() et hashCode()"
 			},
 			{
-				"id": 104,
+				"id":95,
 				"choice": "toString(), hashcode() et notify()"
 			},
 			{
-				"id": 105,
+				"id":96,
 				"choice": "equals(), hashCode() et notify()"
 			},
 			{
-				"id": 106,
+				"id": 97,
 				"choice": "equals(), hashCode() et tostring()"
 			}
 		],
 		"correctAnswer": [
-			103
+			94
 		],
 		"explanation": "Les méthodes equals(), toString() et hashCode() sont les méthodes que vous aurez à redéfinir le plus souvent car ce sont ces méthodes qui permettent à vos objets d’avoir une identité propre. Si vous ne le faites pas, je vous rappelle que ce sera la méthode de la classe mère qui sera invoqué, donc la classe Object !",
 		"category": {
@@ -857,24 +857,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 107,
+				"id": 98,
 				"choice": "Les interfaces dont héritent les collections présentes."
 			},
 			{
-				"id": 108,
+				"id": 99,
 				"choice": "Rien, ces interfaces n’existent pas."
 			},
 			{
-				"id": 109,
+				"id": 100,
 				"choice": "Rien, ce ne sont pas des interfaces mais des classes."
 			},
 			{
-				"id": 110,
+				"id": 101,
 				"choice": "Rien, ces interfaces n’ont pas d’implémentation."
 			}
 		],
 		"correctAnswer": [
-			107
+			98
 		],
 		"explanation": "Ces interfaces forment la première pierre à l’édifice des classes permettant de gérer des collections d’objets en Java. Ces objets implémentant ces interfaces vos offrent la possibilité de gérer, plus finement qu’avec des tableaux classiques, des paquets d’objets : certains sont triés automatiquement, certains n’autorisent pas les doublons, etc.",
 		"category": {
@@ -892,24 +892,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 111,
+				"id": 102,
 				"choice": "C’est une classe déclarée avec le mot-clé abstract, ne pouvant pas être instanciée et pouvant contenir des méthodes abstraites, donc sans corps de méthode."
 			},
 			{
-				"id": 112,
+				"id": 103,
 				"choice": "C’est une classe ne pouvant pas être héritée."
 			},
 			{
-				"id": 113,
+				"id": 104,
 				"choice": "C’est une classe ne pouvant pas avoir de constructeur."
 			},
 			{
-				"id": 114,
+				"id": 105,
 				"choice": "C’est une classe du langage Java permettant de créer plusieurs objets en son sein."
 			}
 		],
 		"correctAnswer": [
-			111
+			102
 		],
 		"explanation": "Une classe abstraite est une classe ne pouvant pas être instanciée mais rien ne l’empêche d’avoir des méthodes, un constructeur ou tout autre chose qu’une classe normale peut avoir.",
 		"category": {
@@ -927,24 +927,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 115,
+				"id": 106,
 				"choice": "python mon_fichier.py -o python"
 			},
 			{
-				"id": 116,
+				"id": 107,
 				"choice": "python mon_fichier.py"
 			},
 			{
-				"id": 117,
+				"id": 108,
 				"choice": "python"
 			},
 			{
-				"id": 118,
+				"id": 109,
 				"choice": "python5"
 			}
 		],
 		"correctAnswer": [
-			116
+			107
 		],
 		"explanation": "",
 		"category": {
@@ -962,16 +962,16 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 119,
+				"id": 110,
 				"choice": "Il aimait beaucoup les serpents."
 			},
 			{
-				"id": 120,
+				"id": 111,
 				"choice": "Il aimait beaucoup le groupe d'humoristes Monty Python."
 			}
 		],
 		"correctAnswer": [
-			120
+			111
 		],
 		"explanation": "",
 		"category": {
@@ -989,24 +989,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 121,
+				"id": 112,
 				"choice": " #4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
-				"id": 122,
+				"id": 113,
 				"choice": " #4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
-				"id": 123,
+				"id": 114,
 				"choice": " #4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
-				"id": 124,
+				"id": 115,
 				"choice": " #4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
 			}
 		],
 		"correctAnswer": [
-			122
+			113
 		],
 		"explanation": "",
 		"category": {
@@ -1024,24 +1024,24 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 125,
+				"id": 116,
 				"choice": " #4# def message(recipient, sender): \n pass #4#"
 			},
 			{
-				"id": 126,
+				"id": 117,
 				"choice": " #4# func message(recipient, sender): \n pass #4#"
 			},
 			{
-				"id": 127,
+				"id": 118,
 				"choice": " #4# function message(recipient, sender): \n pass #4#"
 			},
 			{
-				"id": 128,
+				"id": 119,
 				"choice": "#4# def message recipient, sender \n pass#4#"
 			}
 		],
 		"correctAnswer": [
-			125
+			116
 		],
 		"explanation": "",
 		"category": {
@@ -1059,20 +1059,20 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 129,
+				"id": 120,
 				"choice": ".list()"
 			},
 			{
-				"id": 130,
+				"id": 121,
 				"choice": " .to_list()"
 			},
 			{
-				"id": 131,
+				"id": 122,
 				"choice": " .split()"
 			}
 		],
 		"correctAnswer": [
-			131
+			122
 		],
 		"explanation": "",
 		"category": {
@@ -1090,20 +1090,20 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 132,
+				"id": 123,
 				"choice": ".without_blanks()"
 			},
 			{
-				"id": 133,
+				"id": 124,
 				"choice": " .strip() "
 			},
 			{
-				"id": 134,
+				"id": 125,
 				"choice": " .remove_blanks()"
 			}
 		],
 		"correctAnswer": [
-			133
+			124
 		],
 		"explanation": "",
 		"category": {
@@ -1121,24 +1121,24 @@
 		"choiceType": "checkbox",
 		"choices": [
 			{
-				"id": 135,
+				"id": 126,
 				"choice": " #4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
-				"id": 136,
+				"id": 127,
 				"choice": " #4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
 			},
 			{
-				"id": 137,
+				"id": 128,
 				"choice": " #4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
-				"id": 138,
+				"id": 129,
 				"choice": " #4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
 			}
 		],
 		"correctAnswer": [
-			136, 138
+			127, 129
 		],
 		"explanation": "",
 		"category": {
@@ -1156,16 +1156,16 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 139,
+				"id": 130,
 				"choice": "Vrai"
 			},
 			{
-				"id": 140,
+				"id": 131,
 				"choice": " Faux "
 			}
 		],
 		"correctAnswer": [
-			139
+			130
 		],
 		"explanation": "",
 		"category": {
@@ -1183,20 +1183,20 @@
 		"choiceType": "radio",
 		"choices": [
 			{
-				"id": 141,
+				"id": 132,
 				"choice": "friends[0] = \"Gallifrey\""
 			},
 			{
-				"id": 142,
+				"id": 133,
 				"choice": " friends[\"Doctor Who\"] = \"Gallifrey\" "
 			},
 			{
-				"id": 143,
+				"id": 134,
 				"choice": "friends.replace('Le tardis', \"Gallifrey\")"
 			}
 		],
 		"correctAnswer": [
-			142
+			133
 		],
 		"explanation": "",
 		"category": {
