@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
+import QuizzContext from "../shared/Context/QuizzContext";
 
 
 function UserChoiceExercising({disabledModal}) {
@@ -22,6 +23,8 @@ function UserChoiceExercising({disabledModal}) {
     const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
+
+    const {updateQuizzTheme, updateQuizzId} = useContext(QuizzContext);
 
     const MOCK_DATA_SELECT = [
         {value: "", label: " Sélectionner un choix"}
@@ -39,6 +42,8 @@ function UserChoiceExercising({disabledModal}) {
                 if (res.status === 200) {
                     //  Suite au retour du backend, switch sur le component affichant la première question
                     setIsLoading(false);
+                    updateQuizzTheme(values.theme.toLowerCase());
+                    updateQuizzId(res.data.quizzId);
                     history.push({pathname: `/Accueil/Entrainement/${res.data.quizzId}`}, res.data.quizzQuestionNumber );
                 }
             }, (error) => {

@@ -1,10 +1,12 @@
 import {useField} from "formik";
 import FormGroup from "react-bootstrap/FormGroup";
 import FormCheck from "react-bootstrap/FormCheck";
-import React from "react";
+import React, {useContext} from "react";
 import CodeReadOnly from "../Code/CodeReadOnly";
+import QuizzContext from "../Context/QuizzContext";
 
 export function MyCheckbox({name, value, type, idx, item, hdlChange,hdlDisable ,hdlBlur,className, sliceQuestionText}) {
+    const {quizzTheme} = useContext(QuizzContext);
 
     const [field] = useField({
         name,
@@ -18,7 +20,7 @@ export function MyCheckbox({name, value, type, idx, item, hdlChange,hdlDisable ,
                     <FormCheck.Input custom {...field} id={`custom-${type}-${idx}`} value={parseInt(value)} type={type}
                                      onChange={hdlChange} onBlur={hdlBlur} disabled={hdlDisable} />
                         {item.startsWith("#4#")
-                            ? <CodeReadOnly codeValue={item.replace(/#4#/g, "")} uniqueIdName={`code-${idx + 1}`}/>
+                            ? <CodeReadOnly codeValue={item.replace(/#4#/g, "")} uniqueIdName={`code-${idx + 1}`} codeMode={quizzTheme}/>
                             : <p style={{color:"#2a292b"}}>{item}</p>}
                 </FormCheck>
             </FormGroup>

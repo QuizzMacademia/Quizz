@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {Form} from "react-bootstrap";
@@ -9,6 +9,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
+import QuizzContext from "../shared/Context/QuizzContext";
 
 function UserChoiceQcm({disabledModal}) {
 
@@ -22,6 +23,8 @@ function UserChoiceQcm({disabledModal}) {
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
 
+    const {updateQuizzTheme, updateQuizzId} = useContext(QuizzContext);
+
     //  Envoi le choix de l'utilisateur pour son questionnaire d'entrainement (sujet et niveau) au backend
     //  En retour le backend, retourne l'ID du questionnaire générer pour l'utilisateur
     const handleSubmit = (values, {resetForm}) => {
@@ -30,6 +33,8 @@ function UserChoiceQcm({disabledModal}) {
             .then(res => {
                 if (res.status === 200) {
                  //  Suite au retour du backend, switch sur le component affichant la première question
+                    updateQuizzId(res.data.quizzId);
+                    updateQuizzTheme(values.theme.toLowerCase());
                     setIsLoading(false);
                     history.push({pathname: `/Accueil/Qcm/${res.data.quizzId}`},  res.data.quizzQuestionNumber );
                 }
