@@ -285,7 +285,7 @@
 	},
 	{
 		"id": 9,
-		"questionText": "Je viens de réaliser une concaténation, est-elle correcte :#4# var text = \"J'aime \" -\"le JavaScript !\";#4# ?",
+		"questionText": "Je viens de réaliser une concaténation, est-elle correcte  ?#4# var text = \"J'aime \" -\"le JavaScript !\";#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -321,7 +321,7 @@
 	},
 	{
 		"id": 10,
-		"questionText": "Que va être le résultat de cette condition ? #4#var result = 8 % 2 > 0 || !(3 % 2 < 1);#4# ?",
+		"questionText": "Que va être le résultat de cette condition ? #4#var result = 8 % 2 > 0 || !(3 % 2 < 1);#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -655,7 +655,7 @@
 	},
 	{
 		"id": 20,
-		"questionText": "Que vaut la variable result : \n #4# double i = 10;\n double j = 3;\n int result = i / j; \n#4#",
+		"questionText": "Que vaut la variable result : \n #4# double i = 10;\n double j = 3;\n int result = i / j;#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 2
