@@ -10,11 +10,14 @@ import axios from "axios";
 import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
 
-function UserChoiceQcm() {
+function UserChoiceQcm({disabledModal}) {
 
     //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        disabledModal();
+    }
     const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
@@ -38,6 +41,7 @@ function UserChoiceQcm() {
             });
         setIsLoading(false);
         resetForm();
+        handleClose();
     };
 
     //  Permet d'informer l'utilisateur des champs obligatoires dans le formulaire
@@ -60,14 +64,6 @@ function UserChoiceQcm() {
     //  Ajoute les valeurs suivantes dans la liste des niveaux de choix pour l'utilisateur.
     const [category, setCategory] = useState(MOCK_DATA_SELECT);
     const [theme, setTheme] = useState(MOCK_DATA_SELECT);
-    //  Ajoute les valeurs suivantes dans la liste des sujet de choix pour l'utilisateur.
-    const MOCK_SUJET = [
-        {value: "", label: "Choisir un sujet"},
-        {value: "Javascript", label: "JavaScript"},
-        {value: "Java", label: "Java"},
-        {value: "Python", label: "Python"}
-    ];
-
 
     const addNewDataToTheme = () => {
         const themeTab = [...MOCK_DATA_SELECT];
@@ -88,9 +84,8 @@ function UserChoiceQcm() {
             });
         setIsLoading(false);
     };
+    //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
     useEffect(() => {
-        //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
-        console.log("useEffect IN !!!");
         addNewDataToTheme();
     }, []);
 

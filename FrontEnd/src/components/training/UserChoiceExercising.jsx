@@ -11,11 +11,14 @@ import {useHistory} from "react-router";
 import Loader from "react-loader-spinner";
 
 
-function UserChoiceExercising() {
+function UserChoiceExercising({disabledModal}) {
 
     //  Déclaration des variables utilisées dans le component
     const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        disabledModal();
+    }
     const [isLoading, setIsLoading] = useState(false);
     const [messageError, setMessageError] = useState(false);
     let history = useHistory();
@@ -46,6 +49,7 @@ function UserChoiceExercising() {
             });
         resetForm();
         setIsLoading(true);
+        handleClose();
     };
 
     const addNewDataToTheme = () => {
@@ -88,9 +92,8 @@ function UserChoiceExercising() {
         setIsLoading(false);
     };
 
+    //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
     useEffect(() => {
-        //  Appeler une seule fois après le premier render, il va aller récuperer la première question dans le backend.
-        console.log("useEffect IN !!!");
         addNewDataToTheme();
     }, []);
 
