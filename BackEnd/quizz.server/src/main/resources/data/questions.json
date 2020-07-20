@@ -449,7 +449,7 @@
 	},
 	{
 		"id": 14,
-		"questionText": "Quel est le résultat de ce code ? #4#var number1 = \"2\", number2 = \"3\", resultat;\nresultat = number1 + number2;\nalert(resultat);#4#",
+		"questionText": "Quel est le résultat de ce code ? #4# var number1 = \"2\", number2 = \"3\", resultat;\nresultat = number1 + number2;\nalert(resultat);#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -484,7 +484,7 @@
 	},
 	{
 		"id": 15,
-		"questionText": "Laquelle de ces variables sera déclarée correctement ? #4#var var = 4;\ntext = 'Hello !';\nvar variable = 5.781e+8;\nvar 1variable = 10;#4#",
+		"questionText": "Laquelle de ces variables sera déclarée correctement ? #4# var var = 4;\ntext = 'Hello !';\nvar variable = 5.781e+8;\nvar 1variable = 10;#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 1
@@ -585,12 +585,12 @@
 	},
 	{
 		"id": 18,
-		"questionText": "Quel est la valeur de la variable ci-dessous : \n #4#  int entier = 0xFE;#4#",
+		"questionText": "Quel est la valeur de la variable ci-dessous : \n #4# int entier = 0xFE;#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 2
 		},
-		"level": "2",
+		"level": "1",
 		"choiceType": "radio",
 		"choices": [
 			{
@@ -620,7 +620,7 @@
 	},
 	{
 		"id": 19,
-		"questionText": "Ce code est-il correct ? \n #4#  int i = 10;\n int j = 12\n int k = 0;\n k = (i*i)*(j*j)/j+i;\n#4#",
+		"questionText": "Ce code est-il correct ? \n #4# int i = 10;\n int j = 12\n int k = 0;\n k = (i*i)*(j*j)/j+i;\n#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 2
@@ -655,7 +655,7 @@
 	},
 	{
 		"id": 20,
-		"questionText": "Que vaut la variable result : \n #4#  double i = 10;\n double j = 3;\n int result = i / j; \n#4#",
+		"questionText": "Que vaut la variable result : \n #4# double i = 10;\n double j = 3;\n int result = i / j; \n#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 2
@@ -690,7 +690,7 @@
 	},
 	{
 		"id": 21,
-		"questionText": "Qu'est-ce qui ne va pas, ici ? \n #4#  Scanner sc = new Scanner(System.in);\n system.out.println('Veuillez saisir un entier : ');\n double d = sc.nextInt(); \nSystem.out.println('Vous avez saisi le nombre : ' + d);#4#",
+		"questionText": "Qu'est-ce qui ne va pas, ici ? \n #4# Scanner sc = new Scanner(System.in);\n system.out.println('Veuillez saisir un entier : ');\n double d = sc.nextInt(); \n System.out.println('Vous avez saisi le nombre : ' + d);#4#",
 		"type": "ToExercise",
 		"theme": {
 			"id": 2
@@ -730,7 +730,7 @@
 		"theme": {
 			"id": 2
 		},
-		"level": "5",
+		"level": "1",
 		"choiceType": "radio",
 		"choices": [
 			{
@@ -773,7 +773,7 @@
 		"theme": {
 			"id": 2
 		},
-		"level": "4",
+		"level": "1",
 		"choiceType": "radio",
 		"choices": [
 			{
