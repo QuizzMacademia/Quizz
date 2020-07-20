@@ -186,7 +186,7 @@
 		"choices": [
 			{
 				"id": 21,
-				"choice": "Quels syntaxe dois-je utiliser pour écrire un commentaire de fin de ligne?"
+				"choice": "$$ Commentaire de fin de ligne"
 			},
 			{
 				"id": 22,
@@ -311,7 +311,7 @@
 			}
 		],
 		"correctAnswer": [
-			34
+			35
 
 		],
 		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
