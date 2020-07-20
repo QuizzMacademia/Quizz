@@ -5,19 +5,19 @@
 		"categories": [
 			{
 				"id": 1,
-				"category": "Le langage"
+				"category": "Langage"
 			},
 			{
 				"id": 2,
-				"category": "Les variables"
+				"category": "Variables"
 			},
 			{
 				"id": 3,
-				"category": "Les conditions et les boucles"
+				"category": "Conditions et Boucles"
 			},
 			{
 				"id": 4,
-				"category": "La syntaxe"
+				"category": "Syntaxe"
 			},
 			{
 				"id": 5,
@@ -25,7 +25,7 @@
 			},
 			{
 				"id": 6,
-				"category": "Les opérations"
+				"category": "Operations"
 			}
 		]
 	},
@@ -35,23 +35,23 @@
 		"categories": [
 			{
 				"id": 1,
-				"category": "Le langage"
+				"category": "Langage"
 			},
 			{
 				"id": 2,
-				"category": "Les variables"
+				"category": "Variables"
 			},
 			{
 				"id": 6,
-				"category": "Les opérations"
+				"category": "Operations"
 			},
 			{
 				"id": 7,
-				"category": "Les classes et les méthodes"
+				"category": "Classes et Methodes"
 			},
 			{
 				"id": 8,
-				"category": "Les interfaces"
+				"category": "Interfaces"
 			}
 		]
 	},
@@ -61,20 +61,20 @@
 		"categories": [
 			{
 				"id": 1,
-				"category": "Le langage"
+				"category": "Langage"
 			},
 			{
 				"id": 2,
-				"category": "Les variables"
+				"category": "Variables"
 			},
 			
 			{
 				"id": 7,
-				"category": "Les classes et les méthodes"
+				"category": "Classes et Methodes"
 			},
 			{
 				"id": 9,
-				"category": "Les tableaux et les listes"
+				"category": "Listes et  Tableaux  "
 			}
 		]
 	}

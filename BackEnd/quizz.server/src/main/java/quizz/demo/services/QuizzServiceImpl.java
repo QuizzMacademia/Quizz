@@ -71,7 +71,7 @@ public class QuizzServiceImpl implements QuizzService {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aucun theme trouvé! "));
 		quizz.setTheme(quizzTheme);
 		quizz.setLevel(level);
-		quizz.setExpirationDate(LocalDateTime.now().plus(1, ChronoUnit.MINUTES));
+		quizz.setExpirationDate(LocalDateTime.now().plus(24, ChronoUnit.HOURS));
 		quizzRepository.save(quizz);
 		return Optional.ofNullable(quizz);
 	}

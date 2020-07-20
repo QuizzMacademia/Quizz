@@ -17,6 +17,6 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 	@Query("select question from Quizz quizz join quizz.questions question where quizz.id= ?1 and INDEX(question)= ?2")
 	Optional<Question> findByQuizzIdAndQuestionId(Long quizzId, int questionId);
 	
-	@Query("select distinct(q.level) from Question q  where q.type=?1 and q.theme.theme=?2 ")
+	@Query("select distinct(q.level) from Question q  where q.type=?1 and q.theme.theme=?2 order by q.level asc")
 	List<Integer> findLevelsByQuestionTypeAndTheme(QuestionType questionType, String theme);
 }

@@ -1,7 +1,7 @@
 [
 	{
 		"id": 1,
-		"category": "Le langage",
+		"category": "langage",
 		"themes": [
 			{
 				"id": 1
@@ -16,7 +16,7 @@
 	},
 	{
 		"id": 2,
-		"category": "Les variables",
+		"category": "Variables",
 		"themes": [
 			{
 				"id": 1
@@ -31,7 +31,7 @@
 	},
 	{
 		"id": 3,
-		"category": "Les conditions et les boucles",
+		"category": "Conditions et Boucles",
 		"themes": [
 			{
 				"id": 1
@@ -40,7 +40,7 @@
 	},
 	{
 		"id": 4,
-		"category": "La syntaxe",
+		"category": "Syntaxe",
 		"themes": [
 			{
 				"id": 1
@@ -58,7 +58,7 @@
 	},
 	{
 		"id": 6,
-		"category": "Les operations",
+		"category": "Operations",
 		"themes": [
 			{
 				"id": 1
@@ -70,7 +70,7 @@
 	},
 	{
 		"id": 7,
-		"category": "Les classes et les methodes",
+		"category": "Classes et Methodes",
 		"themes": [
 			{
 				"id": 2
@@ -79,11 +79,18 @@
 				"id": 3
 			}
 		]
+	},{
+		"id": 8,
+		"category": "Interfaces",
+		"themes": [
+			{
+				"id": 2
+			}
+		]
 	},
-	
 	{
 		"id": 9,
-		"category": "Les tableaux et les listes",
+		"category": "listes et  Tableaux ",
 		"themes": [
 			{
 				"id": 3
