@@ -1,11 +1,13 @@
 package quizz.demo.services;
 
-
+import java.time.LocalDateTime;
 import java.util.Optional;
-import quizz.demo.model.entities.Category;
+
+import org.springframework.scheduling.annotation.Scheduled;
+
 import quizz.demo.model.entities.Quizz;
 import quizz.demo.model.entities.QuizzType;
-import quizz.demo.model.entities.Theme;
+
 
 public interface QuizzService {
 
@@ -16,5 +18,13 @@ public interface QuizzService {
 	Quizz saveOrUpDate(Quizz quizz);
 
 	Optional<Quizz> getQuizzByTypeAndThemeAndCategory(QuizzType type, String theme, String Category);
+	
+	//Boolean expired(LocalDateTime expirationDate, LocalDateTime currentDate);
+	
+	//void quizzExist(Long quizzId);
+	
+	
+		
+	
 
 }
