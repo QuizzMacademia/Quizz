@@ -1206,5 +1206,65 @@
 		"category": {
 			"id": 9
 		}
+	},
+	{
+		"id": 36,
+		"questionText": "if __name__ == \"__main__\"   permet d'exécuter toujours les mêmes instructions au chargement d'un fichier, que ce dernier soit lancé via la commande  python  ou importé dans un autre script.",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+
+				"id": 135,
+				"choice": "Vrai"
+			},
+			{
+				"id": 136,
+				"choice": "Faux"
+			}
+		],
+		"correctAnswer": [
+			136
+		],
+		"explanation": "",
+		"category": {
+			"id": 9
+		}
+	},
+	{
+		"id": 37,
+		"questionText": "Un environnement virtuel est : ",
+		"type": "ToExercise",
+		"theme": {
+			"id": 3
+		},
+		"level": "1",
+		"choiceType": "radio",
+		"choices": [
+			{
+
+				"id": 137,
+				"choice": "une autre galaxie. Vers l'infini et au-delà !"
+			},
+			{
+				"id": 138,
+				"choice": "un dossier contenant certaines librairies et une version de Python que l'on peut activer et désactiver à l'envi."
+			},
+			{
+				"id": 139,
+				"choice": "un dossier contenant un lien symbolique vers la version de Python installée sur votre ordinateur. "
+			}
+		],
+		"correctAnswer": [
+			139
+		],
+		"explanation": "",
+		"category": {
+			"id": 9
+		}
 	}
 ]
