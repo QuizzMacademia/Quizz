@@ -43,10 +43,10 @@ public class Quizz {
 	@OrderColumn
 	private List<Question> questions = new ArrayList();
 
-	private LocalDateTime expirationDate;
-
-	@ManyToOne
+    @ManyToOne
 	private Category category;
+	
+	private LocalDateTime expirationDate;
 
 	public Quizz() {
 	}
@@ -116,8 +116,8 @@ public class Quizz {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(LocalDateTime expirationDate) {
-		this.expirationDate = expirationDate;
+	public LocalDateTime setExpirationDate(LocalDateTime expirationDate) {
+		return this.expirationDate = expirationDate;
 	}
 
 	public Category getCategory() {

@@ -27,7 +27,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
             || (typeof values.userChoice === "string" && parseInt(values.userChoice) === questionData.correctAnswer[0])) {
             setUseResult(userResult + 1);
         }else {
-            setResultReview([...resultReview, questionData.questionText]);
+            setResultReview([...resultReview, questionData.questionText.replace(/#4#/g, "")]);
             console.log(resultReview);
         }
     };
@@ -63,10 +63,10 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
     function sliceQuestionText(str) {
         const deliminator = "#4#";
         let tabQuestionText = [];
-
         const types = str.startsWith(deliminator) ? ["code", "text"] : ["text", "code"];
         tabQuestionText = str
             .split(deliminator)
+            .filter(x => x  )
             .map((value, index) => ({
                 type: types[index % 2],
                 value

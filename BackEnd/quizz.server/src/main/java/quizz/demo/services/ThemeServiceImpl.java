@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import quizz.demo.model.entities.QuestionType;
 import quizz.demo.model.entities.QuizzType;
 import quizz.demo.model.entities.Theme;
 import quizz.demo.repositories.ThemeRepository;
@@ -18,6 +20,11 @@ public class ThemeServiceImpl implements ThemeService {
 	@Override
 	public Optional<List<Theme>> getThemesByQuizzType(QuizzType type) {
 		return themeRepository.findQuizzThemeByType(type);
+	}
+
+	@Override
+	public Optional<List<Theme>> getThemesByQuestionType(QuestionType type) {
+		return themeRepository.findQuestionThemeByType(type);
 	}
 
 }

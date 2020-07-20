@@ -42,6 +42,17 @@ public class QuizzController {
 	@Autowired
 	ThemeService themeService;
 
+	
+	// Provides quizz themes (for EXERCISING quizz) by type
+		@GetMapping(value = "exercising/themes")
+		public ResponseEntity<List<Theme>> getThemesByQuestionType(@RequestParam(value = "type") QuestionType questionType) {
+			List<Theme> themes = themeService.getThemesByQuestionType(questionType)
+					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+							"Une erreur est survenue!"));
+			return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
+		}
+		
+	
 	//Provides quizz levels by type and theme
 	@GetMapping(value="/levels")
 	public ResponseEntity<List<Integer>> getLevels(@RequestParam(value="type")QuestionType questionType, @RequestParam(value="theme")String questionTheme){
@@ -49,6 +60,7 @@ public class QuizzController {
 	return new ResponseEntity<List<Integer>>(levels,HttpStatus.OK);
 	}
 
+	
 	// Provides quizz's id and questions number by quizz's type, by theme and by
 	// difficulty's level
 	@PostMapping(value = "/generate")
@@ -63,12 +75,12 @@ public class QuizzController {
 		return new ResponseEntity<QuizzInfo>(quizzInfo, HttpStatus.OK);
 	}
 	
-	// Provides quizz themes by type
+	// Provides quizz themes (forTRAINING quizz) by type
 		@GetMapping(value = "/themes")
 		public ResponseEntity<List<Theme>> getThemes(@RequestParam(value = "type") QuizzType quizzType) {
 			List<Theme> themes = themeService.getThemesByQuizzType(quizzType)
 					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-							"Une erreur est survenue pendant la génération du quizz!"));
+							"Une erreur est survenue!"));
 			return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
 		}
 		
