@@ -311,7 +311,7 @@
 			}
 		],
 		"correctAnswer": [
-			49
+			50
 		],
 		"explanation": "Pour faire une concaténation, il vous faudra toujours utiliser le signe + entre les deux chaînes de caractères à concaténer. Rien de plus compliqué. ^^",
 		"category": {
@@ -491,9 +491,6 @@
 		"level": "1",
 		"choiceType": "checkbox",
 		"choices": [
-			{
-				
-			},
 			{
 				"id": 64,
 				"choice": "text"
@@ -990,19 +987,19 @@
 		"choices": [
 			{
 				"id": 121,
-				"choice": " #4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 122,
-				"choice": " #4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 123,
-				"choice": " #4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 124,
-				"choice": " #4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
 			}
 		],
 		"correctAnswer": [
@@ -1025,19 +1022,19 @@
 		"choices": [
 			{
 				"id": 125,
-				"choice": " #4# def message(recipient, sender): \n pass #4#"
+				"choice": "#4# def message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 126,
-				"choice": " #4# func message(recipient, sender): \n pass #4#"
+				"choice": "#4# func message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 127,
-				"choice": " #4# function message(recipient, sender): \n pass #4#"
+				"choice": "#4# function message(recipient, sender): \n pass #4#"
 			},
 			{
 				"id": 128,
-				"choice": "#4# def message recipient, sender \n pass#4#"
+				"choice": "#4# def message recipient, sender \n pass #4#"
 			}
 		],
 		"correctAnswer": [
@@ -1122,19 +1119,19 @@
 		"choices": [
 			{
 				"id": 135,
-				"choice": " #4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+				"choice": "#4# '{character} a dit : {quote}'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
 				"id": 136,
-				"choice": " #4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+				"choice": "#4#'(character) a dit : (quote)'.format(character='Babar', quote='Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
 				"id": 137,
-				"choice": " #4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
+				"choice": "#4# '{} a dit : {}'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			},
 			{
 				"id": 138,
-				"choice": " #4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.')#4#"
+				"choice": "#4# '[] a dit : []'.format('Babar', 'Tout n'est pas cirrhose dans la vie, comme dit l'alcoolique.') #4#"
 			}
 		],
 		"correctAnswer": [
@@ -1174,7 +1171,7 @@
 	},
 	{
 		"id": 35,
-		"questionText": "#4# friends = {\"Doctor Who\" : \"Le tardis\", \"Red\" : \"Storybrooke\", \"Frodon\" : \"La Terre du Milieu\"} #4# \n Pour remplacer \"Le tardis\" par \"Gallifrey\", j'écris :",
+		"questionText": "#4# friends = {\"Doctor Who\" : \"Le tardis\", \"Red\" : \"Storybrooke\", \"Frodon\" : \"La Terre du Milieu\"}#4# \n Pour remplacer \"Le tardis\" par \"Gallifrey\", j'écris :",
 		"type": "ToExercise",
 		"theme": {
 			"id": 3
@@ -1184,15 +1181,15 @@
 		"choices": [
 			{
 				"id": 141,
-				"choice": "friends[0] = \"Gallifrey\""
+				"choice": "#4# friends[0] = \"Gallifrey\"#4#"
 			},
 			{
 				"id": 142,
-				"choice": " friends[\"Doctor Who\"] = \"Gallifrey\" "
+				"choice": "#4# friends[\"Doctor Who\"] = \"Gallifrey\" #4#"
 			},
 			{
 				"id": 143,
-				"choice": "friends.replace('Le tardis', \"Gallifrey\")"
+				"choice": "#4# friends.replace('Le tardis', \"Gallifrey\")#4#"
 			}
 		],
 		"correctAnswer": [
