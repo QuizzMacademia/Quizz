@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import * as Yup from "yup";
 import Loader from "react-loader-spinner";
 import {Formik} from "formik";
 import Question from "./question";
 import ResultQuizz from "./resultQuizz";
 import CodeReadOnly from "../Code/CodeReadOnly";
+import QuizzContext from "../Context/QuizzContext";
 
 const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
 
@@ -13,6 +14,8 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
     const [showAnswerChoiceButton, setShowAnswerChoiceButton] = useState(false);
     const [userResult, setUseResult] = useState(0);
     const [resultReview,setResultReview] = useState([]);
+
+    const {quizzTheme} = useContext(QuizzContext);
 
     function arraysIdentical(array1, array2) {
         //fontion pour comparer deux tableaux
@@ -93,7 +96,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
                         <div key={idx1}>
                             {item1.type === 'text'
                                 ? <p>{item1.value}</p>
-                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`}/>}
+                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`} codeMode={quizzTheme}/>}
                         </div>
                     ))}
 
