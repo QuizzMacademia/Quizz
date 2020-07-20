@@ -12,6 +12,6 @@ import quizz.demo.model.entities.Theme;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-	@Query("select category from Quizz quizz join quizz.category category where quizz.type=?1 and quizz.theme.theme=?2")
+	@Query("select category from Quizz quizz join quizz.category category where quizz.type=?1 and quizz.theme.theme=?2 order by quizz.category asc")
 	Optional<List<Category>>findQuizzCategoriesByTypeAndTheme(QuizzType type, String theme);
 }
