@@ -56,7 +56,7 @@ function UserChoiceExercising({disabledModal}) {
         const themeTab = [...MOCK_DATA_SELECT];
 
         setIsLoading(true);
-        axios.get(`/quizz/themes?type=EXERCISING`)
+        axios.get(`/quizz/exercising/themes?type=ToExercise`)
             .then(res => {
                 if (res.status === 200) {
                     res.data.map((item) => (
