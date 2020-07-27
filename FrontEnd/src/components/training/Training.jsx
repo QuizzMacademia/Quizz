@@ -40,7 +40,7 @@ function Training({match: {params: {id}}}) {
     };
 
     return (
-        <div >
+        <>
              <Quizz questionData={questionData}
                     firstGetQuestion={firstGetQuestion}
                     isLoding={isLoding}
@@ -49,7 +49,7 @@ function Training({match: {params: {id}}}) {
                     setIndex={setIndex}
                     isTraining={isTraining}
                     lengthQuizz={location.state}/>
-        </div>
+        </>
     );
 }
 

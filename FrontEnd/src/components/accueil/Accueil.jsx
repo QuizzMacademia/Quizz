@@ -14,9 +14,9 @@ import RequireAuth from "../shared/Route/RequireAuth";
 
 const Accueil = () => {
     return (
-        <div>
-            <Menu/>
-            <div id={"main"}>
+        <>
+            <Menu style={{height:"10%"}}/>
+            <div  id={"main"}>
                 <Switch>
                     <RequireAuth>
                         <Route exact path='/Accueil' component={Home}/>
@@ -28,8 +28,9 @@ const Accueil = () => {
                     </RequireAuth>
                 </Switch>
             </div>
-            <Footer/>
-        </div>
+            <div className={"bg"}></div>
+            <Footer style={{height:"8%"}}/>
+        </>
     );
 };
 
