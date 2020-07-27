@@ -2,7 +2,6 @@
     background-color: #27303a;
     font-size: 1.5em;
     color:white;
-    height: 70px;
     margin:auto;
 }
 
@@ -42,10 +41,10 @@ img{
     width: 50px;
     border-radius: 5px;
 }
-
+/*
 #corps {
     height: calc(100% - 160px);
-}
+}*/
 .buttonMacademia{
     height: 60px;
     width: 200px;
@@ -53,3 +52,53 @@ img{
     background: linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%);
     border:none !important;
 }
+#main{
+    height: 100%;
+    width: 100%;
+
+}
+/* width */
+#main::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #f2f5f8;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #e4e7ea;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #e4e7ea;
+}
+
+.bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-clip-path: polygon(72% 74%, 100% 27%, 100% 100%, 5% 100%);
+    clip-path: polygon(72% 74%, 100% 27%, 100% 100%, 5% 100%);
+    z-index: -1;
+    background-color: #ff4b82;
+}
+
+.carousel {
+ position:absolute!important;
+}
+.carousel-indicators li{
+    background-color: #616064!important;
+}
+
+
+
+
+
+
+

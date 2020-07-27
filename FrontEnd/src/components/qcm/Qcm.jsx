@@ -42,7 +42,7 @@ function Qcm({match:{params:{id}}}) {
     };
 
     return (
-        <div >
+        <>
             <Quizz questionData={questionData}
                    firstGetQuestion={firstGetQuestion}
                    isLoding={isLoding}
@@ -51,7 +51,7 @@ function Qcm({match:{params:{id}}}) {
                    setIndex={setIndex}
                    isQCM={isQCM}
                    lengthQuizz={location.state}/>
-        </div>
+        </>
     );
 }
 

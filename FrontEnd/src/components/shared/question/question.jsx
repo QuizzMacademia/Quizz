@@ -41,7 +41,7 @@ const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAn
             && <Answer explication={question.explanation} sliceQuestionText={sliceQuestionText}/>}
             <div className="button-container">
                 {!showAnswerChoiceButton
-                && <Button variant={"success"}
+                && <Button  style={{ background: " linear-gradient(135deg, #4bd29c, #379b73)"}}
                         onClick={onHandleValidation}
                         disabled={(!isValid || values['userChoice'].length === 0)}>
                     Valider

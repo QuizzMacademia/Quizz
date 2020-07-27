@@ -91,7 +91,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
             {firstGetQuestion
             && <>
                 {!lastQuestion
-                && <div>
+                && <>
                     <h4>  {sliceQuestionText(questionData.questionText).map((item1, idx1) => (
                         <div key={idx1}>
                             {item1.type === 'text'
@@ -128,7 +128,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
                             </Formik>
                         </div>
                     </div>
-                </div>}
+                </>}
 
                 {isTraining && lastQuestion && <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview} />}
                 {isQCM && lastQuestion &&  <ResultQuizz quizzSize={quizzSize} userResult={userResult} resultReview={resultReview} isQCM={isQCM}/>}
