@@ -6,7 +6,7 @@ const CheckAnswer = ({question, item, values}) => (
     (question.correctAnswer.includes(item.id) || values.userChoice.includes(item.id + ''))
     && < span>
             {
-                question.correctAnswer.includes(item.id)
+                (question.correctAnswer.includes(item.id)&&values.userChoice.includes(item.id + ''))
                     ? <Check color="green" size={20}/>
                     : <X color="red" size={20}/>
             }

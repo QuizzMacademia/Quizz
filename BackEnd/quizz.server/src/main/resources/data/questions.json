@@ -206,7 +206,7 @@
 			}
 		],
 		"correctAnswer": [
-			21
+			24
 		],
 		"explanation": "Les commentaires de fin de ligne s'écrivent en commençant par les caractères // tandis que les commentaires multilignes utilisent les caractères /* et */.",
 		"category": {
@@ -349,7 +349,7 @@
 		"correctAnswer": [
 			38
 		],
-		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n\n#4#// Condition initiale :\nvar result = 8 % 2 > 0 || !(3 % 2 < 1);\n\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;\n#4#\nLa condition ainsi décomposée est déjà plus facile à cerner :\n\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final, notre condition renvoie true!",
+		"explanation": "Si vous vous êtes trompés c'est que cette condition était un peu complexe pour vous, rappelez-vous qu'il faut toujours décomposer les conditions en plusieurs étapes :\n\n#4#// Condition initiale :\nvar result = 8 % 2 > 0 || !(3 % 2 < 1);\n\n// Condition décomposée en trois parties :\nvar result1 = 8 % 2 > 0,\nresult2 = !(3 % 2 < 1),\nresult3 = result1 || result2;#4#\nLa condition ainsi décomposée est déjà plus facile à cerner :\n\nPour result1 on fait le calcul 8 % 2 = 0 et on obtient ainsi la comparaison 0 > 0 qui renvoie donc false.\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nPour result2 on fait le calcul 3 % 2 = 1 et on obtient ainsi la comparaison 1 > 1 qui renvoie donc false. En revanche là on constate que la condition est entourée de parenthèses et est précédée de l'opérateur NON, il nous faut donc inverser le résultat de la condition, ainsi, false devient true !\nEt pour terminer, dans result3, nous utilisons l'opérateur logique OU qui renvoie true si l'une des valeurs soumises vaut true elle aussi. Ainsi, false || true = true !\nAu final, notre condition renvoie true!",
 		"category": {
 			"id": 3
 		}
@@ -989,19 +989,19 @@
 			{
 
 				"id": 112,
-				"choice": "#4# if only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if only singer = 'Sia':\n     print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 113,
-				"choice": "#4# if singer == 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia':\n     print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 114,
-				"choice": "#4# only singer = 'Sia':\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# only singer = 'Sia':\n    print('I'm aliiiiiiiiiiiive!') #4#"
 			},
 			{
 				"id": 115,
-				"choice": "#4# if singer == 'Sia'\n print('I'm aliiiiiiiiiiiive!') #4#"
+				"choice": "#4# if singer == 'Sia'\n    print('I'm aliiiiiiiiiiiive!') #4#"
 			}
 		],
 		"correctAnswer": [
@@ -1025,15 +1025,15 @@
 			{
 
 				"id": 116,
-				"choice": "#4# def message(recipient, sender): \n pass #4#"
+				"choice": "#4# def message(recipient, sender): \n     pass #4#"
 			},
 			{
 				"id": 117,
-				"choice": "#4# func message(recipient, sender): \n pass #4#"
+				"choice": "#4# func message(recipient, sender): \n     pass #4#"
 			},
 			{
 				"id": 118,
-				"choice": "#4# function message(recipient, sender): \n pass #4#"
+				"choice": "#4# function message(recipient, sender): \n     pass #4#"
 			},
 			{
 				"id": 119,
