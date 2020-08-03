@@ -16,6 +16,10 @@ import quizz.demo.tools.json.QuestionAdapter;
 import quizz.demo.tools.json.QuizzAdapter;
 import quizz.demo.tools.json.ThemeAdapter;
 import quizz.demo.tools.json.UserAdapter;
+
+import java.io.StringWriter;
+
+import org.python.util.PythonInterpreter;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,9 +32,22 @@ public class Application {
 
 	// lance le serveur
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+	  SpringApplication.run(Application.class, args);
+	 /*# This program adds two numbers\n" + 
+		      		"\n" + 
+		      		"num1 = 1.5\n" + 
+		      		"num2 = 6.3\n" + 
+		      		"\n" + 
+		      		"# Add two numbers\n" + 
+		      		"sum = num1 + num2\n" + 
+		      		"\n" + 
+		      		"# Display the sum\n" + 
+		      		"print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))"*/
+		   
 	}
+	
 
+	
 	@Bean
 	ApplicationRunner initUserRepository(UserRepository userRepository) {
 		return args -> {

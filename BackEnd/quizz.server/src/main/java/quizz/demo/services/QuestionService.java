@@ -1,5 +1,6 @@
 package quizz.demo.services;
 
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Optional;
 import quizz.demo.model.entities.Question;
@@ -19,5 +20,7 @@ public interface QuestionService {
 	Optional<Question> getQuestionByQuizzIdAndQuestionId(Long quizzId, int questionId);
 	
 	List<Integer> getLevelsByQuestionTypeAndTheme(QuestionType questionType, String theme);
+
+	StringWriter compileCodePython(String code);
 
 }

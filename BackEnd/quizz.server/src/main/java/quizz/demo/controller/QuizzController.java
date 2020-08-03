@@ -1,5 +1,6 @@
 package quizz.demo.controller;
 
+import java.io.StringWriter;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,13 +46,13 @@ public class QuizzController {
 
 	
 	// Provides quizz themes (for EXERCISING quizz) by type
-		@GetMapping(value = "exercising/themes")
-		public ResponseEntity<List<Theme>> getThemesByQuestionType(@RequestParam(value = "type") QuestionType questionType) {
-			List<Theme> themes = themeService.getThemesByQuestionType(questionType)
-					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-							"Une erreur est survenue!"));
-			return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
-		}
+	@GetMapping(value = "exercising/themes")
+	public ResponseEntity<List<Theme>> getThemesByQuestionType(@RequestParam(value = "type") QuestionType questionType) {
+		List<Theme> themes = themeService.getThemesByQuestionType(questionType)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+						"Une erreur est survenue!"));
+		return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
+	}
 		
 	
 	//Provides quizz levels by type and theme
@@ -118,6 +120,13 @@ public class QuizzController {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aucun quizz trouvé avec l'id: " + questionId));
 
 		return new ResponseEntity<Question>(question, HttpStatus.OK);
+	}
+	
+	
+	@PostMapping(value = "/codePython")
+	public StringWriter codePython(@RequestBody  String code) {
+		
+		return questionService.compileCodePython(code);
 	}
 
 }
