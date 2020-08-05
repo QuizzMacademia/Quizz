@@ -7,7 +7,7 @@ import classNames from "classnames";
 import Button from "react-bootstrap/Button";
 import CheckAnswer from "./checkAnswer";
 
-const Question = ({question,onHandleValidation,  errors,index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange, sliceQuestionText}) => {
+const Question = ({question,onHandleValidation,  errors, index, quizzSize, showAnswerChoiceButton, values, isValid, handleSubmit, handleBlur, handleChange, sliceQuestionText}) => {
 
     return (
         <>

@@ -55,8 +55,8 @@
 .option {
     width: 100%;
     line-height: 0.9;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
     font-size: 1.3rem;
     text-align: left;
 }
@@ -126,4 +126,18 @@ p {
     cursor: pointer;
     height: 100%;
     margin-top: .2rem!important;
+}
+.btn-primary {
+     border-color: inherit !important;
+}
+.btn-primary.focus, .btn-primary:focus {
+
+    box-shadow: inherit !important;
+}
+
+.responseTrue .ace-iplastic  {
+    color: #069b19;
+}
+.responseFalse .ace-iplastic  {
+    color: #be383a;
 }

@@ -22,7 +22,7 @@ function CodeEditor({codeValue, uniqueIdName, codeMode, majValue}) {
                        onChange={onChange}
                        name={uniqueIdName}
                        editorProps={{ $blockScrolling: true }}
-                       fontSize={20}
+                       fontSize={18}
                        width={'100%'}
                        showPrintMargin={true}
                        showGutter={true}
