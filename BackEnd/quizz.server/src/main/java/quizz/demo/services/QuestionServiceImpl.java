@@ -1,7 +1,10 @@
 package quizz.demo.services;
 
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Optional;
+
+import org.python.util.PythonInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -46,5 +49,16 @@ public class QuestionServiceImpl implements QuestionService {
 	public List<Integer> getLevelsByQuestionTypeAndTheme(QuestionType questionType, String theme) {
 	
 		return questionRepository.findLevelsByQuestionTypeAndTheme(questionType, theme);
+	}
+	
+	@Override
+	public StringWriter compileCodePython(String code) {
+		try(PythonInterpreter pyInterp = new PythonInterpreter()) {
+			StringWriter output = new StringWriter();
+
+			pyInterp.setOut(output);
+		    pyInterp.exec(code);
+		    return output;
+		    }
 	}
 }
