@@ -20,7 +20,7 @@ export function MyCheckbox({name, value, type, idx, item, hdlChange,hdlDisable ,
                     <FormCheck.Input custom {...field} id={`custom-${type}-${idx}`} value={parseInt(value)} type={type}
                                      onChange={hdlChange} onBlur={hdlBlur} disabled={hdlDisable} />
                         {item.startsWith("#4#")
-                            ? <CodeReadOnly codeValue={item.replace(/#4#/g, "")} uniqueIdName={`code-${idx + 1}`} codeMode={quizzTheme}/>
+                            ? <CodeReadOnly codeValue={item.replace(/#4#/g, "")} uniqueIdName={`code-${idx + 1}`} codeMode={quizzTheme} theme={"monokai"}/>
                             : <p style={{color:"#2a292b"}}>{item}</p>}
                 </FormCheck>
             </FormGroup>
