@@ -111,6 +111,7 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
                                             getQuestion={getQuestion}
                                             setIndex={setIndex}
                                             setLastQuestion={setLastQuestion}
+                                            quizzTheme={quizzTheme}
                             />
                             : <div className="options">
                                 <Formik

@@ -5,7 +5,7 @@ import CodeReadOnly from "../Code/CodeReadOnly";
 import axios from "axios";
 import "./question.css"
 
-const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion, setIndex,setLastQuestion})=>{
+const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion, setIndex,setLastQuestion,quizzTheme})=>{
     const [codeVal, setCodeVal] = useState("");
     const [showResponse, setShowResponse] = useState(false);
     const [codeResponse, setCodeResponse] = useState("");
@@ -38,10 +38,15 @@ const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion
         axios.post('/quizz/codePython', codeVal, config)
             .then((res)=> {
                 console.log(res.data);
-                if (res.status === 200) {
+                if (res.status === 200 && res.data.buffer === question.choices[0].choice ) {
                     console.log(codeVal);
                     setShowResponse(true);
                     setCodeResponse(res.data.buffer)}
+                else {
+                    setColor(false);
+                    setShowResponse(true);
+                    setCodeResponse("Failure")
+                }
 
             })
             .catch((e)=>{
@@ -53,7 +58,7 @@ const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion
     }
     return(
         <>
-            <CodeEditor codeValue={codeVal} uniqueIdName={`code-${index}`} codeMode={"python"} majValue={majCodeVal}/>
+            <CodeEditor codeValue={codeVal} uniqueIdName={`code-${index}`} codeMode={quizzTheme} majValue={majCodeVal}/>
 
             <Button style={{width:"100%", backgroundColor:"#ff4b82", borderRadius:"0  0 7px 7px ", border:"none"}} onClick={checkResponse}>Valider</Button>
 
@@ -62,7 +67,7 @@ const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion
                 <span style={{marginTop:"30px", display: "block", textAlign: "left"}}>Résultat du code :</span>
                 <span className={color?"responseTrue ace-iplastic":"responseFalse ace-iplastic" } >
 
-                                <CodeReadOnly   codeValue={codeResponse} uniqueIdName={`code-${index}`}  theme={"iplastic"} />
+                                <CodeReadOnly   codeValue={codeResponse} uniqueIdName={`code-${index}`}  codeMode={quizzTheme} theme={"iplastic"} />
                             </span>
 
 
@@ -70,21 +75,18 @@ const  QuestionCode=({question, quizzSize, sliceQuestionText, index, getQuestion
                     <div key={idx1} style={{marginTop:"30px"}}>
                         {item1.type === 'text'
                             ? <p>{item1.value}</p>
-                            : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`} codeMode={"python"} theme={"monokai"}/>}
+                            : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`} codeMode={quizzTheme} theme={"monokai"}/>}
                     </div>
                 ))}
 
-
-                <Button  style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)", marginTop:"20px"}} onClick={handleNextQuestionCode} >
-                    {/*!(index+1 === quizzSize)
-                                    ? "Question Suivante"
-                                    :"Consultez Resultat"
-                                */}
-                    {(index !==quizzSize)
-                        ? "Question Suivante"
-                        :"Consultez Resultat"
-                    }
-                </Button>
+                <div className="button-container">
+                    <Button  style={{ background: "linear-gradient(45deg,#ff4b82 0,#ef8f5f 100%)", marginTop:"auto"}} onClick={handleNextQuestionCode} >
+                        {(index !==quizzSize)
+                            ? "Question Suivante"
+                            :"Consultez Resultat"
+                        }
+                    </Button>
+                </div>
             </>}
         </>
     )

@@ -1286,7 +1286,7 @@
 		"correctAnswer": [
 			140
 		],
-		"explanation": "Pour les puissances, on double simplement la multiplication. Ainsi \n x^n s'obtiendra en écrivant x**n.#4# num1 = 1.5 \n +num2 = 6.3\n \n sum = num1 + num2\n \n print(\"The sum of {0} and {1} is {2}\").format(num1, num2, sum )#4#",
+		"explanation": "Pour les puissances, on double simplement la multiplication. Ainsi \n x^n s'obtiendra en écrivant x**n.#4# num1 = 1.5 \n num2 = 6.3\n sum = num1 + num2\n \n print(\"The sum of {0} and {1} is {2}\").format(num1, num2, sum )#4#",
 		"category": {
 			"id": 9
 		}
