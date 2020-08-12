@@ -1,0 +1,22 @@
+footer{
+    background:#343A40;
+    color:#909090;
+    bottom:0;
+    width:100%;
+    padding-top:10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: fixed;
+}
+
+footer img{
+    width: 40px;
+}
+/*
+#main{
+    margin:auto;
+    padding-bottom:100px;
+    position:relative;
+
+}
+*/

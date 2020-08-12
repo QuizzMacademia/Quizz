@@ -1,0 +1,10 @@
+.modalStyle{
+    background-color: #f2f5f8;
+    border-left: 5px solid #ff4b82;
+    border-radius: 5px;
+}
+
+.choiceButton {
+    text-align: right;
+    margin: 30px 15px 0 0;
+}
