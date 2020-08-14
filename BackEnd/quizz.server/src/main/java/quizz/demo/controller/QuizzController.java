@@ -1,10 +1,8 @@
 package quizz.demo.controller;
 
-import java.io.StringWriter;
 import java.util.List;
-
 import javax.script.ScriptException;
-
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +22,11 @@ import quizz.demo.model.entities.Quizz;
 import quizz.demo.model.entities.QuizzInfo;
 import quizz.demo.model.entities.QuizzType;
 import quizz.demo.model.entities.Theme;
+import quizz.demo.request.AnswerForm;
 import quizz.demo.services.CategoryService;
 import quizz.demo.services.QuestionService;
 import quizz.demo.services.QuizzService;
 import quizz.demo.services.ThemeService;
-
 
 @RestController
 @RequestMapping("/quizz")
@@ -47,25 +45,23 @@ public class QuizzController {
 	@Autowired
 	ThemeService themeService;
 
-	
 	// Provides quizz themes (for EXERCISING quizz) by type
 	@GetMapping(value = "exercising/themes")
-	public ResponseEntity<List<Theme>> getThemesByQuestionType(@RequestParam(value = "type") QuestionType questionType) {
+	public ResponseEntity<List<Theme>> getThemesByQuestionType(
+			@RequestParam(value = "type") QuestionType questionType) {
 		List<Theme> themes = themeService.getThemesByQuestionType(questionType)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-						"Une erreur est survenue!"));
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Une erreur est survenue!"));
 		return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
 	}
-		
-	
-	//Provides quizz levels by type and theme
-	@GetMapping(value="/levels")
-	public ResponseEntity<List<Integer>> getLevels(@RequestParam(value="type")QuestionType questionType, @RequestParam(value="theme")String questionTheme){
-	List<Integer>levels=questionService.getLevelsByQuestionTypeAndTheme(questionType, questionTheme);
-	return new ResponseEntity<List<Integer>>(levels,HttpStatus.OK);
+
+	// Provides quizz levels by type and theme
+	@GetMapping(value = "/levels")
+	public ResponseEntity<List<Integer>> getLevels(@RequestParam(value = "type") QuestionType questionType,
+			@RequestParam(value = "theme") String questionTheme) {
+		List<Integer> levels = questionService.getLevelsByQuestionTypeAndTheme(questionType, questionTheme);
+		return new ResponseEntity<List<Integer>>(levels, HttpStatus.OK);
 	}
 
-	
 	// Provides quizz's id and questions number by quizz's type, by theme and by
 	// difficulty's level
 	@PostMapping(value = "/generate")
@@ -79,17 +75,16 @@ public class QuizzController {
 		quizzInfo.setQuizzQuestionNumber(quizz.getQuestionsNumber());
 		return new ResponseEntity<QuizzInfo>(quizzInfo, HttpStatus.OK);
 	}
-	
+
 	// Provides quizz themes (forTRAINING quizz) by type
-		@GetMapping(value = "/themes")
-		public ResponseEntity<List<Theme>> getThemes(@RequestParam(value = "type") QuizzType quizzType) {
-			List<Theme> themes = themeService.getThemesByQuizzType(quizzType)
-					.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-							"Une erreur est survenue!"));
-			return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
-		}
-		
-	//Provides quizz levels by type and theme
+	@GetMapping(value = "/themes")
+	public ResponseEntity<List<Theme>> getThemes(@RequestParam(value = "type") QuizzType quizzType) {
+		List<Theme> themes = themeService.getThemesByQuizzType(quizzType)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Une erreur est survenue!"));
+		return new ResponseEntity<List<Theme>>(themes, HttpStatus.OK);
+	}
+
+	// Provides quizz levels by type and theme
 
 	// Provides Quizz categories, by type and theme
 	@GetMapping(value = "/categories")
@@ -124,20 +119,17 @@ public class QuizzController {
 
 		return new ResponseEntity<Question>(question, HttpStatus.OK);
 	}
-	
 
-	
-	@PostMapping(value = "/codePython")
-	public StringWriter codePython(@RequestBody  String code) {
-		
-		return questionService.compileCodePython(code);
+	@PostMapping("/evaluate")
+	public ResponseEntity<?> evaluateCode(@Valid @RequestBody AnswerForm answerForm) {
+		try {
+			String eval = questionService.evaluateCode(answerForm.getTheme(), answerForm.getCode());
+			return ResponseEntity.ok(eval);
+		} catch (ScriptException e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Impossible d'évaluer le code");
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Une erreur inconnue est survenue");
 		}
-
-	@PostMapping(value = "/codeJS")
-	public Object codeJavaScript(@RequestBody  String code) throws ScriptException {
-		
-		return questionService.compileCodeJavaScript(code);
-
 	}
 
 }

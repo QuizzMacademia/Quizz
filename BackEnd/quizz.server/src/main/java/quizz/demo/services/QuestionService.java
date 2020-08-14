@@ -1,11 +1,8 @@
 package quizz.demo.services;
 
-import java.io.StringWriter;
 import java.util.List;
 import java.util.Optional;
-
 import javax.script.ScriptException;
-
 import quizz.demo.model.entities.Question;
 import quizz.demo.model.entities.QuestionType;
 
@@ -23,11 +20,7 @@ public interface QuestionService {
 	Optional<Question> getQuestionByQuizzIdAndQuestionId(Long quizzId, int questionId);
 	
 	List<Integer> getLevelsByQuestionTypeAndTheme(QuestionType questionType, String theme);
-
-
-	StringWriter compileCodePython(String code);
-
-	Object compileCodeJavaScript(String code) throws ScriptException;
-
+	
+	String evaluateCode(String theme, String code) throws ScriptException;
 
 }

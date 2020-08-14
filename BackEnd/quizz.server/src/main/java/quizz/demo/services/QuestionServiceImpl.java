@@ -3,10 +3,8 @@ package quizz.demo.services;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Optional;
-
-
 import org.python.util.PythonInterpreter;
-
+import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -55,31 +53,50 @@ public class QuestionServiceImpl implements QuestionService {
 	
 		return questionRepository.findLevelsByQuestionTypeAndTheme(questionType, theme);
 	} 
+
+
+	
+	
+
 	@Override
-	public Object compileCodeJavaScript(String code) throws ScriptException {
-		
-		
-			/*String script = "function toto(num) {\n"
-					+ "let a = 1;\n"
-					+ "let b = 2\n"
-					+ "print(a + b)\n"
-					+ "if(a+b > 2){\n"
-					+ "console.log('plus grand que 2')}\n"
-					+ "return a+b}";*/
-			 
-			ScriptEngine engine = new ScriptEngineManager(null).getEngineByName("JavaScript");
-			return engine.eval(code);
+	public String evaluateCode(String theme, String code) throws ScriptException {
+		String eval = null;
+		if(theme != null) {
+			switch (theme) {
+			case "Javascript":
+				eval = evaluateJavascriptCode(code);
+				break;
+			case "Python":
+				eval = evaluatePythonCode(code);
+				break;
+			default:
+				break;
+			}
+		}
+		return eval;
+	}
+
+	private String evaluateJavascriptCode(String code) throws ScriptException {
+		ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+		ScriptContext context = engine.getContext();
+		StringWriter writer = new StringWriter();
+		context.setWriter(writer);
+		engine.eval(code);
+		String result = writer.toString();
+		return result;
 		
 	}
-	
-	@Override
-	public StringWriter compileCodePython(String code) {
-		try(PythonInterpreter pyInterp = new PythonInterpreter()) {
-			StringWriter output = new StringWriter();
 
-			pyInterp.setOut(output);
-		    pyInterp.exec(code);
-		    return output;
+
+	private String evaluatePythonCode(String code)throws ScriptException {
+		try(PythonInterpreter pythonInterpreter = new PythonInterpreter()) {
+			StringWriter writer = new StringWriter();
+			pythonInterpreter.setOut(writer);
+			pythonInterpreter.exec(code);
+		    String result = writer.toString();
+		    return result;
 		    }
 	}
+
+	
 }
