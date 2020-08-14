@@ -2,6 +2,9 @@ package quizz.demo.controller;
 
 import java.io.StringWriter;
 import java.util.List;
+
+import javax.script.ScriptException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -122,11 +125,19 @@ public class QuizzController {
 		return new ResponseEntity<Question>(question, HttpStatus.OK);
 	}
 	
+
 	
 	@PostMapping(value = "/codePython")
 	public StringWriter codePython(@RequestBody  String code) {
 		
 		return questionService.compileCodePython(code);
+		}
+
+	@PostMapping(value = "/codeJS")
+	public Object codeJavaScript(@RequestBody  String code) throws ScriptException {
+		
+		return questionService.compileCodeJavaScript(code);
+
 	}
 
 }

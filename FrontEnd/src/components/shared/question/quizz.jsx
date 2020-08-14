@@ -6,6 +6,7 @@ import Question from "./question";
 import ResultQuizz from "./resultQuizz";
 import CodeReadOnly from "../Code/CodeReadOnly";
 import QuizzContext from "../Context/QuizzContext";
+import QuestionCode from "./questionCode";
 
 const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestion, index , setIndex, isTraining, isQCM}) => {
 
@@ -96,37 +97,47 @@ const Quizz = ({questionData,lengthQuizz, firstGetQuestion, isLoding ,getQuestio
                         <div key={idx1}>
                             {item1.type === 'text'
                                 ? <p>{item1.value}</p>
-                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`} codeMode={quizzTheme}/>}
+                                : <CodeReadOnly codeValue={item1.value} uniqueIdName={`code-${idx1}`} codeMode={quizzTheme} theme={"monokai"}/>}
                         </div>
                     ))}
 
                         </h4>
                     <div className="options-container">
-                        <div className="options">
-                            <Formik
-                                validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
-                                initialValues={initialValues}
-                                onSubmit={handleNextQuestion}>
+                        {questionData.choiceType==="code"
+                            ? <QuestionCode question={questionData}
+                                            quizzSize={quizzSize}
+                                            sliceQuestionText={sliceQuestionText}
+                                            index={index}
+                                            getQuestion={getQuestion}
+                                            setIndex={setIndex}
+                                            setLastQuestion={setLastQuestion}
+                                            quizzTheme={quizzTheme}
+                            />
+                            : <div className="options">
+                                <Formik
+                                    validationSchema={questionData.choiceType === 'checkbox' ? validationSchemaCheckbox : validationSchemaRadio}
+                                    initialValues={initialValues}
+                                    onSubmit={handleNextQuestion}>
 
-                                {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
+                                    {({errors, values, isValid, handleSubmit, handleBlur, handleChange}) => (
 
-                                    <Question question={questionData}
-                                              onHandleValidation={() => handleValidation(values)}
-                                              showAnswerChoiceButton={showAnswerChoiceButton}
-                                              quizzSize={quizzSize}
-                                              errors={errors}
-                                              values={values}
-                                              index={index}
-                                              isValid={isValid}
-                                              handleSubmit={handleSubmit}
-                                              handleBlur={handleBlur}
-                                              handleChange={handleChange}
-                                              sliceQuestionText={sliceQuestionText}
-                                    />
+                                        <Question question={questionData}
+                                                  onHandleValidation={() => handleValidation(values)}
+                                                  showAnswerChoiceButton={showAnswerChoiceButton}
+                                                  quizzSize={quizzSize}
+                                                  errors={errors}
+                                                  values={values}
+                                                  index={index}
+                                                  isValid={isValid}
+                                                  handleSubmit={handleSubmit}
+                                                  handleBlur={handleBlur}
+                                                  handleChange={handleChange}
+                                                  sliceQuestionText={sliceQuestionText}
+                                        />
 
-                                )}
-                            </Formik>
-                        </div>
+                                    )}
+                                </Formik>
+                        </div>}
                     </div>
                 </>}
 

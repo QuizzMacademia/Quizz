@@ -4,7 +4,12 @@ import java.io.StringWriter;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.python.util.PythonInterpreter;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -49,6 +54,22 @@ public class QuestionServiceImpl implements QuestionService {
 	public List<Integer> getLevelsByQuestionTypeAndTheme(QuestionType questionType, String theme) {
 	
 		return questionRepository.findLevelsByQuestionTypeAndTheme(questionType, theme);
+	} 
+	@Override
+	public Object compileCodeJavaScript(String code) throws ScriptException {
+		
+		
+			/*String script = "function toto(num) {\n"
+					+ "let a = 1;\n"
+					+ "let b = 2\n"
+					+ "print(a + b)\n"
+					+ "if(a+b > 2){\n"
+					+ "console.log('plus grand que 2')}\n"
+					+ "return a+b}";*/
+			 
+			ScriptEngine engine = new ScriptEngineManager(null).getEngineByName("JavaScript");
+			return engine.eval(code);
+		
 	}
 	
 	@Override
